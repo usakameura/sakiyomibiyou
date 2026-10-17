@@ -601,6 +601,11 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
         <div class="admin-form-group"><label class="admin-form-label">新しいパスワード（確認）</label><input type="password" class="admin-form-input" id="s-confirm-pw" autocomplete="new-password"></div>
         <button class="ad-btn sub block" onclick="savePassword()">パスワードを変更する</button>
       </div>
+
+      <div class="ad-sec">
+        <div class="admin-section-divider">ログアウト</div>
+        <button class="ad-btn danger block" onclick="if(confirm('ログアウトしますか？'))adminLogout()">ログアウトする</button>
+      </div>
     </section>
   </main>
 

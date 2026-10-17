@@ -733,68 +733,7 @@ img.brand-logo { display: block; width: auto; height: 30px; object-fit: contain;
 }
 .login-btn:hover { background: #2A241F; }
 .login-btn:disabled { opacity: .6; }
-
-#admin-panel { display: none; min-height: 100vh; background: var(--cream-bg); color: var(--charcoal); position: relative; z-index: 1; }
-.admin-header {
-  background: var(--charcoal); color: var(--ivory);
-  padding: 20px 28px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
-}
-.admin-title { display: flex; align-items: center; gap: 14px; font-family: var(--sans-en); font-size: 11px; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(251,248,243,0.55); }
-.admin-title img.brand-logo { height: 28px; filter: brightness(0) invert(1); }
-.admin-title .brand-text { color: var(--ivory); font-size: 18px; }
-.admin-nav { display: flex; gap: 22px; flex-wrap: wrap; }
-.admin-nav-btn {
-  background: none; border: none; color: rgba(251,248,243,0.6);
-  font-size: 12px; letter-spacing: 0.14em; padding: 6px 0;
-  border-bottom: 1px solid transparent; transition: all .2s; cursor: pointer;
-}
-.admin-nav-btn:hover, .admin-nav-btn.active { color: var(--gold-lt); border-bottom-color: var(--gold-lt); }
-.admin-body { padding: 32px 24px; max-width: 1200px; margin: 0 auto; }
-.admin-section { display: none; }
-.admin-section.active { display: block; }
-.admin-section-title { font-family: var(--serif-ja); font-size: 22px; font-weight: 400; letter-spacing: 0.12em; margin-bottom: 28px; color: var(--charcoal); }
-.btn-gold {
-  padding: 11px 26px; background: var(--charcoal); color: var(--ivory); border: none;
-  font-size: 12px; letter-spacing: 0.14em; transition: background .3s; cursor: pointer;
-}
-.btn-gold:hover { background: #2A241F; }
-.btn-gold:disabled { opacity: .6; }
-.btn-outline-admin {
-  padding: 8px 18px; background: none; color: var(--charcoal);
-  border: 1px solid var(--bd-dark); font-size: 12px; letter-spacing: 0.08em;
-  transition: all .2s; cursor: pointer;
-}
-.btn-outline-admin:hover { border-color: var(--charcoal); }
 .btn-danger { padding: 8px 16px; background: none; color: var(--error); border: 1px solid rgba(154,74,66,0.4); font-size: 12px; letter-spacing: 0.08em; cursor: pointer; }
-.btn-danger:hover { border-color: var(--error); }
-.admin-product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 18px; }
-.admin-product-card { border: 1px solid var(--bd-light); overflow: hidden; background: #fff; }
-.admin-product-img { width: 100%; aspect-ratio: 4/5; background: var(--warm-white); overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.admin-product-img img { width: 100%; height: 100%; object-fit: cover; }
-.admin-product-img .mark { font-size: 40px; color: var(--bd-dark); }
-.admin-product-info { padding: 14px; }
-.admin-product-name { font-family: var(--serif-ja); font-size: 14px; margin-bottom: 6px; }
-.admin-product-meta { font-size: 11px; color: var(--muted); margin-bottom: 12px; line-height: 1.7; }
-.admin-product-actions { display: flex; gap: 8px; flex-wrap: wrap; }
-.order-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid var(--bd-light); }
-.order-table th { font-size: 11px; letter-spacing: 0.1em; color: var(--muted); padding: 12px; text-align: left; border-bottom: 1px solid var(--bd-dark); font-weight: 400; white-space: nowrap; background: var(--warm-white); }
-.order-table td { padding: 12px; font-size: 13px; border-bottom: 1px solid var(--bd-light); vertical-align: middle; }
-.order-table tr:hover td { background: #FDFBF8; }
-.pay-select { border: 1px solid var(--bd-light); padding: 5px 6px; font-size: 12px; background: #fff; outline: none; min-width: 92px; cursor: pointer; }
-.pay-unpaid { color: #8A6A1E; }
-.pay-paid { color: #3F6B4C; }
-.ship-toggle, .cancel-toggle {
-  display: inline-flex; align-items: center; gap: 6px; padding: 5px 10px; border: 1px solid;
-  font-size: 11px; letter-spacing: 0.06em; background: none; transition: all .2s; white-space: nowrap; cursor: pointer;
-}
-.ship-toggle.unshipped { border-color: var(--bd-dark); color: var(--muted); }
-.ship-toggle.unshipped:hover { border-color: #3D5A80; color: #3D5A80; }
-.ship-toggle.shipped { border-color: #3D5A80; color: #3D5A80; background: #EEF2F7; }
-.cancel-toggle.normal { border-color: var(--bd-light); color: var(--bd-dark); }
-.cancel-toggle.normal:hover { border-color: var(--error); color: var(--error); }
-.cancel-toggle.cancelled { border-color: var(--error); color: var(--error); background: #F7EDEB; }
-tr.row-cancelled td { opacity: 0.5; }
-tr.row-cancelled td:first-child { text-decoration: line-through; }
 .admin-form-input, .admin-form-select {
   width: 100%; padding: 11px 12px; background: #fff;
   border: 1px solid var(--bd-light); font-size: 14px; font-weight: 300; color: var(--charcoal); outline: none;
@@ -808,22 +747,300 @@ textarea.admin-form-input { line-height: 1.8; resize: vertical; }
 .admin-form-note code { font-family: monospace; font-size: 12px; color: var(--charcoal); background: #fff; padding: 1px 5px; border: 1px solid var(--bd-light); }
 .admin-section-divider {
   font-family: var(--serif-ja); font-size: 14px; letter-spacing: 0.12em; color: var(--charcoal);
-  margin: 40px 0 18px; padding-bottom: 10px; border-bottom: 1px solid var(--bd-light);
+  margin: 28px 0 16px; padding-bottom: 10px; border-bottom: 1px solid var(--bd-light);
 }
 .admin-section-divider:first-child { margin-top: 0; }
-.img-upload-area { border: 1px dashed var(--bd-dark); padding: 28px; text-align: center; margin-bottom: 12px; background: #fff; transition: border-color .3s; cursor: pointer; }
-.img-upload-area:hover { border-color: var(--champagne); }
-.img-upload-label { font-size: 12px; letter-spacing: 0.08em; color: var(--muted); }
-.img-preview-list { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
-.img-preview-item { width: 72px; height: 72px; position: relative; overflow: hidden; }
-.img-preview-item img { width: 100%; height: 100%; object-fit: cover; }
-.img-preview-del { position: absolute; top: 2px; right: 2px; background: rgba(58,50,43,0.75); color: #fff; border: none; width: 20px; height: 20px; font-size: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; }
-.modal-bg { position: fixed; inset: 0; background: rgba(58,50,43,0.35); z-index: 2000; display: none; align-items: center; justify-content: center; backdrop-filter: blur(4px); }
-.modal-bg.open { display: flex; }
-.modal { background: var(--cream-bg); width: 92%; max-width: 600px; max-height: 90vh; overflow-y: auto; padding: 36px 32px; box-shadow: var(--shadow); }
-.modal-title { font-family: var(--serif-ja); font-size: 20px; letter-spacing: 0.12em; margin-bottom: 28px; color: var(--charcoal); }
-.modal-actions { display: flex; gap: 12px; margin-top: 28px; justify-content: flex-end; }
-.form-row-admin { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+/* ── 管理画面（スマホ中心） ── */
+#admin-panel {
+  display: none; min-height: 100vh; background: var(--ivory); color: var(--ink);
+  position: relative; z-index: 1;
+  padding-bottom: calc(76px + env(safe-area-inset-bottom));
+}
+.ad-top {
+  position: sticky; top: 0; z-index: 60;
+  height: 56px; padding: 0 12px 0 18px;
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(251,248,243,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+.ad-brand { display: flex; align-items: baseline; gap: 10px; }
+.ad-brand .brand-text { font-size: 17px; }
+.ad-brand img.brand-logo { height: 24px; }
+.ad-brand-sub { font-family: var(--sans-en); font-size: 10px; letter-spacing: 0.28em; color: var(--ink-3); text-transform: uppercase; }
+.ad-icon-btn {
+  width: 44px; height: 44px; border: none; background: none; color: var(--ink-2);
+  display: flex; align-items: center; justify-content: center; border-radius: 50%;
+}
+.ad-icon-btn svg { width: 22px; height: 22px; }
+.ad-icon-btn:active { background: var(--sand); }
+
+.ad-main { max-width: 960px; margin: 0 auto; padding: 16px 14px 24px; }
+.ad-view { display: none; }
+.ad-view.active { display: block; animation: adIn .25s ease both; }
+@keyframes adIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+.ad-h1 { font-family: var(--serif-ja); font-size: 20px; letter-spacing: 0.1em; margin: 6px 2px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.ad-h2 { font-family: var(--serif-ja); font-size: 15px; letter-spacing: 0.1em; margin: 26px 2px 12px; display: flex; align-items: center; gap: 10px; }
+.ad-h2::before { content: ''; width: 14px; height: 1px; background: var(--champagne); }
+
+/* 下部タブ */
+.ad-tabbar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  background: rgba(251,248,243,0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-top: 1px solid var(--line);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.ad-tab {
+  position: relative; height: 62px; border: none; background: none;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
+  color: var(--ink-3); font-size: 10px; letter-spacing: 0.08em;
+}
+.ad-tab svg { width: 22px; height: 22px; }
+.ad-tab.active { color: var(--ink); }
+.ad-tab.active::before { content: ''; position: absolute; top: 0; left: 30%; right: 30%; height: 2px; background: var(--champagne); }
+.ad-tab-badge {
+  position: absolute; top: 8px; left: calc(50% + 6px);
+  min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px;
+  background: var(--error); color: #fff; font-size: 10px; line-height: 18px; text-align: center;
+  font-family: var(--sans-en); display: none;
+}
+
+/* カード・共通パーツ */
+.ad-card { background: var(--pearl); border: 1px solid var(--line); border-radius: 12px; }
+.ad-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ad-stat { padding: 14px 14px 12px; text-align: left; border: 1px solid var(--line); background: var(--pearl); border-radius: 12px; }
+button.ad-stat { cursor: pointer; font: inherit; color: inherit; }
+button.ad-stat:active { background: var(--sand); }
+.ad-stat-label { font-size: 11px; color: var(--ink-3); letter-spacing: 0.06em; display: flex; justify-content: space-between; }
+.ad-stat-value { font-family: var(--sans-en); font-size: 24px; color: var(--ink); margin-top: 4px; letter-spacing: 0.02em; line-height: 1.2; }
+.ad-stat-sub { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+.ad-stat.alert .ad-stat-value { color: var(--error); }
+.ad-stat.ok .ad-stat-value { color: var(--ink-4); }
+
+.ad-list { display: flex; flex-direction: column; gap: 8px; }
+.ad-empty { text-align: center; color: var(--ink-3); font-size: 13px; padding: 36px 12px; }
+
+.ad-search {
+  position: relative; display: block; margin-bottom: 10px;
+}
+.ad-search input {
+  width: 100%; height: 44px; padding: 0 14px 0 40px; font-size: 16px; font-weight: 300;
+  border: 1px solid var(--line-md); border-radius: 22px; background: var(--pearl); color: var(--ink); outline: none;
+}
+.ad-search input:focus { border-color: var(--champagne); }
+.ad-search svg { position: absolute; left: 14px; top: 12px; width: 20px; height: 20px; color: var(--ink-3); }
+
+.ad-chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 -14px 10px; padding: 0 14px; }
+.ad-chips::-webkit-scrollbar { display: none; }
+.ad-chip {
+  flex-shrink: 0; height: 34px; padding: 0 14px; border-radius: 17px;
+  border: 1px solid var(--line-md); background: var(--pearl); color: var(--ink-2);
+  font-size: 12px; letter-spacing: 0.04em; white-space: nowrap;
+}
+.ad-chip b { font-family: var(--sans-en); font-weight: 400; margin-left: 4px; color: var(--ink-3); }
+.ad-chip.active { background: var(--ink); border-color: var(--ink); color: var(--ivory); }
+.ad-chip.active b { color: var(--gold-lt); }
+
+.ad-filters { margin-bottom: 10px; }
+.ad-filters summary {
+  list-style: none; cursor: pointer; font-size: 12px; color: var(--ink-2); letter-spacing: 0.06em;
+  display: inline-flex; align-items: center; gap: 6px; padding: 6px 2px;
+}
+.ad-filters summary::-webkit-details-marker { display: none; }
+.ad-filters summary::after { content: '▾'; font-size: 10px; color: var(--ink-3); transition: transform .2s; }
+.ad-filters[open] summary::after { transform: rotate(180deg); }
+.ad-filters-active { color: var(--gold); }
+.ad-filter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px 0 4px; }
+.ad-field { display: flex; flex-direction: column; gap: 5px; }
+.ad-field.full { grid-column: 1 / -1; }
+.ad-field > span { font-size: 11px; color: var(--ink-3); letter-spacing: 0.04em; }
+.ad-input, .ad-select, .ad-textarea {
+  width: 100%; height: 44px; padding: 0 12px; font-size: 16px; font-weight: 300;
+  border: 1px solid var(--line-md); border-radius: 8px; background: var(--pearl); color: var(--ink); outline: none;
+  -webkit-appearance: none; appearance: none;
+}
+.ad-select { background-image: linear-gradient(45deg, transparent 50%, var(--ink-3) 50%), linear-gradient(135deg, var(--ink-3) 50%, transparent 50%); background-position: calc(100% - 18px) 19px, calc(100% - 13px) 19px; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 32px; }
+.ad-textarea { height: auto; min-height: 96px; padding: 10px 12px; line-height: 1.8; resize: vertical; }
+.ad-input:focus, .ad-select:focus, .ad-textarea:focus { border-color: var(--champagne); }
+.ad-link-btn { border: none; background: none; color: var(--gold); font-size: 12px; text-decoration: underline; text-underline-offset: 3px; padding: 6px 2px; }
+
+.ad-summary {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+  padding: 10px 2px; font-size: 12px; color: var(--ink-2);
+}
+.ad-summary strong { font-family: var(--sans-en); font-weight: 400; color: var(--ink); font-size: 14px; }
+.ad-actions-row { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.ad-btn {
+  height: 44px; padding: 0 18px; border-radius: 8px; border: 1px solid var(--ink);
+  background: var(--ink); color: var(--ivory); font-size: 13px; letter-spacing: 0.08em;
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+}
+.ad-btn:disabled { opacity: .5; }
+.ad-btn.sub { background: var(--pearl); color: var(--ink); border-color: var(--line-md); }
+.ad-btn.gold { background: var(--champagne); border-color: var(--champagne); color: #fff; }
+.ad-btn.danger { background: var(--pearl); color: var(--error); border-color: rgba(154,74,66,0.4); }
+.ad-btn.sm { height: 36px; padding: 0 12px; font-size: 12px; }
+.ad-btn.block { width: 100%; }
+.ad-btn svg { width: 16px; height: 16px; }
+
+/* 注文カード */
+.ad-order {
+  display: block; width: 100%; text-align: left; font: inherit; color: inherit;
+  padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--pearl);
+}
+.ad-order:active { background: var(--sand); }
+.ad-order.cancelled { opacity: .55; }
+.ad-order-top { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: var(--ink-3); }
+.ad-order-num { font-family: var(--sans-en); letter-spacing: 0.06em; }
+.ad-order-mid { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin: 6px 0 10px; }
+.ad-order-name { font-size: 15px; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ad-order-amount { font-family: var(--sans-en); font-size: 16px; color: var(--ink); flex-shrink: 0; }
+.ad-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+.ad-pill { font-size: 11px; padding: 3px 10px; border-radius: 12px; border: 1px solid; letter-spacing: 0.04em; }
+.ad-pill.unpaid  { color: #8A6A1E; border-color: rgba(138,106,30,0.35); background: #FBF5E6; }
+.ad-pill.paid    { color: #3F6B4C; border-color: rgba(63,107,76,0.3);  background: #EEF5F0; }
+.ad-pill.toship  { color: #8A5A2B; border-color: rgba(138,90,43,0.35); background: #FBF0E4; }
+.ad-pill.shipped { color: #3D5A80; border-color: rgba(61,90,128,0.3);  background: #EEF2F7; }
+.ad-pill.cancel  { color: var(--error); border-color: rgba(154,74,66,0.35); background: #F7EDEB; }
+
+/* 商品カード */
+.ad-product { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--pearl); }
+.ad-product.unpublished { background: #F7F4EF; }
+.ad-product-thumb { width: 64px; height: 80px; border-radius: 6px; overflow: hidden; background: var(--sand); display: flex; align-items: center; justify-content: center; border: none; padding: 0; }
+.ad-product-thumb .mark { font-size: 26px; color: var(--gold-lt); }
+.ad-product-body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.ad-product-name { font-size: 14px; color: var(--ink); border: none; background: none; padding: 0; text-align: left; font-family: inherit; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ad-product-meta { font-size: 11px; color: var(--ink-3); }
+.ad-product-meta b { font-family: var(--sans-en); font-weight: 400; color: var(--ink-2); font-size: 13px; }
+.ad-product-ctrl { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.ad-stepper { display: flex; align-items: center; border: 1px solid var(--line-md); border-radius: 8px; overflow: hidden; height: 36px; }
+.ad-stepper button { width: 38px; height: 100%; border: none; background: none; font-size: 18px; color: var(--ink-2); }
+.ad-stepper button:active { background: var(--sand); }
+.ad-stepper input { width: 46px; height: 100%; border: none; border-left: 1px solid var(--line); border-right: 1px solid var(--line); text-align: center; font-family: var(--sans-en); font-size: 15px; color: var(--ink); background: none; -moz-appearance: textfield; outline: none; }
+.ad-stepper input::-webkit-inner-spin-button, .ad-stepper input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.ad-stepper.low input { color: var(--error); }
+.ad-stepper.saving { opacity: .6; }
+.ad-stock-label { font-size: 10px; color: var(--ink-3); margin-right: 6px; }
+
+/* スイッチ */
+.ad-switch { position: relative; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; color: var(--ink-3); cursor: pointer; user-select: none; }
+.ad-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.ad-switch i { position: relative; width: 42px; height: 24px; border-radius: 12px; background: var(--sand-2); transition: background .2s; flex-shrink: 0; }
+.ad-switch i::after { content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.15); transition: transform .2s; }
+.ad-switch input:checked + i { background: var(--champagne); }
+.ad-switch input:checked + i::after { transform: translateX(18px); }
+.ad-switch input:focus-visible + i { outline: 1px solid var(--champagne); outline-offset: 2px; }
+
+.ad-fab {
+  position: fixed; right: 18px; bottom: calc(80px + env(safe-area-inset-bottom)); z-index: 65;
+  height: 50px; padding: 0 20px; border-radius: 25px; border: none;
+  background: var(--ink); color: var(--ivory); font-size: 13px; letter-spacing: 0.08em;
+  box-shadow: 0 6px 18px rgba(58,50,43,0.25); display: none; align-items: center; gap: 6px;
+}
+.ad-fab.show { display: inline-flex; }
+.ad-fab svg { width: 18px; height: 18px; }
+
+/* シート（スマホは下から、PCは中央） */
+.ad-sheet-bg {
+  position: fixed; inset: 0; z-index: 2000; background: rgba(58,50,43,0.38);
+  display: none; align-items: flex-end; justify-content: center;
+}
+.ad-sheet-bg.open { display: flex; }
+.ad-sheet {
+  width: 100%; max-width: 640px; max-height: 92vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+  background: var(--ivory); border-radius: 18px 18px 0 0;
+  padding: 0 16px calc(24px + env(safe-area-inset-bottom));
+  animation: sheetUp .28s cubic-bezier(.2,.8,.2,1) both;
+}
+@keyframes sheetUp { from { transform: translateY(40px); opacity: .4; } to { transform: none; opacity: 1; } }
+.ad-sheet-head {
+  position: sticky; top: 0; z-index: 2; background: var(--ivory);
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 14px 0 12px; border-bottom: 1px solid var(--line); margin-bottom: 14px;
+}
+.ad-sheet-head::before { content: ''; position: absolute; top: 6px; left: 50%; width: 36px; height: 4px; margin-left: -18px; border-radius: 2px; background: var(--sand-2); }
+.ad-sheet-title { font-family: var(--serif-ja); font-size: 16px; letter-spacing: 0.08em; padding-top: 6px; }
+.ad-sheet-sub { font-family: var(--sans-en); font-size: 11px; color: var(--ink-3); letter-spacing: 0.06em; }
+.ad-sec { background: var(--pearl); border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+.ad-sec-title { font-size: 12px; color: var(--ink-3); letter-spacing: 0.08em; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+.ad-seg { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line-md); border-radius: 10px; overflow: hidden; }
+.ad-seg button { height: 44px; border: none; background: var(--pearl); color: var(--ink-2); font-size: 13px; }
+.ad-seg button + button { border-left: 1px solid var(--line-md); }
+.ad-seg button.on-unpaid { background: #FBF5E6; color: #8A6A1E; }
+.ad-seg button.on-paid { background: #EEF5F0; color: #3F6B4C; }
+.ad-note { font-size: 11px; color: var(--ink-3); margin-top: 8px; line-height: 1.7; }
+.ad-kv { display: grid; grid-template-columns: 72px 1fr auto; gap: 8px; align-items: start; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.ad-kv:last-child { border-bottom: none; }
+.ad-kv > span:first-child { color: var(--ink-3); font-size: 12px; padding-top: 1px; }
+.ad-kv > span:nth-child(2) { word-break: break-all; }
+.ad-kv a { color: var(--ink); }
+.ad-copy { border: 1px solid var(--line-md); background: var(--pearl); border-radius: 6px; font-size: 11px; color: var(--ink-2); padding: 3px 8px; }
+.ad-item-row { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.ad-item-total { display: flex; justify-content: space-between; padding: 12px 0 2px; font-size: 14px; }
+.ad-item-total b { font-family: var(--sans-en); font-weight: 400; font-size: 18px; }
+.ad-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.ad-check { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-2); margin: 10px 0; }
+.ad-check input { width: 18px; height: 18px; accent-color: var(--champagne); }
+
+/* 画像エディタ */
+.ad-drop {
+  border: 1.5px dashed var(--bd-dark); border-radius: 12px; padding: 18px; text-align: center;
+  color: var(--ink-3); font-size: 12px; background: var(--pearl); cursor: pointer; transition: all .2s;
+}
+.ad-drop.drag { border-color: var(--champagne); background: #FBF6EC; color: var(--gold); }
+.ad-drop svg { width: 26px; height: 26px; display: block; margin: 0 auto 6px; color: var(--champagne); }
+.ad-imgs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px; }
+.ad-img { position: relative; aspect-ratio: 4/5; border-radius: 8px; overflow: hidden; background: var(--sand); }
+.ad-img img { width: 100%; height: 100%; object-fit: cover; }
+.ad-img-main { position: absolute; top: 6px; left: 6px; background: var(--ink); color: var(--ivory); font-size: 10px; padding: 2px 8px; border-radius: 10px; letter-spacing: 0.06em; }
+.ad-img-tools { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; background: linear-gradient(transparent, rgba(30,26,22,0.55)); padding: 14px 4px 4px; }
+.ad-img-tools button { width: 30px; height: 30px; border: none; border-radius: 50%; background: rgba(255,255,255,0.9); color: var(--ink); font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.ad-img-tools button:disabled { opacity: .3; }
+.ad-img-tools button.del { color: var(--error); }
+.ad-img-size { position: absolute; top: 6px; right: 6px; font-size: 9px; color: #fff; background: rgba(30,26,22,0.5); padding: 1px 6px; border-radius: 8px; font-family: var(--sans-en); }
+
+/* カテゴリ編集 */
+.ad-cat-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.ad-cat-row:last-child { border-bottom: none; }
+.ad-cat-tools { display: flex; gap: 4px; }
+.ad-cat-tools button { width: 36px; height: 36px; border: 1px solid var(--line-md); border-radius: 8px; background: var(--pearl); color: var(--ink-2); font-size: 14px; }
+.ad-cat-tools button.del { color: var(--error); }
+.ad-cat-tools button:disabled { opacity: .3; }
+.ad-cat-count { font-size: 10px; color: var(--ink-3); margin-left: 6px; white-space: nowrap; flex-shrink: 0; }
+.ad-cat-row .ad-input { min-width: 0; }
+#products-list { padding-bottom: 64px; }  /* 右下の「商品を登録」ボタンと重ならないように */
+/* 管理画面ではトーストを上に出す（下部タブ・ボタンと重ならないように） */
+body.is-admin .toast { bottom: auto; top: calc(64px + env(safe-area-inset-top)); transform: translateX(-50%) translateY(-12px); }
+body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
+
+/* 一覧（ダッシュボード内の小リスト） */
+.ad-mini-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 11px 14px; border-bottom: 1px solid var(--line); font-size: 13px; background: none; border-left: 0; border-right: 0; border-top: 0; width: 100%; text-align: left; color: inherit; font-family: inherit; }
+.ad-mini-row:last-child { border-bottom: none; }
+.ad-mini-row:active { background: var(--sand); }
+.ad-mini-row b { font-family: var(--sans-en); font-weight: 400; }
+
+/* 設定（既存フォームの調整） */
+#av-settings .admin-form-input, #av-settings .admin-form-select { font-size: 16px; border-radius: 8px; }
+#av-settings .admin-section-divider { font-family: var(--serif-ja); }
+
+@media (min-width: 760px) {
+  .ad-main { padding: 24px 24px 32px; }
+  .ad-stats { grid-template-columns: repeat(4, 1fr); }
+  .ad-filter-grid { grid-template-columns: repeat(4, 1fr); }
+  .ad-imgs { grid-template-columns: repeat(4, 1fr); }
+  .ad-sheet-bg { align-items: center; }
+  .ad-sheet { border-radius: 16px; max-height: 88vh; }
+  .ad-orders-grid, .ad-products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+}
+@media (min-width: 1100px) {
+  .ad-tabbar { top: 56px; bottom: auto; left: 0; right: auto; width: 96px; height: calc(100vh - 56px); grid-template-columns: 1fr; grid-auto-rows: 76px; align-content: start; border-top: none; border-right: 1px solid var(--line); padding-top: 12px; }
+  .ad-tab.active::before { top: 18%; bottom: 18%; left: 0; right: auto; width: 2px; height: auto; }
+  #admin-panel { padding-bottom: 0; padding-left: 96px; }
+  .ad-fab { bottom: 28px; }
+}
+
+@media (min-width: 1100px) { .ad-top { margin-left: -96px; } }
 </style>
 </head>
 <body>
@@ -1121,43 +1338,132 @@ textarea.admin-form-input { line-height: 1.8; resize: vertical; }
 </div>
 
 <div id="admin-panel">
-  <div class="admin-header">
-    <div class="admin-title"><img class="brand-logo" alt="LUNÉA"><span>Admin</span></div>
-    <div class="admin-nav">
-      <button class="admin-nav-btn active" onclick="switchAdmin('products')" id="anav-products">商品管理</button>
-      <button class="admin-nav-btn" onclick="switchAdmin('orders')" id="anav-orders">注文管理</button>
-      <button class="admin-nav-btn" onclick="switchAdmin('settings')" id="anav-settings">設定</button>
-      <button class="admin-nav-btn" onclick="adminLogout()" style="color:rgba(251,248,243,0.35)">ログアウト</button>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="ai-home" viewBox="0 0 24 24"><path d="M4 10.5 12 4l8 6.5V20h-5.5v-5.5h-5V20H4z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+    <symbol id="ai-orders" viewBox="0 0 24 24"><rect x="5" y="3.5" width="14" height="17" rx="2" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M8.5 8h7M8.5 12h7M8.5 16h4" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+    <symbol id="ai-products" viewBox="0 0 24 24"><path d="M12 3.5 20 7.5v9L12 20.5 4 16.5v-9z M4 7.5l8 4 8-4 M12 11.5v9" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></symbol>
+    <symbol id="ai-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.3"/><path d="M12 3v2.5M12 18.5V21M3 12h2.5M18.5 12H21M5.6 5.6l1.8 1.8M16.6 16.6l1.8 1.8M5.6 18.4l1.8-1.8M16.6 7.4l1.8-1.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></symbol>
+    <symbol id="ai-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="m16 16 4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></symbol>
+    <symbol id="ai-logout" viewBox="0 0 24 24"><path d="M14 4H6.5A1.5 1.5 0 0 0 5 5.5v13A1.5 1.5 0 0 0 6.5 20H14M10 12h10m-3.5-3.5L20 12l-3.5 3.5" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="ai-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+    <symbol id="ai-upload" viewBox="0 0 24 24"><path d="M12 16V5m-4.5 4.5L12 5l4.5 4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="ai-download" viewBox="0 0 24 24"><path d="M12 5v11m-4.5-4.5L12 16l4.5-4.5M5 19h14" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="ai-refresh" viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.05-4.95M19 4.5V8h-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  </svg>
+
+  <header class="ad-top">
+    <div class="ad-brand"><img class="brand-logo" alt="LUNÉA"><span class="ad-brand-sub">Admin</span></div>
+    <div style="display:flex;gap:2px">
+      <button class="ad-icon-btn" onclick="adminReload()" aria-label="最新の情報に更新"><svg><use href="#ai-refresh"/></svg></button>
+      <button class="ad-icon-btn" onclick="adminLogout()" aria-label="ログアウト"><svg><use href="#ai-logout"/></svg></button>
     </div>
-  </div>
-  <div class="admin-body">
-    <!-- 商品管理 -->
-    <div class="admin-section active" id="asec-products">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:32px">
-        <div class="admin-section-title" style="margin:0">商品管理</div>
-        <button class="btn-gold" onclick="openProductModal()">＋ 新規登録</button>
+  </header>
+
+  <main class="ad-main">
+    <!-- ホーム（ダッシュボード） -->
+    <section class="ad-view active" id="av-home">
+      <div class="ad-h1">ホーム <span class="ad-sheet-sub" id="dash-date"></span></div>
+      <div class="ad-stats">
+        <div class="ad-stat"><div class="ad-stat-label">今日の注文</div><div class="ad-stat-value" id="st-today-count">—</div><div class="ad-stat-sub" id="st-today-amount"></div></div>
+        <div class="ad-stat"><div class="ad-stat-label">今月の受注額</div><div class="ad-stat-value" id="st-month-amount">—</div><div class="ad-stat-sub" id="st-month-count"></div></div>
+        <button class="ad-stat" id="st-unpaid-card" onclick="goOrders('unpaid')"><div class="ad-stat-label">未入金 <span>›</span></div><div class="ad-stat-value" id="st-unpaid">—</div><div class="ad-stat-sub" id="st-unpaid-amount"></div></button>
+        <button class="ad-stat" id="st-toship-card" onclick="goOrders('toship')"><div class="ad-stat-label">発送待ち <span>›</span></div><div class="ad-stat-value" id="st-toship">—</div><div class="ad-stat-sub">入金済み・未発送</div></button>
       </div>
-      <div class="admin-product-grid" id="admin-products"></div>
-    </div>
-    <!-- 注文管理 -->
-    <div class="admin-section" id="asec-orders">
-      <div class="admin-section-title">注文管理</div>
-      <div style="overflow-x:auto">
-        <table class="order-table">
-          <thead>
-            <tr>
-              <th>注文番号</th><th>日時</th><th>お客様</th><th>金額</th>
-              <th>入金</th><th>発送</th><th>キャンセル</th><th>詳細</th>
-            </tr>
-          </thead>
-          <tbody id="orders-tbody"></tbody>
-        </table>
+      <div class="ad-stats" style="margin-top:10px;grid-template-columns:1fr">
+        <div class="ad-stat"><div class="ad-stat-label">今月の入金額</div><div class="ad-stat-value" id="st-month-paid">—</div><div class="ad-stat-sub">入金日が今月の注文（キャンセル除く）</div></div>
       </div>
-    </div>
+
+      <div class="ad-h2">在庫わずか（3点以下）</div>
+      <div class="ad-card" id="dash-lowstock"></div>
+
+      <div class="ad-h2">最近の注文</div>
+      <div class="ad-card" id="dash-recent"></div>
+    </section>
+
+    <!-- 注文 -->
+    <section class="ad-view" id="av-orders">
+      <div class="ad-h1">注文</div>
+      <label class="ad-search"><svg><use href="#ai-search"/></svg>
+        <input type="search" id="of-q" placeholder="注文番号・お名前・メール・電話" oninput="renderOrders()" enterkeyhint="search">
+      </label>
+      <div class="ad-chips" id="of-status"></div>
+      <details class="ad-filters" id="of-details">
+        <summary>期間・並び替え <span class="ad-filters-active" id="of-active"></span></summary>
+        <div class="ad-filter-grid">
+          <label class="ad-field"><span>期間の基準</span>
+            <select class="ad-select" id="of-datekey" onchange="renderOrders()">
+              <option value="created_at">注文日</option>
+              <option value="paid_at">入金日</option>
+              <option value="shipped_at">発送日</option>
+            </select>
+          </label>
+          <label class="ad-field"><span>並び替え</span>
+            <select class="ad-select" id="of-sort" onchange="renderOrders()">
+              <option value="created_desc">注文日：新しい順</option>
+              <option value="created_asc">注文日：古い順</option>
+              <option value="paid_desc">入金日：新しい順</option>
+              <option value="paid_asc">入金日：古い順</option>
+              <option value="amount_desc">金額：高い順</option>
+              <option value="amount_asc">金額：低い順</option>
+            </select>
+          </label>
+          <label class="ad-field"><span>開始日</span><input type="date" class="ad-input" id="of-from" onchange="renderOrders()"></label>
+          <label class="ad-field"><span>終了日</span><input type="date" class="ad-input" id="of-to" onchange="renderOrders()"></label>
+          <div class="ad-field full" style="flex-direction:row;gap:8px;flex-wrap:wrap">
+            <button class="ad-btn sub sm" onclick="setOrderPeriod('thisMonth')">今月</button>
+            <button class="ad-btn sub sm" onclick="setOrderPeriod('lastMonth')">先月</button>
+            <button class="ad-btn sub sm" onclick="setOrderPeriod('thisYear')">今年</button>
+            <button class="ad-btn sub sm" onclick="setOrderPeriod('clear')">期間をクリア</button>
+          </div>
+        </div>
+      </details>
+      <div class="ad-summary">
+        <span><strong id="of-count">0</strong> 件 ／ 合計 <strong id="of-total">¥0</strong></span>
+        <div class="ad-actions-row">
+          <button class="ad-btn sub sm" onclick="exportOrdersCsv('accounting')"><svg><use href="#ai-download"/></svg>経理用CSV</button>
+          <button class="ad-btn sub sm" onclick="exportOrdersCsv('shipping')"><svg><use href="#ai-download"/></svg>発送用CSV</button>
+        </div>
+      </div>
+      <div class="ad-list ad-orders-grid" id="orders-list"></div>
+    </section>
+
+    <!-- 商品 -->
+    <section class="ad-view" id="av-products">
+      <div class="ad-h1">商品</div>
+      <label class="ad-search"><svg><use href="#ai-search"/></svg>
+        <input type="search" id="pf-q" placeholder="商品名で検索" oninput="renderProducts()" enterkeyhint="search">
+      </label>
+      <div class="ad-chips" id="pf-cats"></div>
+      <div class="ad-summary">
+        <span><strong id="pf-count">0</strong> 件</span>
+        <select class="ad-select" id="pf-sort" onchange="renderProducts()" style="width:auto;height:36px;font-size:13px">
+          <option value="new">登録が新しい順</option>
+          <option value="old">登録が古い順</option>
+          <option value="stock_asc">在庫が少ない順</option>
+          <option value="stock_desc">在庫が多い順</option>
+          <option value="price_desc">価格が高い順</option>
+          <option value="price_asc">価格が低い順</option>
+          <option value="name">名前順</option>
+        </select>
+      </div>
+      <div class="ad-list ad-products-grid" id="products-list"></div>
+    </section>
+
     <!-- 設定 -->
-    <div class="admin-section" id="asec-settings">
-      <div class="admin-section-title">設定</div>
-      <div style="max-width:480px">
+    <section class="ad-view" id="av-settings">
+      <div class="ad-h1">設定</div>
+
+      <div class="ad-h2">カテゴリ</div>
+      <div class="ad-sec">
+        <div id="cat-list"></div>
+        <div style="display:flex;gap:8px;margin-top:12px">
+          <input type="text" class="ad-input" id="cat-new" placeholder="新しいカテゴリ名" maxlength="40" onkeydown="if(event.key==='Enter')addCategory()">
+          <button class="ad-btn" onclick="addCategory()" style="flex-shrink:0">追加</button>
+        </div>
+        <div class="ad-note">名前を変えると、そのカテゴリの商品もまとめて変更されます。商品が登録されているカテゴリは削除できません。</div>
+      </div>
+
+      <div class="ad-sec">
         <div class="admin-section-divider">振込先口座</div>
         <div class="admin-form-group"><label class="admin-form-label">銀行名</label><input type="text" class="admin-form-input" id="s-bank-name"></div>
         <div class="admin-form-group"><label class="admin-form-label">支店名</label><input type="text" class="admin-form-input" id="s-bank-branch"></div>
@@ -1166,7 +1472,7 @@ textarea.admin-form-input { line-height: 1.8; resize: vertical; }
             <option value="普通">普通</option><option value="当座">当座</option>
           </select>
         </div>
-        <div class="admin-form-group"><label class="admin-form-label">口座番号</label><input type="text" class="admin-form-input" id="s-bank-number"></div>
+        <div class="admin-form-group"><label class="admin-form-label">口座番号</label><input type="text" class="admin-form-input" id="s-bank-number" inputmode="numeric"></div>
         <div class="admin-form-group"><label class="admin-form-label">口座名義（カナ）</label><input type="text" class="admin-form-input" id="s-bank-holder"></div>
 
         <div class="admin-section-divider">管理者設定</div>
@@ -1180,65 +1486,70 @@ textarea.admin-form-input { line-height: 1.8; resize: vertical; }
         <div class="admin-form-group"><label class="admin-form-label">件名</label><input type="text" class="admin-form-input" id="s-email-subject"></div>
         <div class="admin-form-group"><label class="admin-form-label">挨拶文（注文内容の前）</label><textarea class="admin-form-input" id="s-email-greeting" rows="4"></textarea></div>
         <div class="admin-form-group"><label class="admin-form-label">締め文（振込先の後）</label><textarea class="admin-form-input" id="s-email-closing" rows="4"></textarea></div>
-        <button class="btn-gold" style="margin-top:8px" onclick="saveSettings()" id="btn-save-settings">設定を保存</button>
+        <button class="ad-btn block" onclick="saveSettings()" id="btn-save-settings">設定を保存</button>
+      </div>
 
+      <div class="ad-sec">
         <div class="admin-section-divider">パスワード変更</div>
         <div class="admin-form-group"><label class="admin-form-label">現在のパスワード</label><input type="password" class="admin-form-input" id="s-current-pw" autocomplete="current-password"></div>
         <div class="admin-form-group"><label class="admin-form-label">新しいパスワード（6文字以上）</label><input type="password" class="admin-form-input" id="s-new-pw" autocomplete="new-password"></div>
         <div class="admin-form-group"><label class="admin-form-label">新しいパスワード（確認）</label><input type="password" class="admin-form-input" id="s-confirm-pw" autocomplete="new-password"></div>
-        <button class="btn-outline-admin" style="margin-top:8px" onclick="savePassword()">パスワードを変更する</button>
+        <button class="ad-btn sub block" onclick="savePassword()">パスワードを変更する</button>
       </div>
+    </section>
+  </main>
+
+  <button class="ad-fab" id="ad-fab" onclick="openProductSheet()"><svg><use href="#ai-plus"/></svg>商品を登録</button>
+
+  <nav class="ad-tabbar" aria-label="管理メニュー">
+    <button class="ad-tab active" data-view="home" onclick="switchAdmin('home')"><svg><use href="#ai-home"/></svg>ホーム</button>
+    <button class="ad-tab" data-view="orders" onclick="switchAdmin('orders')"><svg><use href="#ai-orders"/></svg>注文<span class="ad-tab-badge" id="tab-badge-orders"></span></button>
+    <button class="ad-tab" data-view="products" onclick="switchAdmin('products')"><svg><use href="#ai-products"/></svg>商品</button>
+    <button class="ad-tab" data-view="settings" onclick="switchAdmin('settings')"><svg><use href="#ai-settings"/></svg>設定</button>
+  </nav>
+</div>
+
+<!-- 注文詳細シート -->
+<div class="ad-sheet-bg" id="order-sheet" onclick="if(event.target===this)closeSheet('order-sheet')">
+  <div class="ad-sheet" role="dialog" aria-modal="true" aria-labelledby="os-title">
+    <div class="ad-sheet-head">
+      <div><div class="ad-sheet-title" id="os-title">注文詳細</div><div class="ad-sheet-sub" id="os-sub"></div></div>
+      <button class="ad-icon-btn" onclick="closeSheet('order-sheet')" aria-label="閉じる" style="font-size:24px">×</button>
     </div>
+    <div id="os-body"></div>
   </div>
 </div>
 
-<!-- 商品モーダル -->
-<div class="modal-bg" id="product-modal">
-  <div class="modal">
-    <div class="modal-title" id="product-modal-title">商品を登録</div>
-    <div class="admin-form-group"><label class="admin-form-label">商品名 *</label><input type="text" class="admin-form-input" id="p-name"></div>
-    <div class="form-row-admin">
-      <div class="admin-form-group">
-        <label class="admin-form-label">カテゴリ *</label>
-        <select class="admin-form-select" id="p-category">
-          <option value="バッグ">バッグ</option><option value="服">服</option>
-          <option value="帽子">帽子</option><option value="財布">財布</option><option value="小物">小物</option>
-        </select>
+<!-- 商品編集シート -->
+<div class="ad-sheet-bg" id="product-sheet" onclick="if(event.target===this)closeSheet('product-sheet')">
+  <div class="ad-sheet" role="dialog" aria-modal="true" aria-labelledby="ps-title">
+    <div class="ad-sheet-head">
+      <div class="ad-sheet-title" id="ps-title">商品を登録</div>
+      <button class="ad-icon-btn" onclick="closeSheet('product-sheet')" aria-label="閉じる" style="font-size:24px">×</button>
+    </div>
+    <div class="ad-sec">
+      <div class="ad-sec-title">商品画像 <span>1枚目がメイン画像</span></div>
+      <div class="ad-imgs" id="ps-imgs"></div>
+      <div class="ad-drop" id="ps-drop" onclick="document.getElementById('ps-file').click()">
+        <svg><use href="#ai-upload"/></svg>
+        タップして画像を選択<br><span style="font-size:11px">PCはここにドラッグ＆ドロップもOK（自動で軽量化します）</span>
       </div>
-      <div class="admin-form-group"><label class="admin-form-label">価格（円）*</label><input type="number" class="admin-form-input" id="p-price" min="0"></div>
+      <input type="file" id="ps-file" accept="image/*" multiple hidden onchange="addProductFiles(this.files);this.value=''">
     </div>
-    <div class="admin-form-group"><label class="admin-form-label">在庫数 *</label><input type="number" class="admin-form-input" id="p-stock" min="0"></div>
-    <div class="admin-form-group"><label class="admin-form-label">商品説明</label><textarea class="admin-form-input" id="p-desc" rows="4"></textarea></div>
-    <div class="admin-form-group">
-      <label class="admin-form-label">公開設定</label>
-      <select class="admin-form-select" id="p-published">
-        <option value="true">公開</option><option value="false">非公開</option>
-      </select>
-    </div>
-    <div class="admin-form-group">
-      <label class="admin-form-label">商品画像</label>
-      <div class="img-preview-list" id="img-preview-list"></div>
-      <div class="img-upload-area" onclick="document.getElementById('img-file-input').click()">
-        <div class="img-upload-label">クリックして画像を追加</div>
-        <div style="font-size:10px;color:var(--bd-dark);margin-top:6px">JPG / PNG / WEBP</div>
+    <div class="ad-sec">
+      <label class="ad-field" style="margin-bottom:12px"><span>商品名 *</span><input type="text" class="ad-input" id="ps-name" maxlength="120"></label>
+      <div class="ad-form-grid">
+        <label class="ad-field"><span>カテゴリ *</span><select class="ad-select" id="ps-category"></select></label>
+        <label class="ad-field"><span>価格（税込・円）*</span><input type="number" class="ad-input" id="ps-price" min="0" inputmode="numeric"></label>
+        <label class="ad-field"><span>在庫数 *</span><input type="number" class="ad-input" id="ps-stock" min="0" inputmode="numeric"></label>
+        <div class="ad-field"><span>公開設定</span>
+          <label class="ad-switch" style="height:44px"><input type="checkbox" id="ps-published" checked><i></i><span id="ps-published-label">公開</span></label>
+        </div>
       </div>
-      <input type="file" id="img-file-input" accept="image/*" multiple style="display:none" onchange="handleImageUpload(this)">
+      <label class="ad-field" style="margin-top:12px"><span>商品説明</span><textarea class="ad-textarea" id="ps-desc" rows="5"></textarea></label>
     </div>
-    <div class="modal-actions">
-      <button class="btn-outline-admin" onclick="closeProductModal()">キャンセル</button>
-      <button class="btn-gold" onclick="saveProduct()">保存する</button>
-    </div>
-  </div>
-</div>
-
-<!-- 注文詳細モーダル -->
-<div class="modal-bg" id="order-modal">
-  <div class="modal">
-    <div class="modal-title">注文詳細</div>
-    <div id="order-modal-body"></div>
-    <div class="modal-actions">
-      <button class="btn-outline-admin" onclick="closeOrderModal()">閉じる</button>
-    </div>
+    <button class="ad-btn block" id="ps-save" onclick="saveProductSheet()">保存する</button>
+    <button class="ad-btn danger block" id="ps-delete" style="margin-top:10px" onclick="deleteProductFromSheet()">この商品を削除</button>
   </div>
 </div>
 
@@ -1273,9 +1584,6 @@ const DEFAULT_TPL = {
 // ══════════════════════════════════════
 const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 let cart = JSON.parse(localStorage.getItem('lunea_cart') || '[]');
-let editingProductId = null;
-let pendingImages = [];
-let existingImages = [];
 let settings = {};
 let currentDetailProduct = null;
 
@@ -1322,7 +1630,7 @@ async function init() {
   applyHeroImage();
   document.getElementById('site-header').style.display = 'grid';
   updateCartBadge();
-  await loadSettings();
+  await Promise.all([loadSettings(), loadCategories()]);
   await loadHomePage();
 }
 
@@ -1440,11 +1748,20 @@ async function loadShop(category = 'all') {
   renderProductGrid(data || [], 'shop-products');
 }
 
+// カテゴリ（管理画面で編集した並び順で表示）
+let categories = [];
+let categoriesError = false;
+async function loadCategories(force = false) {
+  if (categories.length && !force) return;
+  const { data, error } = await sb.from('categories').select('*').order('sort_order').order('name');
+  categoriesError = !!error;
+  if (error) { console.warn('カテゴリ取得エラー（migration_admin.sql 未実行？）:', error); categories = []; return; }
+  categories = data || [];
+}
 function renderCategoryFilter(active = 'all') {
-  const cats = ['all','バッグ','服','帽子','財布','小物'];
-  const labels = { all:'All', バッグ:'Bag', 服:'Wear', 帽子:'Hat', 財布:'Wallet', 小物:'Other' };
+  const cats = ['all', ...categories.map(c => c.name)];
   document.getElementById('category-filter').innerHTML = cats.map(c =>
-    `<button class="cat-btn ${active===c?'active':''}" onclick="loadShop('${c}')">${labels[c]}</button>`
+    `<button class="cat-btn ${active === c ? 'active' : ''}" data-cat="${esc(c)}" onclick="loadShop(this.dataset.cat)">${c === 'all' ? 'All' : esc(c)}</button>`
   ).join('');
 }
 
@@ -1866,6 +2183,7 @@ async function enterAdmin() {
   }
 }
 function showAdminLogin() {
+  document.body.classList.add('is-admin');
   // サイト全体を隠す
   document.getElementById('site-header').style.display = 'none';
   document.getElementById('site-accent').style.display = 'none';
@@ -1874,12 +2192,6 @@ function showAdminLogin() {
   document.querySelectorAll('.page').forEach(p => p.style.display = 'none');
   // ログイン画面を表示
   document.getElementById('admin-login').style.display = 'flex';
-}
-function openAdminPanel() {
-  document.getElementById('admin-login').style.display = 'none';
-  document.getElementById('admin-panel').style.display = 'block';
-  loadAdminProducts();
-  loadAdminSettings();
 }
 async function adminLogin() {
   const email = document.getElementById('admin-email').value.trim();
@@ -1923,192 +2235,376 @@ async function adminLogout() {
   location.hash = '';
   location.reload();
 }
-function switchAdmin(sec) {
-  document.querySelectorAll('.admin-section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.admin-nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('asec-' + sec).classList.add('active');
-  document.getElementById('anav-' + sec).classList.add('active');
-  if (sec === 'orders') loadAdminOrders();
-  if (sec === 'products') loadAdminProducts();
+// ══════════════════════════════════════
+//  ADMIN — 共通
+// ══════════════════════════════════════
+const AD = {
+  orders: [], products: [], shownOrders: [],
+  view: 'home', orderStatus: 'all', productCat: 'all',
+  editId: null, editImages: [], editOriginal: [],
+  stockPending: {}, stockTimers: {},
+};
+const CARRIERS = {
+  yamato: { name: 'ヤマト運輸', url: n => `https://jizen.kuronekoyamato.co.jp/jizen/servlet/crjz.b.NQ0010?id=${encodeURIComponent(n)}` },
+  sagawa: { name: '佐川急便',   url: n => `https://k2k.sagawa-exp.co.jp/p/web/okurijosearch.do?okurijoNo=${encodeURIComponent(n)}` },
+  japanpost: { name: '日本郵便', url: n => `https://trackings.post.japanpost.jp/services/srv/search/direct?reqCodeNo1=${encodeURIComponent(n)}&searchKind=S002&locale=ja` },
+  other: { name: 'その他', url: () => '' },
+};
+
+const pad2 = n => String(n).padStart(2, '0');
+const yen  = n => '¥' + Number(n || 0).toLocaleString('ja-JP');
+function fmtDT(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return `${d.getFullYear()}/${pad2(d.getMonth()+1)}/${pad2(d.getDate())} ${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+}
+function fmtShort(iso) {
+  if (!iso) return '';
+  const d = new Date(iso), now = new Date();
+  return d.getFullYear() === now.getFullYear()
+    ? `${d.getMonth()+1}/${d.getDate()} ${pad2(d.getHours())}:${pad2(d.getMinutes())}`
+    : `${d.getFullYear()}/${d.getMonth()+1}/${d.getDate()}`;
+}
+const isPaid    = o => o.status === 'confirmed';
+const isShipped = o => o.shipping_status === 'shipped';
+function orderBucket(o) {
+  if (o.is_cancelled) return 'cancelled';
+  if (!isPaid(o)) return 'unpaid';
+  if (!isShipped(o)) return 'toship';
+  return 'shipped';
+}
+function orderPills(o) {
+  if (o.is_cancelled) return '<span class="ad-pill cancel">キャンセル</span>';
+  return (isPaid(o) ? '<span class="ad-pill paid">入金済み</span>' : '<span class="ad-pill unpaid">未入金</span>')
+    + (isShipped(o) ? '<span class="ad-pill shipped">発送済み</span>'
+       : (isPaid(o) ? '<span class="ad-pill toship">発送待ち</span>' : ''));
+}
+
+// 1000件ずつ全件取得（Supabase の1回あたりの上限対策）
+async function fetchAll(table, build) {
+  const PAGE = 1000;
+  let from = 0, all = [];
+  for (;;) {
+    let q = sb.from(table).select('*');
+    if (build) q = build(q);
+    const { data, error } = await q.range(from, from + PAGE - 1);
+    if (error) throw error;
+    all = all.concat(data || []);
+    if (!data || data.length < PAGE) break;
+    from += PAGE;
+  }
+  return all;
+}
+
+async function adminLoadData() {
+  try {
+    const [orders, products] = await Promise.all([
+      fetchAll('orders',   q => q.order('created_at', { ascending: false })),
+      fetchAll('products', q => q.order('created_at', { ascending: false })),
+    ]);
+    AD.orders = orders; AD.products = products;
+  } catch (e) {
+    console.error('管理データ取得エラー:', e);
+    showToast('データを読み込めませんでした', 5000);
+  }
+}
+
+async function openAdminPanel() {
+  document.getElementById('admin-login').style.display = 'none';
+  document.getElementById('admin-panel').style.display = 'block';
+  document.getElementById('dash-date').textContent = fmtDT(new Date().toISOString()).slice(0, 10);
+  loadAdminSettings();
+  await Promise.all([loadCategories(true), adminLoadData()]);
+  renderAllAdmin();
+}
+async function adminReload() {
+  await Promise.all([loadCategories(true), loadSettings(), adminLoadData()]);
+  renderAllAdmin();
+  showToast('最新の情報に更新しました');
+}
+function renderAllAdmin() {
+  renderDashboard();
+  renderOrderChips(); renderOrders();
+  renderProductChips(); renderProducts();
+  renderCatList();
+}
+function switchAdmin(view) {
+  AD.view = view;
+  document.querySelectorAll('.ad-view').forEach(v => v.classList.toggle('active', v.id === 'av-' + view));
+  document.querySelectorAll('.ad-tab').forEach(t => t.classList.toggle('active', t.dataset.view === view));
+  document.getElementById('ad-fab').classList.toggle('show', view === 'products');
+  window.scrollTo(0, 0);
+  if (view === 'home') renderDashboard();
+  if (view === 'orders') { renderOrderChips(); renderOrders(); }
+  if (view === 'products') { renderProductChips(); renderProducts(); }
+  if (view === 'settings') renderCatList();
+}
+function openSheet(id)  { document.getElementById(id).classList.add('open'); document.body.style.overflow = 'hidden'; }
+function closeSheet(id) { document.getElementById(id).classList.remove('open'); document.body.style.overflow = ''; }
+
+// ══════════════════════════════════════
+//  ADMIN — ホーム
+// ══════════════════════════════════════
+function renderDashboard() {
+  const now = new Date();
+  const dayStart   = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
+  const live = AD.orders.filter(o => !o.is_cancelled);
+  const today = live.filter(o => new Date(o.created_at) >= dayStart);
+  const month = live.filter(o => new Date(o.created_at) >= monthStart);
+  const unpaid = live.filter(o => !isPaid(o));
+  const toship = live.filter(o => isPaid(o) && !isShipped(o));
+  const paidMonth = live.filter(o => o.paid_at && new Date(o.paid_at) >= monthStart);
+  const sum = arr => arr.reduce((s, o) => s + Number(o.total_amount || 0), 0);
+
+  document.getElementById('st-today-count').textContent = today.length + '件';
+  document.getElementById('st-today-amount').textContent = yen(sum(today));
+  document.getElementById('st-month-amount').textContent = yen(sum(month));
+  document.getElementById('st-month-count').textContent = month.length + '件';
+  document.getElementById('st-unpaid').textContent = unpaid.length + '件';
+  document.getElementById('st-unpaid-amount').textContent = yen(sum(unpaid));
+  document.getElementById('st-toship').textContent = toship.length + '件';
+  document.getElementById('st-month-paid').textContent = yen(sum(paidMonth));
+  document.getElementById('st-unpaid-card').className = 'ad-stat ' + (unpaid.length ? 'alert' : 'ok');
+  document.getElementById('st-toship-card').className = 'ad-stat ' + (toship.length ? 'alert' : 'ok');
+
+  const badge = document.getElementById('tab-badge-orders');
+  const pending = unpaid.length + toship.length;
+  badge.textContent = pending > 99 ? '99+' : pending;
+  badge.style.display = pending ? 'block' : 'none';
+
+  const low = AD.products.filter(p => p.stock <= 3).sort((a, b) => a.stock - b.stock).slice(0, 8);
+  document.getElementById('dash-lowstock').innerHTML = low.length
+    ? low.map(p => `<button class="ad-mini-row" onclick="openProductSheet('${p.id}')">
+        <span>${esc(p.name)}${p.is_published ? '' : ' <span style="color:var(--ink-4);font-size:11px">（非公開）</span>'}</span>
+        <b style="color:${p.stock <= 0 ? 'var(--error)' : 'var(--gold)'}">${p.stock <= 0 ? '在庫なし' : '残り' + p.stock}</b></button>`).join('')
+    : '<div class="ad-empty">在庫が少ない商品はありません</div>';
+
+  const recent = AD.orders.slice(0, 5);
+  document.getElementById('dash-recent').innerHTML = recent.length
+    ? recent.map(o => `<button class="ad-mini-row" onclick="openOrderSheet('${o.id}')">
+        <span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(o.customer_name)}
+          <span style="color:var(--ink-3);font-size:11px;margin-left:6px">${fmtShort(o.created_at)}</span></span>
+        <span style="display:flex;gap:8px;align-items:center;flex-shrink:0"><b>${yen(o.total_amount)}</b>${orderPills(o).split('</span>')[0]}</span></span></button>`).join('')
+    : '<div class="ad-empty">まだ注文はありません</div>';
 }
 
 // ══════════════════════════════════════
-//  ADMIN — PRODUCTS
+//  ADMIN — 注文
 // ══════════════════════════════════════
-async function loadAdminProducts() {
-  const { data } = await sb.from('products').select('*').order('created_at', { ascending: false });
-  const el = document.getElementById('admin-products');
-  if (!data?.length) { el.innerHTML = '<div style="color:var(--muted);font-size:13px">商品がありません</div>'; return; }
-  el.innerHTML = data.map(p => `
-    <div class="admin-product-card">
-      <div class="admin-product-img">
-        ${p.images?.[0] ? `<img src="${p.images[0]}" alt="${esc(p.name)}">` : MARK}
-      </div>
-      <div class="admin-product-info">
-        <div class="admin-product-name">${esc(p.name)}</div>
-        <div class="admin-product-meta">${esc(p.category)} ｜ ¥${Number(p.price).toLocaleString()} ｜ 在庫${p.stock} ｜ ${p.is_published?'公開':'非公開'}</div>
-        <div class="admin-product-actions">
-          <button class="btn-outline-admin" style="padding:5px 14px;font-size:9px" onclick="openProductModal('${p.id}')">編集</button>
-          <button class="btn-danger" style="padding:5px 12px;font-size:9px" onclick="deleteProduct('${p.id}')">削除</button>
-        </div>
-      </div>
-    </div>`).join('');
+const ORDER_TABS = [
+  ['all', 'すべて'], ['unpaid', '未入金'], ['toship', '発送待ち'], ['shipped', '発送済み'], ['cancelled', 'キャンセル'],
+];
+function goOrders(status) {
+  AD.orderStatus = status;
+  switchAdmin('orders');
 }
-
-function openProductModal(id = null) {
-  editingProductId = id;
-  pendingImages = []; existingImages = [];
-  document.getElementById('product-modal-title').textContent = id ? '商品を編集' : '商品を登録';
-  document.getElementById('p-name').value = '';
-  document.getElementById('p-price').value = '';
-  document.getElementById('p-stock').value = '';
-  document.getElementById('p-desc').value = '';
-  document.getElementById('p-category').value = 'バッグ';
-  document.getElementById('p-published').value = 'true';
-  document.getElementById('img-file-input').value = '';
-  renderImgPreviews();
-  if (id) loadProductForEdit(id);
-  document.getElementById('product-modal').classList.add('open');
-}
-async function loadProductForEdit(id) {
-  const { data: p } = await sb.from('products').select('*').eq('id', id).single();
-  if (!p) return;
-  document.getElementById('p-name').value = p.name || '';
-  document.getElementById('p-price').value = p.price ?? '';
-  document.getElementById('p-stock').value = p.stock ?? '';
-  document.getElementById('p-desc').value = p.description || '';
-  document.getElementById('p-category').value = p.category || 'バッグ';
-  document.getElementById('p-published').value = String(p.is_published);
-  existingImages = p.images || [];
-  renderImgPreviews();
-}
-function closeProductModal() {
-  document.getElementById('product-modal').classList.remove('open');
-  pendingImages = []; existingImages = [];
-}
-function handleImageUpload(input) {
-  const files = Array.from(input.files);
-  files.forEach(file => {
-    const url = URL.createObjectURL(file);
-    pendingImages.push({ file, url });
-  });
-  renderImgPreviews();
-  input.value = '';
-}
-function renderImgPreviews() {
-  const el = document.getElementById('img-preview-list');
-  const all = [
-    ...existingImages.map((url,i) => ({ url, isExisting:true, index:i })),
-    ...pendingImages.map((p,i) => ({ url:p.url, isExisting:false, index:i }))
-  ];
-  el.innerHTML = all.map(p =>
-    `<div class="img-preview-item">
-      <img src="${p.url}">
-      <button class="img-preview-del" onclick="removePreviewImg(${p.isExisting},${p.index})">×</button>
-    </div>`
+function renderOrderChips() {
+  const counts = { all: AD.orders.length, unpaid: 0, toship: 0, shipped: 0, cancelled: 0 };
+  AD.orders.forEach(o => counts[orderBucket(o)]++);
+  document.getElementById('of-status').innerHTML = ORDER_TABS.map(([k, label]) =>
+    `<button class="ad-chip ${AD.orderStatus === k ? 'active' : ''}" onclick="AD.orderStatus='${k}';renderOrderChips();renderOrders()">${label}<b>${counts[k]}</b></button>`
   ).join('');
 }
-function removePreviewImg(isExisting, index) {
-  if (isExisting) existingImages.splice(index, 1);
-  else pendingImages.splice(index, 1);
-  renderImgPreviews();
+function setOrderPeriod(kind) {
+  const from = document.getElementById('of-from'), to = document.getElementById('of-to');
+  const now = new Date();
+  const iso = d => `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}`;
+  if (kind === 'thisMonth') { from.value = iso(new Date(now.getFullYear(), now.getMonth(), 1)); to.value = iso(new Date(now.getFullYear(), now.getMonth() + 1, 0)); }
+  if (kind === 'lastMonth') { from.value = iso(new Date(now.getFullYear(), now.getMonth() - 1, 1)); to.value = iso(new Date(now.getFullYear(), now.getMonth(), 0)); }
+  if (kind === 'thisYear')  { from.value = iso(new Date(now.getFullYear(), 0, 1)); to.value = iso(new Date(now.getFullYear(), 11, 31)); }
+  if (kind === 'clear')     { from.value = ''; to.value = ''; }
+  renderOrders();
 }
-async function saveProduct() {
-  const name  = document.getElementById('p-name').value.trim();
-  const price = parseInt(document.getElementById('p-price').value);
-  const stock = parseInt(document.getElementById('p-stock').value);
-  if (!name || isNaN(price) || isNaN(stock)) { showToast('必須項目を入力してください'); return; }
-  if (price < 0 || stock < 0) { showToast('価格と在庫数は0以上にしてください'); return; }
-  const uploadedUrls = [];
-  let uploadFailed = false;
-  for (const p of pendingImages) {
-    const ext = p.file.name.split('.').pop();
-    const path = `${Date.now()}_${Math.random().toString(36).slice(2)}.${ext}`;
-    const { error } = await sb.storage.from(STORAGE_BUCKET).upload(path, p.file);
-    if (error) { uploadFailed = true; console.error('画像アップロードエラー:', error); continue; }
-    const { data: urlData } = sb.storage.from(STORAGE_BUCKET).getPublicUrl(path);
-    uploadedUrls.push(urlData.publicUrl);
+function filteredOrders() {
+  const q = document.getElementById('of-q').value.trim().toLowerCase();
+  const qDigits = q.replace(/[^0-9]/g, '');
+  const dateKey = document.getElementById('of-datekey').value;
+  const fromV = document.getElementById('of-from').value;
+  const toV = document.getElementById('of-to').value;
+  const from = fromV ? new Date(fromV + 'T00:00:00') : null;
+  const to   = toV   ? new Date(toV + 'T23:59:59.999') : null;
+  const sort = document.getElementById('of-sort').value;
+
+  let list = AD.orders.filter(o => AD.orderStatus === 'all' || orderBucket(o) === AD.orderStatus);
+  if (q) {
+    list = list.filter(o => {
+      const text = [o.order_number, o.customer_name, o.customer_email].join(' ').toLowerCase();
+      const phone = String(o.customer_phone || '').replace(/[^0-9]/g, '');
+      return text.includes(q) || (qDigits.length >= 3 && phone.includes(qDigits));
+    });
   }
-  const images = [...existingImages, ...uploadedUrls];
-  const payload = {
-    name, price, stock,
-    description: document.getElementById('p-desc').value.trim(),
-    category: document.getElementById('p-category').value,
-    is_published: document.getElementById('p-published').value === 'true',
-    images, updated_at: new Date().toISOString()
+  if (from || to) {
+    list = list.filter(o => {
+      if (!o[dateKey]) return false;
+      const d = new Date(o[dateKey]);
+      return (!from || d >= from) && (!to || d <= to);
+    });
+  }
+  const t = v => v ? new Date(v).getTime() : 0;
+  const sorters = {
+    created_desc: (a, b) => t(b.created_at) - t(a.created_at),
+    created_asc:  (a, b) => t(a.created_at) - t(b.created_at),
+    paid_desc:    (a, b) => t(b.paid_at) - t(a.paid_at) || t(b.created_at) - t(a.created_at),
+    paid_asc:     (a, b) => (t(a.paid_at) || Infinity) - (t(b.paid_at) || Infinity) || t(a.created_at) - t(b.created_at),
+    amount_desc:  (a, b) => b.total_amount - a.total_amount,
+    amount_asc:   (a, b) => a.total_amount - b.total_amount,
   };
-  const { error } = editingProductId
-    ? await sb.from('products').update(payload).eq('id', editingProductId)
-    : await sb.from('products').insert(payload);
-  if (error) { showToast('保存に失敗しました'); console.error('商品保存エラー:', error); return; }
-  showToast(uploadFailed
-    ? '保存しました（一部の画像はアップロードできませんでした）'
-    : (editingProductId ? '商品を更新しました' : '商品を登録しました'));
-  closeProductModal();
-  loadAdminProducts();
+  return list.slice().sort(sorters[sort] || sorters.created_desc);
 }
-async function deleteProduct(id) {
-  if (!confirm('この商品を削除しますか？')) return;
-  const { data: p } = await sb.from('products').select('images').eq('id', id).single();
-  if (p?.images?.length) {
-    for (const url of p.images) {
-      const path = url.split('/').pop();
-      await sb.storage.from(STORAGE_BUCKET).remove([path]);
-    }
+function renderOrders() {
+  const list = filteredOrders();
+  AD.shownOrders = list;
+  const live = list.filter(o => !o.is_cancelled);
+  document.getElementById('of-count').textContent = list.length;
+  document.getElementById('of-total').textContent = yen(live.reduce((s, o) => s + Number(o.total_amount || 0), 0))
+    + (live.length !== list.length ? '（キャンセル除く）' : '');
+
+  const fromV = document.getElementById('of-from').value, toV = document.getElementById('of-to').value;
+  const keyLabel = { created_at: '注文日', paid_at: '入金日', shipped_at: '発送日' }[document.getElementById('of-datekey').value];
+  document.getElementById('of-active').textContent = (fromV || toV)
+    ? `（${keyLabel} ${fromV ? fromV.replace(/-/g, '/') : ''}〜${toV ? toV.replace(/-/g, '/') : ''}）` : '';
+
+  document.getElementById('orders-list').innerHTML = list.length
+    ? list.map(o => `<button class="ad-order ${o.is_cancelled ? 'cancelled' : ''}" onclick="openOrderSheet('${o.id}')">
+        <div class="ad-order-top"><span class="ad-order-num">${esc(o.order_number)}</span><span>${fmtShort(o.created_at)}</span></div>
+        <div class="ad-order-mid"><span class="ad-order-name">${esc(o.customer_name)} 様</span><span class="ad-order-amount">${yen(o.total_amount)}</span></div>
+        <div class="ad-pills">${orderPills(o)}</div>
+      </button>`).join('')
+    : '<div class="ad-empty" style="grid-column:1/-1">該当する注文はありません</div>';
+}
+
+function patchOrder(row) {
+  const i = AD.orders.findIndex(o => o.id === row.id);
+  if (i >= 0) AD.orders[i] = row;
+}
+function refreshOrderViews(id) {
+  renderDashboard(); renderOrderChips(); renderOrders();
+  if (id && document.getElementById('order-sheet').classList.contains('open')) openOrderSheet(id, true);
+}
+
+async function openOrderSheet(id, keepScroll = false) {
+  const o = AD.orders.find(x => x.id === id);
+  if (!o) { showToast('注文が見つかりません'); return; }
+  const sheet = document.querySelector('#order-sheet .ad-sheet');
+  const scroll = sheet.scrollTop;
+  document.getElementById('os-title').textContent = o.customer_name + ' 様';
+  document.getElementById('os-sub').textContent = `${o.order_number}　${fmtDT(o.created_at)}`;
+  if (!keepScroll) document.getElementById('os-body').innerHTML = '<div class="spinner-wrap"><div class="spinner"></div></div>';
+  openSheet('order-sheet');
+
+  const { data: items } = await sb.from('order_items').select('*').eq('order_id', id);
+  const paid = isPaid(o), shipped = isShipped(o);
+  const carrierOpts = Object.entries(CARRIERS).map(([k, c]) =>
+    `<option value="${k}" ${(o.carrier || 'yamato') === k ? 'selected' : ''}>${c.name}</option>`).join('');
+  const trackUrl = o.tracking_number && CARRIERS[o.carrier] ? CARRIERS[o.carrier].url(o.tracking_number) : '';
+  const addressText = `〒${o.postal_code} ${o.address}`;
+
+  let shipHtml;
+  if (o.is_cancelled) {
+    shipHtml = '<div class="ad-note" style="margin:0">キャンセル済みの注文です。</div>';
+  } else if (shipped) {
+    shipHtml = `
+      <div class="ad-kv"><span>発送日</span><span>${fmtDT(o.shipped_at) || '—'}</span><span></span></div>
+      <div class="ad-kv"><span>配送業者</span><span>${esc(CARRIERS[o.carrier]?.name || '—')}</span><span></span></div>
+      <div class="ad-kv"><span>追跡番号</span><span>${o.tracking_number ? (trackUrl ? `<a href="${trackUrl}" target="_blank" rel="noopener">${esc(o.tracking_number)}</a>` : esc(o.tracking_number)) : '—'}</span><span></span></div>
+      <div class="ad-kv"><span>発送メール</span><span>${o.shipping_email_sent_at ? '送信済み（' + fmtShort(o.shipping_email_sent_at) + '）' : '未送信'}</span><span></span></div>
+      <div class="ad-actions-row" style="margin-top:12px">
+        <button class="ad-btn sub sm" onclick="sendShipMail('${o.id}')">発送メールを${o.shipping_email_sent_at ? '再送' : '送信'}</button>
+        <button class="ad-btn sub sm" onclick="unshipOrder('${o.id}')">未発送に戻す</button>
+      </div>`;
+  } else {
+    shipHtml = `
+      <div class="ad-form-grid">
+        <label class="ad-field"><span>配送業者</span><select class="ad-select" id="os-carrier">${carrierOpts}</select></label>
+        <label class="ad-field"><span>追跡番号</span><input class="ad-input" id="os-tracking" inputmode="numeric" autocomplete="off" value="${esc(o.tracking_number || '')}" placeholder="例：1234-5678-9012"></label>
+      </div>
+      <label class="ad-check"><input type="checkbox" id="os-sendmail" checked>お客様に発送メールを送る</label>
+      <button class="ad-btn block" onclick="shipOrder('${o.id}')">発送完了にする</button>
+      ${paid ? '' : '<div class="ad-note">※ まだ未入金の注文です。</div>'}`;
   }
-  await sb.from('products').delete().eq('id', id);
-  showToast('削除しました');
-  loadAdminProducts();
+
+  document.getElementById('os-body').innerHTML = `
+    <div class="ad-sec">
+      <div class="ad-sec-title">入金 <span>${o.paid_at ? '入金日 ' + fmtDT(o.paid_at) : ''}</span></div>
+      <div class="ad-seg">
+        <button class="${!paid ? 'on-unpaid' : ''}" ${o.is_cancelled ? 'disabled' : ''} onclick="setPaid('${o.id}', false)">未入金</button>
+        <button class="${paid ? 'on-paid' : ''}" ${o.is_cancelled ? 'disabled' : ''} onclick="setPaid('${o.id}', true)">入金済み</button>
+      </div>
+    </div>
+    <div class="ad-sec">
+      <div class="ad-sec-title">発送</div>
+      ${shipHtml}
+    </div>
+    <div class="ad-sec">
+      <div class="ad-sec-title">お客様</div>
+      <div class="ad-kv"><span>お名前</span><span>${esc(o.customer_name)} 様</span><button class="ad-copy" onclick="copyText(${esc(JSON.stringify(o.customer_name))})">コピー</button></div>
+      <div class="ad-kv"><span>住所</span><span>${esc(addressText)}</span><button class="ad-copy" onclick="copyText(${esc(JSON.stringify(addressText))})">コピー</button></div>
+      <div class="ad-kv"><span>電話</span><span>${o.customer_phone ? `<a href="tel:${esc(o.customer_phone)}">${esc(o.customer_phone)}</a>` : '—'}</span><span></span></div>
+      <div class="ad-kv"><span>メール</span><span><a href="mailto:${esc(o.customer_email)}">${esc(o.customer_email)}</a></span><button class="ad-copy" onclick="copyText(${esc(JSON.stringify(o.customer_email))})">コピー</button></div>
+      ${o.note ? `<div class="ad-kv"><span>備考</span><span style="white-space:pre-wrap">${esc(o.note)}</span><span></span></div>` : ''}
+    </div>
+    <div class="ad-sec">
+      <div class="ad-sec-title">注文内容</div>
+      ${(items || []).map(i => `<div class="ad-item-row"><span>${esc(i.product_name)} × ${i.quantity}</span><span>${yen(i.price * i.quantity)}</span></div>`).join('')}
+      <div class="ad-item-total"><span>合計（税込）</span><b>${yen(o.total_amount)}</b></div>
+    </div>
+    <button class="ad-btn ${o.is_cancelled ? 'sub' : 'danger'} block" onclick="toggleCancel('${o.id}', ${o.is_cancelled})">
+      ${o.is_cancelled ? 'キャンセルを解除する' : 'この注文をキャンセルする'}</button>`;
+  if (keepScroll) sheet.scrollTop = scroll;
 }
 
-// ══════════════════════════════════════
-//  ADMIN — ORDERS
-// ══════════════════════════════════════
-async function loadAdminOrders() {
-  const { data } = await sb.from('orders').select('*').order('created_at', { ascending: false });
-  const tbody = document.getElementById('orders-tbody');
-  if (!data?.length) {
-    tbody.innerHTML = '<tr><td colspan="8" style="text-align:center;padding:40px;color:var(--muted)">注文はありません</td></tr>';
-    return;
+async function updateOrder(id, patch) {
+  const { data, error } = await sb.from('orders')
+    .update({ ...patch, updated_at: new Date().toISOString() }).eq('id', id).select().single();
+  if (error || !data) { console.error('注文更新エラー:', error); showToast('更新に失敗しました'); return null; }
+  patchOrder(data);
+  return data;
+}
+async function setPaid(id, paid) {
+  const o = AD.orders.find(x => x.id === id);
+  if (!o || isPaid(o) === paid) return;
+  const row = await updateOrder(id, { status: paid ? 'confirmed' : 'pending', paid_at: paid ? new Date().toISOString() : null });
+  if (!row) return;
+  showToast(paid ? '入金済みにしました' : '未入金に戻しました');
+  refreshOrderViews(id);
+}
+async function shipOrder(id) {
+  const o = AD.orders.find(x => x.id === id);
+  if (!o) return;
+  const carrier = document.getElementById('os-carrier').value;
+  const tracking = document.getElementById('os-tracking').value.trim();
+  const sendMail = document.getElementById('os-sendmail').checked;
+  if (!isPaid(o) && !confirm('未入金の注文です。発送完了にしますか？')) return;
+  if (!tracking && carrier !== 'other' && !confirm('追跡番号が空です。このまま発送完了にしますか？')) return;
+  const row = await updateOrder(id, {
+    shipping_status: 'shipped', shipped_at: new Date().toISOString(), carrier, tracking_number: tracking,
+  });
+  if (!row) return;
+  if (sendMail) await sendShipMail(id, true);
+  else showToast('発送完了にしました');
+  refreshOrderViews(id);
+}
+async function sendShipMail(id, afterShip = false) {
+  try {
+    const { data, error } = await sb.functions.invoke(EMAIL_FUNCTION, { body: { order_id: id, type: 'shipped' } });
+    if (error || !data?.sent) throw error || new Error('not sent');
+    const o = AD.orders.find(x => x.id === id);
+    if (o) o.shipping_email_sent_at = new Date().toISOString();
+    showToast(afterShip ? '発送完了にして、発送メールを送りました' : '発送メールを送りました');
+  } catch (e) {
+    console.error('発送メール送信エラー:', e);
+    showToast((afterShip ? '発送完了にしました。' : '') + '発送メールは送れませんでした', 5000);
   }
-  tbody.innerHTML = data.map(o => {
-    const dt = new Date(o.created_at);
-    const dateStr = `${dt.getMonth()+1}/${dt.getDate()} ${String(dt.getHours()).padStart(2,'0')}:${String(dt.getMinutes()).padStart(2,'0')}`;
-    const isCancelled = o.is_cancelled === true;
-    const isShipped   = o.shipping_status === 'shipped';
-    const isPaid      = o.status === 'confirmed';
-    const paySelect = `<select class="pay-select ${isPaid?'pay-paid':'pay-unpaid'}" onchange="updatePaymentStatus('${o.id}',this)">
-      <option value="pending"   ${!isPaid?'selected':''}>未入金</option>
-      <option value="confirmed" ${isPaid ?'selected':''}>入金済み</option>
-    </select>`;
-    const shipBtn = `<button class="ship-toggle ${isShipped?'shipped':'unshipped'}" onclick="toggleShipping('${o.id}',${isShipped})">${isShipped?'✓ 発送完了':'未発送'}</button>`;
-    const cancelBtn = `<button class="cancel-toggle ${isCancelled?'cancelled':'normal'}" onclick="toggleCancel('${o.id}',${isCancelled})">${isCancelled?'✕ キャンセル':'—'}</button>`;
-    return `<tr class="${isCancelled?'row-cancelled':''}">
-      <td style="font-family:monospace;font-size:11px">${esc(o.order_number)}</td>
-      <td style="font-size:11px;color:var(--muted);white-space:nowrap">${dateStr}</td>
-      <td style="font-size:12px">${esc(o.customer_name)}</td>
-      <td style="font-size:12px">¥${Number(o.total_amount).toLocaleString()}</td>
-      <td>${paySelect}</td>
-      <td>${shipBtn}</td>
-      <td>${cancelBtn}</td>
-      <td><button class="btn-outline-admin" style="padding:4px 12px;font-size:9px" onclick="openOrderModal('${o.id}')">詳細</button></td>
-    </tr>`;
-  }).join('');
+  if (!afterShip) refreshOrderViews(id);
 }
-
-async function updatePaymentStatus(id, selectEl) {
-  const status = selectEl.value;
-  await sb.from('orders').update({ status, updated_at: new Date().toISOString() }).eq('id', id);
-  selectEl.className = 'pay-select ' + (status==='confirmed'?'pay-paid':'pay-unpaid');
-  showToast(status==='confirmed'?'入金済みに更新しました':'未入金に更新しました');
+async function unshipOrder(id) {
+  if (!confirm('未発送に戻しますか？（追跡番号は残ります）')) return;
+  const row = await updateOrder(id, { shipping_status: 'pending', shipped_at: null });
+  if (!row) return;
+  showToast('未発送に戻しました');
+  refreshOrderViews(id);
 }
-async function toggleShipping(id, currentlyShipped) {
-  const newStatus = currentlyShipped ? 'pending' : 'shipped';
-  await sb.from('orders').update({ shipping_status: newStatus, updated_at: new Date().toISOString() }).eq('id', id);
-  showToast(newStatus==='shipped'?'発送完了にしました':'未発送に戻しました');
-  loadAdminOrders();
-}
-
 async function toggleCancel(id, currentlyCancelled) {
   const newVal = !currentlyCancelled;
   const msg = newVal
@@ -2119,45 +2615,479 @@ async function toggleCancel(id, currentlyCancelled) {
   const { error } = await sb.rpc('admin_set_cancelled', { p_order_id: id, p_cancelled: newVal });
   if (error) {
     const m = error.message || '';
-    if (m.startsWith('OUT_OF_STOCK:')) showToast(`「${m.slice('OUT_OF_STOCK:'.length)}」の在庫が足りないため解除できません`);
+    if (m.startsWith('OUT_OF_STOCK:')) showToast(`「${m.slice('OUT_OF_STOCK:'.length)}」の在庫が足りないため解除できません`, 5000);
     else showToast('更新に失敗しました');
     console.error('キャンセル切替エラー:', error);
     return;
   }
   showToast(newVal ? 'キャンセルし、在庫を戻しました' : 'キャンセルを解除し、在庫を差し引きました');
-  loadAdminOrders();
+  const { data: row } = await sb.from('orders').select('*').eq('id', id).single();
+  if (row) patchOrder(row);
+  try { AD.products = await fetchAll('products', q => q.order('created_at', { ascending: false })); } catch (e) { /* 次回の更新で反映 */ }
+  renderProducts();
+  refreshOrderViews(id);
+}
+async function copyText(text) {
+  try { await navigator.clipboard.writeText(text); showToast('コピーしました'); }
+  catch (e) {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.setAttribute('readonly', ''); ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); showToast('コピーしました'); } catch (e2) { showToast('コピーできませんでした'); }
+    ta.remove();
+  }
 }
 
-async function openOrderModal(id) {
-  const { data: o } = await sb.from('orders').select('*').eq('id', id).single();
-  if (!o) { showToast('注文が見つかりません'); return; }
-  const { data: items } = await sb.from('order_items').select('*').eq('order_id', id);
-  const payLabel    = o.status==='confirmed' ? '<span style="color:#2D6B45;font-weight:400">入金済み ✓</span>' : '<span style="color:#8B6914">未入金</span>';
-  const shipLabel   = o.shipping_status==='shipped' ? '<span style="color:#1A4A8B;font-weight:400">発送完了 ✓</span>' : '<span style="color:var(--muted)">未発送</span>';
-  const cancelLabel = o.is_cancelled ? '<span style="color:var(--error);font-weight:400">キャンセル済み</span>' : '<span style="color:var(--muted)">—</span>';
-  document.getElementById('order-modal-body').innerHTML = `
-    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:28px;padding:16px;background:var(--warm-white)">
-      <div style="text-align:center"><div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">入金</div><div style="font-size:13px">${payLabel}</div></div>
-      <div style="text-align:center;border-left:1px solid var(--bd-light);border-right:1px solid var(--bd-light)"><div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">発送</div><div style="font-size:13px">${shipLabel}</div></div>
-      <div style="text-align:center"><div style="font-size:8px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:6px">キャンセル</div><div style="font-size:13px">${cancelLabel}</div></div>
-    </div>
-    <div style="display:grid;gap:6px;margin-bottom:24px;font-size:13px;line-height:2">
-      <div><span style="color:var(--muted);margin-right:12px">注文番号</span><strong>${esc(o.order_number)}</strong></div>
-      <div><span style="color:var(--muted);margin-right:12px">お名前</span>${esc(o.customer_name)}</div>
-      <div><span style="color:var(--muted);margin-right:12px">メール</span>${esc(o.customer_email)}</div>
-      <div><span style="color:var(--muted);margin-right:12px">電話</span>${esc(o.customer_phone||'—')}</div>
-      <div><span style="color:var(--muted);margin-right:12px">郵便番号</span>${esc(o.postal_code)}</div>
-      <div><span style="color:var(--muted);margin-right:12px">住所</span>${esc(o.address)}</div>
-      ${o.note?`<div><span style="color:var(--muted);margin-right:12px">備考</span>${esc(o.note)}</div>`:''}
-    </div>
-    <div style="border-top:1px solid var(--bd-light);padding-top:20px">
-      ${(items||[]).map(i=>`<div style="display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--bd-light);font-size:13px"><span>${esc(i.product_name)} × ${i.quantity}</span><span>¥${(i.price*i.quantity).toLocaleString()}</span></div>`).join('')}
-      <div style="display:flex;justify-content:space-between;padding:14px 0;font-family:Cormorant Garamond,serif;font-size:20px"><span>合計</span><span>¥${Number(o.total_amount).toLocaleString()}</span></div>
-    </div>`;
-  document.getElementById('order-modal').classList.add('open');
+// ══════════════════════════════════════
+//  ADMIN — CSV出力（表示中の注文）
+// ══════════════════════════════════════
+function csvCell(v, isText = true) {
+  let s = String(v ?? '');
+  // Excel等で数式として解釈されないように（お客様入力の値を想定）
+  if (isText && /^[=+\-@\t\r]/.test(s)) s = "'" + s;
+  return /[",\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
 }
-function closeOrderModal() {
-  document.getElementById('order-modal').classList.remove('open');
+function toCsv(rows) {
+  return rows.map(r => r.map(c => (typeof c === 'number' ? String(c) : csvCell(c))).join(',')).join('\r\n') + '\r\n';
+}
+function loadScriptOnce(src) {
+  return new Promise((resolve, reject) => {
+    if (document.querySelector(`script[src="${src}"]`)) return resolve();
+    const s = document.createElement('script');
+    s.src = src; s.onload = resolve; s.onerror = reject;
+    document.head.appendChild(s);
+  });
+}
+function downloadBlob(blob, filename) {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob); a.download = filename;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+}
+async function fetchItemsFor(orderIds) {
+  const map = {};
+  for (let i = 0; i < orderIds.length; i += 100) {
+    const chunk = orderIds.slice(i, i + 100);
+    const { data, error } = await sb.from('order_items').select('*').in('order_id', chunk);
+    if (error) throw error;
+    (data || []).forEach(it => { (map[it.order_id] = map[it.order_id] || []).push(it); });
+  }
+  return map;
+}
+async function exportOrdersCsv(kind) {
+  let list = AD.shownOrders.slice();
+  if (kind === 'shipping') list = list.filter(o => !o.is_cancelled);
+  if (!list.length) { showToast('出力する注文がありません'); return; }
+  let items;
+  try { items = await fetchItemsFor(list.map(o => o.id)); }
+  catch (e) { console.error(e); showToast('注文明細を取得できませんでした'); return; }
+  const stamp = (() => { const d = new Date(); return `${d.getFullYear()}${pad2(d.getMonth()+1)}${pad2(d.getDate())}-${pad2(d.getHours())}${pad2(d.getMinutes())}`; })();
+
+  if (kind === 'accounting') {
+    const rows = [[
+      '注文番号', '注文日時', '入金状態', '入金日時', '発送状態', '発送日時', 'キャンセル',
+      'お名前', 'メール', '電話', '郵便番号', '住所', '商品明細', '点数', '合計金額（税込）',
+      '配送業者', '追跡番号', '備考',
+    ]];
+    list.forEach(o => {
+      const its = items[o.id] || [];
+      rows.push([
+        o.order_number, fmtDT(o.created_at), isPaid(o) ? '入金済み' : '未入金', fmtDT(o.paid_at),
+        isShipped(o) ? '発送済み' : '未発送', fmtDT(o.shipped_at), o.is_cancelled ? 'キャンセル' : '',
+        o.customer_name, o.customer_email, o.customer_phone, o.postal_code, o.address,
+        its.map(i => `${i.product_name}×${i.quantity}（${yen(i.price * i.quantity)}）`).join(' / '),
+        its.reduce((s, i) => s + i.quantity, 0), Number(o.total_amount || 0),
+        CARRIERS[o.carrier]?.name || '', o.tracking_number || '', o.note || '',
+      ]);
+    });
+    // UTF-8（BOM付き）：Excel・Googleスプレッドシート・会計ソフトでそのまま開ける
+    downloadBlob(new Blob(['﻿' + toCsv(rows)], { type: 'text/csv;charset=utf-8' }), `lunea_orders_${stamp}.csv`);
+    showToast(`${list.length}件を経理用CSVで出力しました`);
+    return;
+  }
+
+  // 発送用：送り状ソフトに取り込みやすい列。文字コードは Shift_JIS
+  const rows = [['注文番号', 'お届け先郵便番号', 'お届け先住所', 'お届け先名', 'お届け先電話番号', '品名', '個数', '配送業者', '追跡番号', '備考']];
+  list.forEach(o => {
+    const its = items[o.id] || [];
+    rows.push([
+      o.order_number, o.postal_code, o.address, o.customer_name, o.customer_phone,
+      its.map(i => i.product_name).join('、'), its.reduce((s, i) => s + i.quantity, 0),
+      CARRIERS[o.carrier]?.name || '', o.tracking_number || '', o.note || '',
+    ]);
+  });
+  const csv = toCsv(rows);
+  try {
+    await loadScriptOnce('https://cdn.jsdelivr.net/npm/encoding-japanese@2.0.0/encoding.min.js');
+    const sjis = Encoding.convert(Encoding.stringToCode(csv), { to: 'SJIS', from: 'UNICODE' });
+    downloadBlob(new Blob([new Uint8Array(sjis)], { type: 'text/csv;charset=shift_jis' }), `lunea_shipping_${stamp}.csv`);
+    showToast(`${list.length}件を発送用CSV（Shift_JIS）で出力しました`);
+  } catch (e) {
+    console.error('Shift_JIS変換エラー:', e);
+    downloadBlob(new Blob(['﻿' + csv], { type: 'text/csv;charset=utf-8' }), `lunea_shipping_${stamp}.csv`);
+    showToast('Shift_JISに変換できなかったため、UTF-8で出力しました', 5000);
+  }
+}
+
+// ══════════════════════════════════════
+//  ADMIN — 商品
+// ══════════════════════════════════════
+function renderProductChips() {
+  const keys = ['all', ...categories.map(c => c.name), '__hidden'];
+  const count = k => k === 'all' ? AD.products.length
+    : k === '__hidden' ? AD.products.filter(p => !p.is_published).length
+    : AD.products.filter(p => p.category === k).length;
+  if (!keys.includes(AD.productCat)) AD.productCat = 'all';
+  document.getElementById('pf-cats').innerHTML = keys.map(k =>
+    `<button class="ad-chip ${AD.productCat === k ? 'active' : ''}" data-key="${esc(k)}" onclick="AD.productCat=this.dataset.key;renderProductChips();renderProducts()">${k === 'all' ? 'すべて' : k === '__hidden' ? '非公開' : esc(k)}<b>${count(k)}</b></button>`
+  ).join('');
+}
+function renderProducts() {
+  const q = document.getElementById('pf-q').value.trim().toLowerCase();
+  const sort = document.getElementById('pf-sort').value;
+  let list = AD.products.filter(p =>
+    AD.productCat === 'all' ? true : AD.productCat === '__hidden' ? !p.is_published : p.category === AD.productCat);
+  if (q) list = list.filter(p => String(p.name).toLowerCase().includes(q));
+  const t = v => new Date(v).getTime();
+  const sorters = {
+    new: (a, b) => t(b.created_at) - t(a.created_at), old: (a, b) => t(a.created_at) - t(b.created_at),
+    stock_asc: (a, b) => a.stock - b.stock, stock_desc: (a, b) => b.stock - a.stock,
+    price_desc: (a, b) => b.price - a.price, price_asc: (a, b) => a.price - b.price,
+    name: (a, b) => String(a.name).localeCompare(String(b.name), 'ja'),
+  };
+  list = list.slice().sort(sorters[sort] || sorters.new);
+  document.getElementById('pf-count').textContent = list.length;
+  document.getElementById('products-list').innerHTML = list.length
+    ? list.map(p => `
+      <div class="ad-product ${p.is_published ? '' : 'unpublished'}">
+        <button class="ad-product-thumb" onclick="openProductSheet('${p.id}')" aria-label="${esc(p.name)}を編集">
+          ${p.images?.[0] ? `<img src="${esc(p.images[0])}" alt="" loading="lazy">` : MARK}</button>
+        <div class="ad-product-body">
+          <button class="ad-product-name" onclick="openProductSheet('${p.id}')">${esc(p.name)}</button>
+          <div class="ad-product-meta"><b>${yen(p.price)}</b>　${esc(p.category)}</div>
+          <div class="ad-product-ctrl">
+            <div style="display:flex;align-items:center"><span class="ad-stock-label">在庫</span>
+              <div class="ad-stepper ${p.stock <= 3 ? 'low' : ''}" id="stp-${p.id}">
+                <button onclick="queueStock('${p.id}', -1)" aria-label="在庫を1減らす">−</button>
+                <input type="number" inputmode="numeric" min="0" value="${p.stock}" onchange="setStockTo('${p.id}', this.value)" aria-label="在庫数">
+                <button onclick="queueStock('${p.id}', 1)" aria-label="在庫を1増やす">＋</button>
+              </div>
+            </div>
+            <label class="ad-switch"><input type="checkbox" ${p.is_published ? 'checked' : ''} onchange="togglePublished('${p.id}', this.checked)"><i></i>${p.is_published ? '公開' : '非公開'}</label>
+          </div>
+        </div>
+      </div>`).join('')
+    : `<div class="ad-empty" style="grid-column:1/-1">${AD.products.length ? '該当する商品はありません' : 'まだ商品がありません。右下の「商品を登録」から追加できます'}</div>`;
+}
+function paintStock(id) {
+  const p = AD.products.find(x => x.id === id);
+  const el = document.getElementById('stp-' + id);
+  if (!p || !el) return;
+  el.querySelector('input').value = p.stock;
+  el.classList.toggle('low', p.stock <= 3);
+  el.classList.toggle('saving', !!AD.stockPending[id]);
+}
+// −／＋ はまとめて0.6秒後にDBへ（差分で更新するので、同時に注文が入っても在庫がずれない）
+function queueStock(id, delta) {
+  const p = AD.products.find(x => x.id === id);
+  if (!p) return;
+  if (p.stock + delta < 0) return;
+  p.stock += delta;
+  AD.stockPending[id] = (AD.stockPending[id] || 0) + delta;
+  paintStock(id);
+  clearTimeout(AD.stockTimers[id]);
+  AD.stockTimers[id] = setTimeout(() => flushStock(id), 600);
+}
+function setStockTo(id, value) {
+  const p = AD.products.find(x => x.id === id);
+  const v = parseInt(value, 10);
+  if (!p) return;
+  if (isNaN(v) || v < 0) { paintStock(id); return; }
+  queueStock(id, v - p.stock);
+}
+async function flushStock(id) {
+  const delta = AD.stockPending[id];
+  if (!delta) { delete AD.stockPending[id]; paintStock(id); return; }
+  delete AD.stockPending[id];
+  const { data, error } = await sb.rpc('admin_adjust_stock', { p_id: id, p_delta: delta });
+  const p = AD.products.find(x => x.id === id);
+  if (error) {
+    console.error('在庫更新エラー:', error);
+    showToast('在庫を更新できませんでした');
+    if (p) p.stock -= delta;
+  } else if (p && !AD.stockPending[id] && typeof data === 'number') {
+    p.stock = data;   // DBの実際の値に合わせる
+  }
+  paintStock(id);
+  renderDashboard();
+}
+async function togglePublished(id, on) {
+  const { data, error } = await sb.from('products')
+    .update({ is_published: on, updated_at: new Date().toISOString() }).eq('id', id).select().single();
+  if (error || !data) { showToast('更新に失敗しました'); renderProducts(); return; }
+  const i = AD.products.findIndex(p => p.id === id);
+  if (i >= 0) AD.products[i] = { ...data, stock: AD.products[i].stock };
+  showToast(on ? '公開しました' : '非公開にしました');
+  renderProductChips(); renderProducts();
+}
+
+// 商品の編集シート
+function fillCategorySelect(current) {
+  const sel = document.getElementById('ps-category');
+  const names = categories.map(c => c.name);
+  if (current && !names.includes(current)) names.push(current);
+  if (!names.length) names.push('未分類');
+  sel.innerHTML = names.map(n => `<option value="${esc(n)}">${esc(n)}</option>`).join('');
+  sel.value = current && names.includes(current) ? current : names[0];
+}
+function openProductSheet(id = null) {
+  const p = id ? AD.products.find(x => x.id === id) : null;
+  if (id && !p) { showToast('商品が見つかりません'); return; }
+  AD.editId = id;
+  AD.editImages = (p?.images || []).map(url => ({ url }));
+  AD.editOriginal = (p?.images || []).slice();
+  document.getElementById('ps-title').textContent = p ? '商品を編集' : '商品を登録';
+  document.getElementById('ps-name').value = p?.name || '';
+  document.getElementById('ps-price').value = p ? p.price : '';
+  document.getElementById('ps-stock').value = p ? p.stock : '';
+  document.getElementById('ps-desc').value = p?.description || '';
+  const pub = document.getElementById('ps-published');
+  pub.checked = p ? !!p.is_published : true;
+  document.getElementById('ps-published-label').textContent = pub.checked ? '公開' : '非公開';
+  fillCategorySelect(p?.category || (AD.productCat !== 'all' && AD.productCat !== '__hidden' ? AD.productCat : ''));
+  document.getElementById('ps-delete').style.display = p ? 'flex' : 'none';
+  document.getElementById('ps-save').disabled = false;
+  renderEditImages();
+  document.querySelector('#product-sheet .ad-sheet').scrollTop = 0;
+  openSheet('product-sheet');
+}
+function renderEditImages() {
+  const imgs = AD.editImages;
+  document.getElementById('ps-imgs').innerHTML = imgs.map((im, i) => `
+    <div class="ad-img">
+      <img src="${esc(im.preview || im.url)}" alt="">
+      ${i === 0 ? '<span class="ad-img-main">メイン</span>' : ''}
+      ${im.size ? `<span class="ad-img-size">${Math.max(1, Math.round(im.size / 1024))}KB</span>` : ''}
+      <div class="ad-img-tools">
+        <button onclick="moveEditImage(${i}, -1)" ${i === 0 ? 'disabled' : ''} aria-label="前へ">‹</button>
+        ${i === 0 ? '' : `<button onclick="moveEditImage(${i}, -${i})" aria-label="メインにする">★</button>`}
+        <button class="del" onclick="removeEditImage(${i})" aria-label="削除">×</button>
+        <button onclick="moveEditImage(${i}, 1)" ${i === imgs.length - 1 ? 'disabled' : ''} aria-label="後へ">›</button>
+      </div>
+    </div>`).join('');
+}
+function moveEditImage(i, delta) {
+  const j = i + delta;
+  if (j < 0 || j >= AD.editImages.length) return;
+  const [im] = AD.editImages.splice(i, 1);
+  AD.editImages.splice(j, 0, im);
+  renderEditImages();
+}
+function removeEditImage(i) {
+  const [im] = AD.editImages.splice(i, 1);
+  if (im?.preview) URL.revokeObjectURL(im.preview);
+  renderEditImages();
+}
+// 画像を長辺1600pxに縮小して WebP（非対応ならJPEG）に変換。元の方が軽ければ元のまま
+function compressImage(file, maxSide = 1600, quality = 0.85) {
+  return new Promise(resolve => {
+    const url = URL.createObjectURL(file);
+    const img = new Image();
+    img.onload = () => {
+      const scale = Math.min(1, maxSide / Math.max(img.naturalWidth, img.naturalHeight));
+      const w = Math.round(img.naturalWidth * scale), h = Math.round(img.naturalHeight * scale);
+      const canvas = document.createElement('canvas');
+      canvas.width = w; canvas.height = h;
+      const ctx = canvas.getContext('2d');
+      ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, w, h);   // 透過PNGの背景を白に
+      ctx.drawImage(img, 0, 0, w, h);
+      URL.revokeObjectURL(url);
+      const done = blob => resolve(blob && (blob.size < file.size || scale < 1) ? blob : file);
+      canvas.toBlob(b => {
+        if (b && b.type === 'image/webp') done(b);
+        else canvas.toBlob(done, 'image/jpeg', quality);
+      }, 'image/webp', quality);
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); resolve(file); };
+    img.src = url;
+  });
+}
+async function addProductFiles(fileList) {
+  const files = Array.from(fileList || []).filter(f => /^image\//.test(f.type));
+  if (!files.length) return;
+  const room = 10 - AD.editImages.length;
+  if (room <= 0) { showToast('画像は10枚までです'); return; }
+  if (files.length > room) showToast(`画像は10枚までなので、先頭の${room}枚だけ追加します`);
+  const drop = document.getElementById('ps-drop');
+  drop.style.opacity = '.5';
+  for (const f of files.slice(0, room)) {
+    const blob = await compressImage(f);
+    AD.editImages.push({ blob, preview: URL.createObjectURL(blob), size: blob.size });
+    renderEditImages();
+  }
+  drop.style.opacity = '';
+}
+function storagePathFromUrl(url) {
+  const marker = `/${STORAGE_BUCKET}/`;
+  const i = String(url).indexOf(marker);
+  return i >= 0 ? decodeURIComponent(String(url).slice(i + marker.length).split('?')[0]) : null;
+}
+async function saveProductSheet() {
+  const name  = document.getElementById('ps-name').value.trim();
+  const price = parseInt(document.getElementById('ps-price').value, 10);
+  const stock = parseInt(document.getElementById('ps-stock').value, 10);
+  const category = document.getElementById('ps-category').value;
+  if (!name || isNaN(price) || isNaN(stock) || !category) { showToast('商品名・カテゴリ・価格・在庫数を入力してください'); return; }
+  if (price < 0 || stock < 0) { showToast('価格と在庫数は0以上にしてください'); return; }
+  const btn = document.getElementById('ps-save');
+  btn.disabled = true; btn.textContent = '保存中...';
+
+  const images = [];
+  let uploadFailed = false;
+  for (const im of AD.editImages) {
+    if (im.url) { images.push(im.url); continue; }
+    const ext = im.blob.type === 'image/webp' ? 'webp' : im.blob.type === 'image/png' ? 'png' : 'jpg';
+    const path = `${Date.now()}_${Math.random().toString(36).slice(2, 10)}.${ext}`;
+    const { error } = await sb.storage.from(STORAGE_BUCKET).upload(path, im.blob, { contentType: im.blob.type || 'image/jpeg', cacheControl: '31536000' });
+    if (error) { uploadFailed = true; console.error('画像アップロードエラー:', error); continue; }
+    images.push(sb.storage.from(STORAGE_BUCKET).getPublicUrl(path).data.publicUrl);
+  }
+  const payload = {
+    name, price, category,
+    description: document.getElementById('ps-desc').value.trim(),
+    is_published: document.getElementById('ps-published').checked,
+    images, updated_at: new Date().toISOString(),
+  };
+  let res;
+  if (AD.editId) {
+    // 在庫は差分更新（編集中に注文が入っても数がずれないように）
+    const cur = AD.products.find(p => p.id === AD.editId);
+    const delta = stock - (cur ? cur.stock : stock);
+    res = await sb.from('products').update(payload).eq('id', AD.editId).select().single();
+    if (!res.error && delta) {
+      const r2 = await sb.rpc('admin_adjust_stock', { p_id: AD.editId, p_delta: delta });
+      if (!r2.error && res.data) res.data.stock = r2.data;
+    }
+  } else {
+    res = await sb.from('products').insert({ ...payload, stock }).select().single();
+  }
+  btn.disabled = false; btn.textContent = '保存する';
+  if (res.error || !res.data) { console.error('商品保存エラー:', res.error); showToast('保存に失敗しました'); return; }
+
+  // 外した画像はストレージからも削除
+  const removed = AD.editOriginal.filter(u => !images.includes(u)).map(storagePathFromUrl).filter(Boolean);
+  if (removed.length) sb.storage.from(STORAGE_BUCKET).remove(removed).catch(() => {});
+  AD.editImages.forEach(im => im.preview && URL.revokeObjectURL(im.preview));
+
+  const i = AD.products.findIndex(p => p.id === res.data.id);
+  if (i >= 0) AD.products[i] = res.data; else AD.products.unshift(res.data);
+  showToast(uploadFailed ? '保存しました（一部の画像はアップロードできませんでした）' : (AD.editId ? '商品を更新しました' : '商品を登録しました'));
+  closeSheet('product-sheet');
+  renderProductChips(); renderProducts(); renderDashboard(); renderCatList();
+}
+async function deleteProductFromSheet() {
+  const p = AD.products.find(x => x.id === AD.editId);
+  if (!p || !confirm(`「${p.name}」を削除しますか？\n（過去の注文履歴は残ります）`)) return;
+  const { error } = await sb.from('products').delete().eq('id', p.id);
+  if (error) { showToast('削除できませんでした'); console.error(error); return; }
+  const paths = (p.images || []).map(storagePathFromUrl).filter(Boolean);
+  if (paths.length) sb.storage.from(STORAGE_BUCKET).remove(paths).catch(() => {});
+  AD.products = AD.products.filter(x => x.id !== p.id);
+  closeSheet('product-sheet');
+  showToast('削除しました');
+  renderProductChips(); renderProducts(); renderDashboard(); renderCatList();
+}
+document.getElementById('ps-published').addEventListener('change', e => {
+  document.getElementById('ps-published-label').textContent = e.target.checked ? '公開' : '非公開';
+});
+(() => {
+  const drop = document.getElementById('ps-drop');
+  ['dragenter', 'dragover'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.add('drag'); }));
+  ['dragleave', 'drop'].forEach(ev => drop.addEventListener(ev, e => { e.preventDefault(); drop.classList.remove('drag'); }));
+  drop.addEventListener('drop', e => addProductFiles(e.dataTransfer.files));
+})();
+
+// ══════════════════════════════════════
+//  ADMIN — カテゴリ
+// ══════════════════════════════════════
+function renderCatList() {
+  const el = document.getElementById('cat-list');
+  if (!el) return;
+  if (categoriesError) {
+    el.innerHTML = '<div class="ad-note" style="margin:0;color:var(--error)">カテゴリを読み込めません。Supabase で migration_admin.sql を実行してください。</div>';
+    return;
+  }
+  el.innerHTML = categories.length ? categories.map((c, i) => {
+    const n = AD.products.filter(p => p.category === c.name).length;
+    return `<div class="ad-cat-row">
+      <div style="display:flex;align-items:center;min-width:0">
+        <input class="ad-input" value="${esc(c.name)}" maxlength="40" data-id="${c.id}" onchange="renameCategory(this)" aria-label="カテゴリ名">
+        <span class="ad-cat-count">${n}件</span>
+      </div>
+      <div class="ad-cat-tools">
+        <button onclick="moveCategory(${i}, -1)" ${i === 0 ? 'disabled' : ''} aria-label="上へ">↑</button>
+        <button onclick="moveCategory(${i}, 1)" ${i === categories.length - 1 ? 'disabled' : ''} aria-label="下へ">↓</button>
+        <button class="del" onclick="deleteCategory('${c.id}')" ${n ? 'disabled' : ''} aria-label="削除">×</button>
+      </div>
+    </div>`;
+  }).join('') : '<div class="ad-note" style="margin:0">カテゴリがありません</div>';
+}
+async function afterCategoryChange() {
+  await loadCategories(true);
+  renderCatList(); renderProductChips(); renderProducts();
+}
+async function addCategory() {
+  const input = document.getElementById('cat-new');
+  const name = input.value.trim();
+  if (!name) return;
+  if (categories.some(c => c.name === name)) { showToast('同じ名前のカテゴリがあります'); return; }
+  const max = categories.reduce((m, c) => Math.max(m, c.sort_order || 0), 0);
+  const { error } = await sb.from('categories').insert({ name, sort_order: max + 10 });
+  if (error) { console.error(error); showToast('追加できませんでした'); return; }
+  input.value = '';
+  showToast('カテゴリを追加しました');
+  afterCategoryChange();
+}
+async function renameCategory(input) {
+  const c = categories.find(x => x.id === input.dataset.id);
+  const name = input.value.trim();
+  if (!c || name === c.name) { input.value = c ? c.name : ''; return; }
+  if (!name) { input.value = c.name; return; }
+  const { error } = await sb.rpc('admin_rename_category', { p_id: c.id, p_new_name: name });
+  if (error) {
+    input.value = c.name;
+    showToast(/DUPLICATE/.test(error.message || '') ? '同じ名前のカテゴリがあります' : '変更できませんでした');
+    return;
+  }
+  AD.products.forEach(p => { if (p.category === c.name) p.category = name; });
+  if (AD.productCat === c.name) AD.productCat = name;
+  showToast('カテゴリ名を変更しました');
+  afterCategoryChange();
+}
+async function moveCategory(i, dir) {
+  const j = i + dir;
+  if (j < 0 || j >= categories.length) return;
+  const list = categories.slice();
+  [list[i], list[j]] = [list[j], list[i]];
+  // 並び順を10刻みで振り直し、変わった行だけ保存
+  const updates = list.map((c, k) => ({ id: c.id, sort_order: (k + 1) * 10, changed: c.sort_order !== (k + 1) * 10 })).filter(u => u.changed);
+  for (const u of updates) {
+    const { error } = await sb.from('categories').update({ sort_order: u.sort_order }).eq('id', u.id);
+    if (error) { console.error(error); showToast('並び替えできませんでした'); break; }
+  }
+  afterCategoryChange();
+}
+async function deleteCategory(id) {
+  const c = categories.find(x => x.id === id);
+  if (!c || !confirm(`カテゴリ「${c.name}」を削除しますか？`)) return;
+  const { error } = await sb.rpc('admin_delete_category', { p_id: id });
+  if (error) {
+    const m = error.message || '';
+    showToast(m.startsWith('IN_USE:') ? `このカテゴリの商品が${m.slice(7)}件あるため削除できません` : '削除できませんでした', 5000);
+    return;
+  }
+  showToast('カテゴリを削除しました');
+  afterCategoryChange();
 }
 
 // ══════════════════════════════════════
@@ -2174,12 +3104,12 @@ function showToast(msg, ms = 3000) {
   toastTimer = setTimeout(() => t.classList.remove('show'), ms);
 }
 
-// モーダル背景クリックで閉じる
-document.getElementById('product-modal').addEventListener('click', e => { if(e.target===e.currentTarget) closeProductModal(); });
-document.getElementById('order-modal').addEventListener('click', e => { if(e.target===e.currentTarget) closeOrderModal(); });
-
-// ESCキーでメニューを閉じる
-document.addEventListener('keydown', e => { if(e.key==='Escape') closeMenu(); });
+// ESCキーでメニュー・シートを閉じる
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  closeMenu();
+  ['order-sheet', 'product-sheet'].forEach(id => { if (document.getElementById(id).classList.contains('open')) closeSheet(id); });
+});
 
 // ハッシュ変更でadminを開けるように
 window.addEventListener('hashchange', () => {

@@ -261,8 +261,8 @@ img.brand-logo { display: block; width: auto; height: 30px; object-fit: contain;
   filter: blur(14px); opacity: .7; pointer-events: none;
 }
 .hero-img {
-  position: absolute; inset: 0; width: 100%; height: 100%;
-  object-fit: cover; object-position: center;
+  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 50%;
   opacity: 0; transition: opacity 1.2s ease;
 }
 .hero.has-image { min-height: 0; height: clamp(420px, 135vw, 640px); background: var(--sand); }
@@ -273,7 +273,8 @@ img.brand-logo { display: block; width: auto; height: 30px; object-fit: contain;
   clip: rect(0,0,0,0); white-space: nowrap;
 }
 @media (min-width: 768px) {
-  .hero.has-image { height: auto; aspect-ratio: 1672 / 941; max-height: calc(100vh - var(--hd)); }
+  /* width を明示しないと、max-height に当たった時に幅まで縮んで左に寄るため 100% を指定 */
+  .hero.has-image { width: 100%; height: auto; aspect-ratio: 1672 / 941; max-height: calc(100vh - var(--hd)); }
 }
 .hero-text {
   position: relative; z-index: 1; text-align: center;

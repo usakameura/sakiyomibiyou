@@ -52,3 +52,27 @@ function showToast(msg, ms = 3000) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove('show'), ms);
 }
+
+// ── セール価格 ──
+// セール中なら { price: セール価格, off: 割引率(%), ends: 終了日時 } を返す。セールでなければ null
+function saleInfo(p) {
+  const sp = p?.sale_price;
+  if (sp === null || sp === undefined || sp === '' || Number(sp) >= Number(p.price)) return null;
+  if (p.sale_ends_at && new Date(p.sale_ends_at) <= new Date()) return null;
+  return { price: Number(sp), off: Math.round((1 - Number(sp) / Number(p.price)) * 100), ends: p.sale_ends_at || null };
+}
+function effectivePrice(p) {
+  const s = saleInfo(p);
+  return s ? s.price : Number(p.price);
+}
+function fmtYen(n) { return '¥' + Number(n || 0).toLocaleString('ja-JP'); }
+// 価格の表示（セール中は通常価格に取り消し線＋セール価格を強調）
+function priceHtml(p, size = '') {
+  const s = saleInfo(p);
+  if (!s) return `<span class="price ${size}"><span class="price-now">${fmtYen(p.price)}</span></span>`;
+  return `<span class="price is-sale ${size}">
+    <s class="price-old" aria-label="通常価格">${fmtYen(p.price)}</s>
+    <span class="price-now" aria-label="セール価格">${fmtYen(s.price)}</span>
+    ${s.off >= 1 ? `<span class="price-off">${s.off}%OFF</span>` : ''}
+  </span>`;
+}

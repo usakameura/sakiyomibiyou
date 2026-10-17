@@ -356,6 +356,18 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
 }
 
 @media (min-width: 1100px) { .ad-top { margin-left: -96px; } }
+/* セール */
+.ad-sale-tag { display: inline-block; background: var(--sale); color: #fff; font-family: var(--sans-en); font-size: 9px; letter-spacing: 0.16em; padding: 1px 6px; margin-left: 6px; vertical-align: 1px; }
+.ad-product-meta s { color: var(--ink-4); margin-right: 4px; }
+.ad-product-meta b.sale { color: var(--sale); }
+.ad-sale-box { margin-top: 12px; padding: 12px; border-radius: 10px; background: var(--sale-bg); border: 1px solid rgba(164,84,74,0.18); }
+.ad-sale-box .ad-sec-title { color: var(--sale); margin-bottom: 8px; }
+.ad-sale-box .ad-form-grid { grid-template-columns: 1fr; }
+@media (min-width: 760px) { .ad-sale-box .ad-form-grid { grid-template-columns: 1fr 1fr; } }
+.ad-sale-preview { font-size: 12px; color: var(--ink-2); margin-top: 8px; min-height: 18px; }
+.ad-sale-preview s { color: var(--ink-4); margin-right: 6px; }
+.ad-sale-preview b { color: var(--sale); font-weight: 400; }
+.ad-pill.autocancel { color: var(--ink-3); border-color: var(--line-md); background: var(--sand); }
 </style>
 </head>
 <body class="is-admin">
@@ -536,6 +548,13 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
         <div class="admin-form-group"><label class="admin-form-label">口座番号</label><input type="text" class="admin-form-input" id="s-bank-number" inputmode="numeric"></div>
         <div class="admin-form-group"><label class="admin-form-label">口座名義（カナ）</label><input type="text" class="admin-form-input" id="s-bank-holder"></div>
 
+        <div class="admin-section-divider">未入金の自動キャンセル</div>
+        <div class="admin-form-group"><label class="admin-form-label">注文から何日たっても未入金ならキャンセルするか（0 = 自動キャンセルしない）</label>
+          <div style="display:flex;align-items:center;gap:10px"><input type="number" class="admin-form-input" id="s-auto-cancel-days" min="0" max="90" inputmode="numeric" style="max-width:120px"><span style="font-size:13px;color:var(--ink-2)">日</span></div>
+        </div>
+        <div class="admin-form-note">1時間ごとに自動で確認し、期限を過ぎた未入金の注文をキャンセルして在庫を戻します。<br>注文完了画面のお振込期限にもこの日数が表示されます。</div>
+        <button type="button" class="ad-btn sub sm" onclick="runAutoCancelNow()" style="margin-bottom:20px">今すぐ確認して実行</button>
+
         <div class="admin-section-divider">管理者設定</div>
         <div class="admin-form-group"><label class="admin-form-label">通知先メール</label><input type="email" class="admin-form-input" id="s-admin-email"></div>
 
@@ -601,11 +620,20 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
       <label class="ad-field" style="margin-bottom:12px"><span>商品名 *</span><input type="text" class="ad-input" id="ps-name" maxlength="120"></label>
       <div class="ad-form-grid">
         <label class="ad-field"><span>カテゴリ *</span><select class="ad-select" id="ps-category"></select></label>
-        <label class="ad-field"><span>価格（税込・円）*</span><input type="number" class="ad-input" id="ps-price" min="0" inputmode="numeric"></label>
+        <label class="ad-field"><span>価格（税込・円）*</span><input type="number" class="ad-input" id="ps-price" min="0" inputmode="numeric" oninput="previewSale()"></label>
         <label class="ad-field"><span>在庫数 *</span><input type="number" class="ad-input" id="ps-stock" min="0" inputmode="numeric"></label>
         <div class="ad-field"><span>公開設定</span>
           <label class="ad-switch" style="height:44px"><input type="checkbox" id="ps-published" checked><i></i><span id="ps-published-label">公開</span></label>
         </div>
+      </div>
+      <div class="ad-sale-box">
+        <div class="ad-sec-title">セール <span style="color:var(--ink-3)">空欄ならセールなし</span></div>
+        <div class="ad-form-grid">
+          <label class="ad-field"><span>セール価格（税込・円）</span><input type="number" class="ad-input" id="ps-sale-price" min="0" inputmode="numeric" placeholder="例：4980" oninput="previewSale()"></label>
+          <label class="ad-field"><span>セール終了（任意）</span><input type="datetime-local" class="ad-input" id="ps-sale-ends" oninput="previewSale()"></label>
+        </div>
+        <div class="ad-sale-preview" id="ps-sale-preview"></div>
+        <button type="button" class="ad-link-btn" onclick="clearSale()">セールを解除する</button>
       </div>
       <label class="ad-field" style="margin-top:12px"><span>商品説明</span><textarea class="ad-textarea" id="ps-desc" rows="5"></textarea></label>
     </div>
@@ -630,6 +658,9 @@ const DEFAULT_TPL = {
 };
 
 async function saveSettings() {
+  const acRaw = document.getElementById('s-auto-cancel-days').value.trim();
+  const autoCancelDays = acRaw === '' ? 0 : parseInt(acRaw, 10);
+  if (isNaN(autoCancelDays) || autoCancelDays < 0 || autoCancelDays > 90) { showToast('自動キャンセルの日数は0〜90で入力してください'); return; }
   const btn = document.getElementById('btn-save-settings');
   btn.disabled = true;
   const pairs = [
@@ -642,6 +673,7 @@ async function saveSettings() {
     { key:'email_subject',  value: document.getElementById('s-email-subject').value },
     { key:'email_greeting', value: document.getElementById('s-email-greeting').value },
     { key:'email_closing',  value: document.getElementById('s-email-closing').value },
+    { key:'auto_cancel_days', value: String(autoCancelDays) },
   ];
   let failed = false;
   for (const p of pairs) {
@@ -662,6 +694,7 @@ function loadAdminSettings() {
   document.getElementById('s-email-subject').value  = settings.email_subject  || DEFAULT_TPL.subject;
   document.getElementById('s-email-greeting').value = settings.email_greeting || DEFAULT_TPL.greeting;
   document.getElementById('s-email-closing').value  = settings.email_closing  || DEFAULT_TPL.closing;
+  document.getElementById('s-auto-cancel-days').value = settings.auto_cancel_days || '0';
 }
 async function savePassword() {
   const cur = document.getElementById('s-current-pw').value;
@@ -800,7 +833,9 @@ function orderBucket(o) {
   return 'shipped';
 }
 function orderPills(o) {
-  if (o.is_cancelled) return '<span class="ad-pill cancel">キャンセル</span>';
+  if (o.is_cancelled) return o.cancel_reason === 'auto'
+    ? '<span class="ad-pill cancel">キャンセル</span><span class="ad-pill autocancel">未入金のため自動</span>'
+    : '<span class="ad-pill cancel">キャンセル</span>';
   return (isPaid(o) ? '<span class="ad-pill paid">入金済み</span>' : '<span class="ad-pill unpaid">未入金</span>')
     + (isShipped(o) ? '<span class="ad-pill shipped">発送済み</span>'
        : (isPaid(o) ? '<span class="ad-pill toship">発送待ち</span>' : ''));
@@ -1028,7 +1063,8 @@ async function openOrderSheet(id, keepScroll = false) {
 
   let shipHtml;
   if (o.is_cancelled) {
-    shipHtml = '<div class="ad-note" style="margin:0">キャンセル済みの注文です。</div>';
+    shipHtml = `<div class="ad-note" style="margin:0">${o.cancel_reason === 'auto'
+      ? '未入金のまま期限を過ぎたため、自動でキャンセルされました' : 'キャンセル済みの注文です'}${o.cancelled_at ? '（' + fmtDT(o.cancelled_at) + '）' : ''}。</div>`;
   } else if (shipped) {
     shipHtml = `
       <div class="ad-kv"><span>発送日</span><span>${fmtDT(o.shipped_at) || '—'}</span><span></span></div>
@@ -1219,7 +1255,7 @@ async function exportOrdersCsv(kind) {
       const its = items[o.id] || [];
       rows.push([
         o.order_number, fmtDT(o.created_at), isPaid(o) ? '入金済み' : '未入金', fmtDT(o.paid_at),
-        isShipped(o) ? '発送済み' : '未発送', fmtDT(o.shipped_at), o.is_cancelled ? 'キャンセル' : '',
+        isShipped(o) ? '発送済み' : '未発送', fmtDT(o.shipped_at), o.is_cancelled ? (o.cancel_reason === 'auto' ? '自動キャンセル' : 'キャンセル') : '',
         o.customer_name, o.customer_email, o.customer_phone, o.postal_code, o.address,
         its.map(i => `${i.product_name}×${i.quantity}（${yen(i.price * i.quantity)}）`).join(' / '),
         its.reduce((s, i) => s + i.quantity, 0), Number(o.total_amount || 0),
@@ -1259,20 +1295,29 @@ async function exportOrdersCsv(kind) {
 //  ADMIN — 商品
 // ══════════════════════════════════════
 function renderProductChips() {
-  const keys = ['all', ...categories.map(c => c.name), '__hidden'];
+  const keys = ['all', '__sale', ...categories.map(c => c.name), '__hidden'];
   const count = k => k === 'all' ? AD.products.length
     : k === '__hidden' ? AD.products.filter(p => !p.is_published).length
+    : k === '__sale' ? AD.products.filter(p => saleInfo(p)).length
     : AD.products.filter(p => p.category === k).length;
   if (!keys.includes(AD.productCat)) AD.productCat = 'all';
   document.getElementById('pf-cats').innerHTML = keys.map(k =>
-    `<button class="ad-chip ${AD.productCat === k ? 'active' : ''}" data-key="${esc(k)}" onclick="AD.productCat=this.dataset.key;renderProductChips();renderProducts()">${k === 'all' ? 'すべて' : k === '__hidden' ? '非公開' : esc(k)}<b>${count(k)}</b></button>`
+    `<button class="ad-chip ${AD.productCat === k ? 'active' : ''}" data-key="${esc(k)}" onclick="AD.productCat=this.dataset.key;renderProductChips();renderProducts()">${k === 'all' ? 'すべて' : k === '__hidden' ? '非公開' : k === '__sale' ? 'セール中' : esc(k)}<b>${count(k)}</b></button>`
   ).join('');
+}
+function adminPriceHtml(p) {
+  const si = saleInfo(p);
+  if (si) return `<s>${yen(p.price)}</s><b class="sale">${yen(si.price)}</b><span class="ad-sale-tag">SALE</span>`;
+  if (p.sale_price !== null && p.sale_price !== undefined && p.sale_ends_at && new Date(p.sale_ends_at) <= new Date())
+    return `<b>${yen(p.price)}</b> <span style="font-size:10px;color:var(--ink-4)">（セール終了）</span>`;
+  return `<b>${yen(p.price)}</b>`;
 }
 function renderProducts() {
   const q = document.getElementById('pf-q').value.trim().toLowerCase();
   const sort = document.getElementById('pf-sort').value;
   let list = AD.products.filter(p =>
-    AD.productCat === 'all' ? true : AD.productCat === '__hidden' ? !p.is_published : p.category === AD.productCat);
+    AD.productCat === 'all' ? true : AD.productCat === '__hidden' ? !p.is_published
+      : AD.productCat === '__sale' ? !!saleInfo(p) : p.category === AD.productCat);
   if (q) list = list.filter(p => String(p.name).toLowerCase().includes(q));
   const t = v => new Date(v).getTime();
   const sorters = {
@@ -1290,7 +1335,7 @@ function renderProducts() {
           ${p.images?.[0] ? `<img src="${esc(p.images[0])}" alt="" loading="lazy">` : MARK}</button>
         <div class="ad-product-body">
           <button class="ad-product-name" onclick="openProductSheet('${p.id}')">${esc(p.name)}</button>
-          <div class="ad-product-meta"><b>${yen(p.price)}</b>　${esc(p.category)}</div>
+          <div class="ad-product-meta">${adminPriceHtml(p)}　${esc(p.category)}</div>
           <div class="ad-product-ctrl">
             <div style="display:flex;align-items:center"><span class="ad-stock-label">在庫</span>
               <div class="ad-stepper ${p.stock <= 3 ? 'low' : ''}" id="stp-${p.id}">
@@ -1377,15 +1422,52 @@ function openProductSheet(id = null) {
   document.getElementById('ps-price').value = p ? p.price : '';
   document.getElementById('ps-stock').value = p ? p.stock : '';
   document.getElementById('ps-desc').value = p?.description || '';
+  document.getElementById('ps-sale-price').value = p?.sale_price ?? '';
+  document.getElementById('ps-sale-ends').value = toLocalInput(p?.sale_ends_at);
+  previewSale();
   const pub = document.getElementById('ps-published');
   pub.checked = p ? !!p.is_published : true;
   document.getElementById('ps-published-label').textContent = pub.checked ? '公開' : '非公開';
-  fillCategorySelect(p?.category || (AD.productCat !== 'all' && AD.productCat !== '__hidden' ? AD.productCat : ''));
+  fillCategorySelect(p?.category || (!['all', '__hidden', '__sale'].includes(AD.productCat) ? AD.productCat : ''));
   document.getElementById('ps-delete').style.display = p ? 'flex' : 'none';
   document.getElementById('ps-save').disabled = false;
   renderEditImages();
   document.querySelector('#product-sheet .ad-sheet').scrollTop = 0;
   openSheet('product-sheet');
+}
+// ISO日時 → <input type="datetime-local"> の値
+function toLocalInput(iso) {
+  if (!iso) return '';
+  const d = new Date(iso);
+  return `${d.getFullYear()}-${pad2(d.getMonth()+1)}-${pad2(d.getDate())}T${pad2(d.getHours())}:${pad2(d.getMinutes())}`;
+}
+function readSaleFields() {
+  const price = parseInt(document.getElementById('ps-price').value, 10);
+  const raw = document.getElementById('ps-sale-price').value.trim();
+  const ends = document.getElementById('ps-sale-ends').value;
+  const sale = raw === '' ? null : parseInt(raw, 10);
+  return { price, sale, endsIso: ends ? new Date(ends).toISOString() : null, ends };
+}
+function previewSale() {
+  const { price, sale, ends } = readSaleFields();
+  const el = document.getElementById('ps-sale-preview');
+  if (sale === null) { el.textContent = ''; return; }
+  if (isNaN(sale) || isNaN(price)) { el.textContent = ''; return; }
+  if (sale >= price) { el.innerHTML = '<span style="color:var(--error)">セール価格は通常価格より安くしてください</span>'; return; }
+  const off = Math.round((1 - sale / price) * 100);
+  const endTxt = ends ? (new Date(ends) <= new Date() ? '<span style="color:var(--error)">（終了日時が過ぎています）</span>' : `　${ends.replace('T', ' ').replace(/-/g, '/')} まで`) : '　終了日なし';
+  el.innerHTML = `表示：<s>${yen(price)}</s><b>${yen(sale)}</b>　${off}%OFF${endTxt}`;
+}
+function clearSale() {
+  document.getElementById('ps-sale-price').value = '';
+  document.getElementById('ps-sale-ends').value = '';
+  previewSale();
+}
+async function runAutoCancelNow() {
+  const { data, error } = await sb.rpc('admin_run_auto_cancel');
+  if (error) { console.error(error); showToast('実行できませんでした（migration_v3.sql を確認）', 5000); return; }
+  showToast(data ? `${data}件の未入金注文を自動キャンセルしました` : '期限を過ぎた未入金の注文はありませんでした');
+  if (data) { await adminLoadData(); renderAllAdmin(); }
 }
 function renderEditImages() {
   const imgs = AD.editImages;
@@ -1465,6 +1547,9 @@ async function saveProductSheet() {
   const category = document.getElementById('ps-category').value;
   if (!name || isNaN(price) || isNaN(stock) || !category) { showToast('商品名・カテゴリ・価格・在庫数を入力してください'); return; }
   if (price < 0 || stock < 0) { showToast('価格と在庫数は0以上にしてください'); return; }
+  const sale = readSaleFields();
+  if (sale.sale !== null && (isNaN(sale.sale) || sale.sale < 0)) { showToast('セール価格を正しく入力してください'); return; }
+  if (sale.sale !== null && sale.sale >= price) { showToast('セール価格は通常価格より安くしてください'); return; }
   const btn = document.getElementById('ps-save');
   btn.disabled = true; btn.textContent = '保存中...';
 
@@ -1481,6 +1566,7 @@ async function saveProductSheet() {
   const payload = {
     name, price, category,
     description: document.getElementById('ps-desc').value.trim(),
+    sale_price: sale.sale, sale_ends_at: sale.sale === null ? null : sale.endsIso,
     is_published: document.getElementById('ps-published').checked,
     images, updated_at: new Date().toISOString(),
   };

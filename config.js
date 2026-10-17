@@ -8,6 +8,12 @@ const SUPABASE_URL   = 'https://ietoycmgaqqhlppvecrj.supabase.co';
 const SUPABASE_KEY   = 'sb_publishable_dtMPr570myhWnT6FsNQvpQ_m9kTamqJ';
 const STORAGE_BUCKET = 'product-images';
 const EMAIL_FUNCTION = 'send-order-email';
+const ORDER_FUNCTION = 'place-order';        // 注文を受け付ける Edge Function
+
+// ── ロボット対策（Cloudflare Turnstile） ──
+// Cloudflare で発行した「サイトキー」を入れる（公開してよいキー）。空ならロボット確認の画面は出ません
+// ※ シークレットキーはここには入れず、Supabase の Edge Functions → Secrets に TURNSTILE_SECRET として登録
+const TURNSTILE_SITE_KEY = '';
 
 // ── 画像（Vercel のプロジェクトに置いたファイルのパス） ──
 // 例：サイトのいちばん上の階層に images フォルダを作り、hero.jpg を置く → '/images/hero.jpg'

@@ -582,6 +582,65 @@
   .logo .brand-text { font-size: 22px; }
 }
 
+
+/* ══════════════════════════════════════
+   SALE（価格表示・バッジ・スライダー）
+══════════════════════════════════════ */
+.price { display: inline-flex; align-items: baseline; justify-content: center; gap: 6px; flex-wrap: wrap; }
+.price-now { font-family: var(--sans-en); font-size: 13px; letter-spacing: 0.04em; color: var(--ink-2); }
+.price.is-sale .price-now { color: var(--sale); font-size: 14px; font-weight: 400; }
+.price-old { font-family: var(--sans-en); font-size: 11px; color: var(--ink-4); text-decoration: line-through; text-decoration-thickness: 1px; }
+.price-off { font-family: var(--sans-en); font-size: 9px; letter-spacing: 0.08em; color: var(--sale); border: 1px solid rgba(164,84,74,0.35); border-radius: 10px; padding: 1px 6px; line-height: 1.4; }
+.price.lg { justify-content: flex-start; gap: 10px; }
+.price.lg .price-now { font-size: 22px; color: var(--ink); }
+.price.lg.is-sale .price-now { color: var(--sale); }
+.price.lg .price-old { font-size: 14px; }
+.price.lg .price-off { font-size: 11px; padding: 2px 8px; }
+.price.lg .price-now::after { content: ' 税込'; font-family: var(--sans-ja); font-size: 11px; color: var(--ink-3); letter-spacing: 0.05em; }
+.detail-price { display: none; }
+.sale-end-note { font-size: 12px; color: var(--sale); margin: -12px 0 18px; letter-spacing: 0.04em; }
+.badge-sale {
+  position: absolute; top: 10px; right: 10px; left: auto; z-index: 2;
+  background: var(--sale); color: #fff; border: none; border-radius: 0;
+  font-family: var(--sans-en); font-size: 9px; letter-spacing: 0.22em; padding: 4px 8px 4px 10px;
+}
+.cart-item-price s { color: var(--ink-4); margin-right: 6px; font-size: 11px; }
+.cart-item-price .is-sale-now { color: var(--sale); }
+
+/* ホームのセールスライダー */
+.sale-section { position: relative; padding: 48px 0 8px; max-width: 1200px; margin: 0 auto; }
+.sale-section[hidden] { display: none; }
+.sale-section .section-head { padding: 0 var(--gutter); }
+.sale-section .section-label { color: var(--sale); }
+.sale-viewport { position: relative; }
+.sale-track {
+  display: flex; gap: 14px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth;
+  padding: 4px var(--gutter) 12px; scrollbar-width: none; -webkit-overflow-scrolling: touch;
+}
+.sale-track::-webkit-scrollbar { display: none; }
+.sale-track .product-card { flex: 0 0 calc((100% - var(--gutter) * 2 - 14px) / 2.15); scroll-snap-align: start; scroll-margin-left: var(--gutter); }
+.sale-nav {
+  position: absolute; top: 38%; width: 40px; height: 40px; border-radius: 50%;
+  border: 1px solid var(--line-md); background: rgba(251,248,243,0.92); color: var(--ink);
+  display: none; align-items: center; justify-content: center; font-size: 18px; z-index: 3;
+}
+.sale-nav.prev { left: 8px; } .sale-nav.next { right: 8px; }
+.sale-dots { display: flex; justify-content: center; gap: 6px; padding: 6px 0 0; }
+.sale-dots i { width: 6px; height: 6px; border-radius: 50%; background: var(--sand-2); transition: background .3s, width .3s; }
+.sale-dots i.on { background: var(--sale); width: 16px; border-radius: 3px; }
+@media (min-width: 600px) { .sale-track .product-card { flex-basis: calc((100% - var(--gutter) * 2 - 28px) / 3.2); } }
+@media (min-width: 1000px) {
+  .sale-track .product-card { flex-basis: calc((100% - var(--gutter) * 2 - 42px) / 4); }
+  .sale-nav { display: flex; }
+}
+.shop-title.is-sale { color: var(--sale); }
+.cat-btn.sale { color: var(--sale); }
+.cat-btn.sale::after { background: var(--sale); }
+
+/* ロボット確認（Cloudflare Turnstile） */
+.ts-box { display: flex; justify-content: center; padding: 0 var(--gutter) 150px; min-height: 0; }
+.ts-box:empty { display: none; }
+.confirm-body:has(+ .ts-box:not(:empty)) { padding-bottom: 20px; }
 </style>
 </head>
 <body>
@@ -646,6 +705,12 @@
         <span class="menu-sub">すべてのアイテム</span>
       </div>
     </div>
+    <div class="menu-item" onclick="closeMenu();showPage('shop','__sale')">
+      <div class="menu-item-left">
+        <span class="menu-label" style="color:var(--sale)">Sale</span>
+        <span class="menu-sub">セール中のアイテム</span>
+      </div>
+    </div>
     <div class="menu-item" onclick="closeMenu();showPage('cart')">
       <div class="menu-item-left">
         <span class="menu-label">Cart</span>
@@ -684,6 +749,21 @@
   <div class="hero-cta">
     <button class="btn-primary" onclick="showPage('shop')">Collection <span class="btn-arrow">→</span></button>
   </div>
+  <section class="sale-section" id="sale-section" hidden aria-label="セール中のアイテム">
+    <div class="section-head">
+      <span class="section-label">Sale</span>
+      <h2 class="section-title">セール中のアイテム</h2>
+    </div>
+    <div class="sale-viewport">
+      <button class="sale-nav prev" onclick="saleSlide(-1)" aria-label="前へ">‹</button>
+      <div class="sale-track" id="sale-track"></div>
+      <button class="sale-nav next" onclick="saleSlide(1)" aria-label="次へ">›</button>
+    </div>
+    <div class="sale-dots" id="sale-dots" aria-hidden="true"></div>
+    <div class="section-more" style="margin-top:22px">
+      <button class="btn-to-shop" onclick="showPage('shop','__sale')">セール一覧を見る</button>
+    </div>
+  </section>
   <div class="section">
     <div class="section-head">
       <span class="section-label">New Arrivals</span>
@@ -706,7 +786,7 @@
 <div class="page" id="page-shop">
   <div class="shop-top">
     <div class="shop-title-row">
-      <div class="shop-title">Collection</div>
+      <div class="shop-title" id="shop-title">Collection</div>
       <div class="shop-count" id="shop-count"></div>
     </div>
   </div>
@@ -831,6 +911,7 @@
       </div>
     </div>
     <div class="confirm-body" id="confirm-body"></div>
+    <div class="ts-box" id="ts-box"></div>
     <div class="confirm-cta-bar">
       <button class="btn-order-submit" onclick="submitOrder()" id="btn-submit">注文を確定する</button>
       <div class="order-cta-note">確定後に振込先の詳細をメールでお送りします</div>
@@ -905,12 +986,12 @@ async function init() {
 // ══════════════════════════════════════
 //  PAGES
 // ══════════════════════════════════════
-function showPage(page) {
+function showPage(page, arg) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById('page-' + page).classList.add('active');
   window.scrollTo(0, 0);
-  if (page === 'shop')     loadShop();
-  if (page === 'cart')     renderCart();
+  if (page === 'shop')     loadShop(arg || 'all');
+  if (page === 'cart')     renderCart(true);
   if (page === 'order')    buildOrderPage();
   // 詳細ページのCTAバーを隠す（他ページに行ったとき）
   if (page !== 'detail') {
@@ -934,33 +1015,91 @@ function closeMenu() {
   document.body.style.overflow = '';
 }
 
-
+// ══════════════════════════════════════
 //  PRODUCTS
 // ══════════════════════════════════════
+let saleCount = 0;
+async function fetchSaleProducts() {
+  const { data } = await sb.from('products').select('*')
+    .eq('is_published', true).not('sale_price', 'is', null)
+    .order('created_at', { ascending: false });
+  return (data || []).filter(p => saleInfo(p));   // 終了日時を過ぎたものは除く
+}
 async function loadHomePage() {
-  const { data } = await sb.from('products')
-    .select('*').eq('is_published', true)
-    .order('created_at', { ascending: false }).limit(4);
+  const [{ data }, sale] = await Promise.all([
+    sb.from('products').select('*').eq('is_published', true).order('created_at', { ascending: false }).limit(4),
+    fetchSaleProducts(),
+  ]);
   renderProductGrid(data || [], 'home-products');
+  saleCount = sale.length;
+  renderSaleSlider(sale);
+}
+
+// ── ホームのセールスライダー（自動で流れる。触っている間は止まる）
+let saleTimer = null, salePausedUntil = 0;
+function renderSaleSlider(list) {
+  const sec = document.getElementById('sale-section');
+  const track = document.getElementById('sale-track');
+  sec.hidden = !list.length;
+  if (!list.length) { clearInterval(saleTimer); return; }
+  track.innerHTML = list.slice(0, 12).map(productCardHtml).join('');
+  const dots = document.getElementById('sale-dots');
+  dots.innerHTML = list.slice(0, 12).map((_, i) => `<i class="${i === 0 ? 'on' : ''}"></i>`).join('');
+  const pause = () => { salePausedUntil = Date.now() + 6000; };
+  ['pointerdown', 'touchstart', 'wheel', 'mouseenter'].forEach(ev => track.addEventListener(ev, pause, { passive: true }));
+  track.onscroll = () => {
+    const cards = track.querySelectorAll('.product-card');
+    if (!cards.length) return;
+    const step = cards[0].getBoundingClientRect().width + 14;
+    const idx = Math.round(track.scrollLeft / step);
+    dots.querySelectorAll('i').forEach((d, i) => d.classList.toggle('on', i === Math.min(idx, cards.length - 1)));
+  };
+  clearInterval(saleTimer);
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  saleTimer = setInterval(() => {
+    if (Date.now() < salePausedUntil || document.hidden) return;
+    if (!document.getElementById('page-home').classList.contains('active')) return;
+    saleSlide(1, true);
+  }, 3500);
+}
+function saleSlide(dir, auto = false) {
+  const track = document.getElementById('sale-track');
+  const card = track.querySelector('.product-card');
+  if (!card) return;
+  if (!auto) salePausedUntil = Date.now() + 6000;
+  const step = card.getBoundingClientRect().width + 14;
+  const max = track.scrollWidth - track.clientWidth - 2;
+  if (dir > 0 && track.scrollLeft >= max) track.scrollTo({ left: 0, behavior: 'smooth' });
+  else if (dir < 0 && track.scrollLeft <= 2) track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+  else track.scrollBy({ left: dir * step, behavior: 'smooth' });
 }
 
 async function loadShop(category = 'all') {
   const el = document.getElementById('shop-products');
   el.innerHTML = '<div class="spinner-wrap"><div class="spinner"></div></div>';
-  let q = sb.from('products').select('*').eq('is_published', true).order('created_at', { ascending: false });
-  if (category !== 'all') q = q.eq('category', category);
-  const { data } = await q;
+  const isSale = category === '__sale';
+  const title = document.getElementById('shop-title');
+  title.textContent = isSale ? 'Sale' : 'Collection';
+  title.classList.toggle('is-sale', isSale);
+  let data;
+  if (isSale) {
+    data = await fetchSaleProducts();
+    saleCount = data.length;
+  } else {
+    let q = sb.from('products').select('*').eq('is_published', true).order('created_at', { ascending: false });
+    if (category !== 'all') q = q.eq('category', category);
+    ({ data } = await q);
+  }
   document.getElementById('shop-count').textContent = (data?.length || 0) + ' items';
   renderCategoryFilter(category);
   renderProductGrid(data || [], 'shop-products');
 }
 
-// カテゴリ（管理画面で編集した並び順で表示）
-
+// カテゴリ（管理画面で編集した並び順で表示）。セール中の商品があれば「Sale」も出す
 function renderCategoryFilter(active = 'all') {
-  const cats = ['all', ...categories.map(c => c.name)];
+  const cats = ['all', ...(saleCount || active === '__sale' ? ['__sale'] : []), ...categories.map(c => c.name)];
   document.getElementById('category-filter').innerHTML = cats.map(c =>
-    `<button class="cat-btn ${active === c ? 'active' : ''}" data-cat="${esc(c)}" onclick="loadShop(this.dataset.cat)">${c === 'all' ? 'All' : esc(c)}</button>`
+    `<button class="cat-btn ${c === '__sale' ? 'sale' : ''} ${active === c ? 'active' : ''}" data-cat="${esc(c)}" onclick="loadShop(this.dataset.cat)">${c === 'all' ? 'All' : c === '__sale' ? 'Sale' : esc(c)}</button>`
   ).join('');
 }
 
@@ -979,25 +1118,24 @@ function renderProductGrid(products, targetId) {
     </div>`;
     return;
   }
-  el.innerHTML = products.map(p => {
-    const img = p.images?.[0]
-      ? `<img src="${p.images[0]}" alt="${esc(p.name)}" loading="lazy">`
-      : `<span class="product-no-img">${MARK}</span>`;
-    return `<div class="product-card" onclick="showDetail('${p.id}')">
-      <div class="product-card-img">
-        ${img}
-        ${getStockBadge(p.stock)}
-      </div>
-      <div class="product-card-info">
-        <div class="product-card-cat">${esc(p.category)}</div>
-        <div class="product-card-name">${esc(p.name)}</div>
-        <div class="product-card-bottom">
-          <span class="product-card-price">¥${Number(p.price).toLocaleString()}</span>
-          <span class="product-card-arr">→</span>
-        </div>
-      </div>
-    </div>`;
-  }).join('');
+  el.innerHTML = products.map(productCardHtml).join('');
+}
+function productCardHtml(p) {
+  const img = p.images?.[0]
+    ? `<img src="${esc(p.images[0])}" alt="${esc(p.name)}" loading="lazy">`
+    : `<span class="product-no-img">${MARK}</span>`;
+  return `<div class="product-card" onclick="showDetail('${p.id}')">
+    <div class="product-card-img">
+      ${img}
+      ${getStockBadge(p.stock)}
+      ${saleInfo(p) ? '<span class="badge badge-sale">SALE</span>' : ''}
+    </div>
+    <div class="product-card-info">
+      <div class="product-card-cat">${esc(p.category)}</div>
+      <div class="product-card-name">${esc(p.name)}</div>
+      <div class="product-card-bottom">${priceHtml(p)}</div>
+    </div>
+  </div>`;
 }
 
 async function showDetail(id) {
@@ -1038,9 +1176,11 @@ async function showDetail(id) {
       <div class="detail-cat">${esc(p.category)}</div>
       <div class="detail-name">${esc(p.name)}</div>
       <div class="detail-price-row">
-        <div class="detail-price">¥${Number(p.price).toLocaleString()}</div>
+        ${priceHtml(p, 'lg')}
         ${stockBadge}
       </div>
+      ${(() => { const si = saleInfo(p); if (!si?.ends) return ''; const d = new Date(si.ends);
+        return `<div class="sale-end-note">セールは ${d.getMonth() + 1}/${d.getDate()} ${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')} まで</div>`; })()}
       <div class="detail-divider"></div>
       <div class="detail-desc">${esc(p.description || '')}</div>
     </div>`;
@@ -1057,7 +1197,7 @@ async function showDetail(id) {
   } else {
     addBtn.textContent = 'カートに追加';
     addBtn.disabled = false;
-    addBtn.onclick = () => addToCart(p.id, p.name, p.price, p.stock, imgs[0]||'', p.category);
+    addBtn.onclick = () => addToCart(p.id, p.name, effectivePrice(p), p.stock, imgs[0]||'', p.category, Number(p.price));
   }
   ctaBar.style.display = 'flex';
 
@@ -1093,14 +1233,15 @@ function updateDetailCartCount() {
 // ══════════════════════════════════════
 //  CART
 // ══════════════════════════════════════
-function addToCart(id, name, price, stock, image, category) {
+function addToCart(id, name, price, stock, image, category, listPrice) {
   const qty = parseInt(document.getElementById('detail-qty')?.value || 1);
   const existing = cart.find(i => i.id === id);
   if (existing) {
     if (existing.qty + qty > stock) { showToast('在庫数を超えています'); return; }
     existing.qty += qty;
+    Object.assign(existing, { price, stock, listPrice: listPrice ?? price });
   } else {
-    cart.push({ id, name, price, stock, image, category, qty });
+    cart.push({ id, name, price, stock, image, category, qty, listPrice: listPrice ?? price });
   }
   saveCart();
   showToast('カートに追加しました');
@@ -1127,7 +1268,37 @@ function updateCartBadge() {
   }
 }
 
-function renderCart() {
+// カートの中身を最新の価格・在庫に合わせる（セールの開始・終了や売り切れに対応）
+async function syncCart() {
+  if (!cart.length) return [];
+  const { data, error } = await sb.from('products').select('*').in('id', cart.map(i => i.id));
+  if (error || !data) return [];
+  const notes = [];
+  const next = [];
+  for (const item of cart) {
+    const p = data.find(x => x.id === item.id);
+    if (!p || !p.is_published) { notes.push(`「${item.name}」は販売を終了しました`); continue; }
+    if (p.stock <= 0) { notes.push(`「${p.name}」は売り切れになりました`); continue; }
+    const price = effectivePrice(p);
+    if (price !== item.price) notes.push(`「${p.name}」の価格が変わりました`);
+    const qty = Math.min(item.qty, p.stock);
+    if (qty !== item.qty) notes.push(`「${p.name}」は在庫が${p.stock}点のため数量を変更しました`);
+    next.push({ ...item, name: p.name, price, listPrice: Number(p.price), stock: p.stock, qty, image: p.images?.[0] || '', category: p.category });
+  }
+  const changed = JSON.stringify(next) !== JSON.stringify(cart);
+  if (changed) { cart = next; saveCart(); }
+  return changed ? notes : [];
+}
+
+async function renderCart(sync = false) {
+  if (sync) {
+    drawCart();
+    const notes = await syncCart();
+    if (notes.length) showToast(notes.join(' / '), 6000);
+  }
+  drawCart();
+}
+function drawCart() {
   const el = document.getElementById('cart-content');
   if (!cart.length) {
     el.innerHTML = `
@@ -1159,7 +1330,7 @@ function renderCart() {
             <div>
               <div class="cart-item-cat">${esc(item.category)}</div>
               <div class="cart-item-name">${esc(item.name)}</div>
-              <div class="cart-item-price">¥${Number(item.price).toLocaleString()} × ${item.qty}</div>
+              <div class="cart-item-price">${item.listPrice && item.listPrice > item.price ? `<s>${fmtYen(item.listPrice)}</s><span class="is-sale-now">${fmtYen(item.price)}</span>` : fmtYen(item.price)} × ${item.qty}</div>
             </div>
             <div class="cart-item-actions">
               <div class="cart-qty">
@@ -1186,17 +1357,20 @@ function updateCartQty(id, delta) {
   const item = cart.find(i => i.id === id);
   if (!item) return;
   item.qty = Math.max(1, Math.min(item.qty + delta, item.stock));
-  saveCart(); renderCart();
+  saveCart(); drawCart();
 }
 function removeFromCart(id) {
   cart = cart.filter(i => i.id !== id);
-  saveCart(); renderCart();
+  saveCart(); drawCart();
 }
 
 // ══════════════════════════════════════
 //  ORDER FORM
 // ══════════════════════════════════════
-function buildOrderPage() {
+async function buildOrderPage() {
+  const notes = await syncCart();
+  if (!cart.length) { showToast(notes.join(' / ') || 'カートが空です', 6000); showPage('cart'); return; }
+  if (notes.length) showToast(notes.join(' / '), 6000);
   const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
   const count = cart.reduce((s,i) => s + i.qty, 0);
   document.getElementById('order-items-count').textContent = `${count}点`;
@@ -1237,13 +1411,16 @@ function autoFillAddress() {
     .catch(() => showToast('住所の取得に失敗しました'));
 }
 
-function goToStep2() {
+async function goToStep2() {
   const name    = document.getElementById('o-name').value.trim();
   const email   = document.getElementById('o-email').value.trim();
   const zip     = document.getElementById('o-zip').value.trim();
   const address = document.getElementById('o-address').value.trim();
   if (!name || !email || !zip || !address) { showToast('必須項目（*）を入力してください'); return; }
   if (!email.includes('@')) { showToast('メールアドレスを正しく入力してください'); return; }
+  const notes = await syncCart();
+  if (!cart.length) { showToast(notes.join(' / ') || 'カートが空です', 6000); showPage('cart'); return; }
+  if (notes.length) showToast(notes.join(' / '), 6000);
 
   // 確認画面を組み立て
   const total = cart.reduce((s,i) => s + i.price * i.qty, 0);
@@ -1278,6 +1455,33 @@ function goToStep2() {
   document.getElementById('order-step1').classList.add('hidden');
   document.getElementById('order-step2').classList.remove('hidden');
   window.scrollTo(0, 0);
+  setupTurnstile();
+}
+
+// ── ロボット確認（Cloudflare Turnstile）。サイトキーが空なら何もしない
+let tsToken = '', tsWidgetId = null;
+function setupTurnstile() {
+  if (!TURNSTILE_SITE_KEY) return;
+  const render = () => {
+    if (tsWidgetId !== null) { window.turnstile.reset(tsWidgetId); tsToken = ''; return; }
+    tsWidgetId = window.turnstile.render('#ts-box', {
+      sitekey: TURNSTILE_SITE_KEY, language: 'ja', theme: 'light',
+      callback: t => { tsToken = t; },
+      'expired-callback': () => { tsToken = ''; },
+      'error-callback': () => { tsToken = ''; },
+    });
+  };
+  if (window.turnstile) { render(); return; }
+  const sc = document.createElement('script');
+  sc.src = 'https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit';
+  sc.async = true;
+  sc.onload = render;
+  sc.onerror = () => showToast('ロボット確認を読み込めませんでした。通信環境を確認してください', 6000);
+  document.head.appendChild(sc);
+}
+function resetTurnstile() {
+  tsToken = '';
+  if (tsWidgetId !== null && window.turnstile) window.turnstile.reset(tsWidgetId);
 }
 
 function backToStep1() {
@@ -1289,6 +1493,7 @@ function backToStep1() {
 async function submitOrder() {
   const btn = document.getElementById('btn-submit');
   if (!cart.length) { showToast('カートが空です'); showPage('cart'); return; }
+  if (TURNSTILE_SITE_KEY && !tsToken) { showToast('「ロボットではありません」の確認を完了してください'); return; }
   btn.disabled = true;
   btn.textContent = '処理中...';
 
@@ -1302,25 +1507,43 @@ async function submitOrder() {
   };
   const items = cart.map(i => ({ id: i.id, qty: i.qty }));
 
-  // 注文確定（価格・合計・在庫はDB側で確認して処理）
-  const { data: result, error } = await sb.rpc('place_order', { p_customer: customer, p_items: items });
+  // 注文確定（サーバー側でロボット確認・回数制限をしてから、価格・在庫をDBで確認して処理）
+  let result = null, errCode = '', errDetail = '';
+  try {
+    const { data, error } = await sb.functions.invoke(ORDER_FUNCTION, {
+      body: { customer, items, turnstile_token: tsToken },
+    });
+    if (error) {
+      const body = await error.context?.json?.().catch(() => null);
+      errCode = body?.error || 'NETWORK'; errDetail = body?.detail || '';
+    } else if (!data?.order_number) {
+      errCode = 'SERVER_ERROR';
+    } else {
+      result = data;
+    }
+  } catch (e) {
+    console.error('注文エラー:', e);
+    errCode = 'NETWORK';
+  }
 
-  if (error) {
+  if (!result) {
     btn.disabled = false;
     btn.textContent = '注文を確定する';
-    const msg = error.message || '';
-    if (msg.startsWith('OUT_OF_STOCK:')) {
-      showToast(`「${msg.slice('OUT_OF_STOCK:'.length)}」の在庫が足りません`);
-    } else if (msg === 'PRODUCT_NOT_FOUND') {
-      showToast('カートに購入できない商品が含まれています');
-    } else if (msg === 'INVALID_EMAIL') {
-      showToast('メールアドレスを正しく入力してください');
-    } else if (msg === 'INVALID_CUSTOMER') {
-      showToast('入力内容を確認してください');
-    } else {
-      showToast('注文エラーが発生しました');
-    }
-    console.error('注文エラー:', error);
+    resetTurnstile();   // 確認トークンは1回しか使えないので取り直す
+    const messages = {
+      OUT_OF_STOCK: `「${errDetail}」の在庫が足りません`,
+      PRODUCT_NOT_FOUND: 'カートに購入できない商品が含まれています',
+      INVALID_EMAIL: 'メールアドレスを正しく入力してください',
+      INVALID_CUSTOMER: '入力内容を確認してください',
+      INVALID_QTY: '数量を確認してください',
+      EMPTY_CART: 'カートが空です',
+      CAPTCHA_FAILED: 'ロボット確認に失敗しました。もう一度確認してください',
+      TOO_MANY_REQUESTS: '短時間にご注文が続いたため受け付けできませんでした。しばらくしてからお試しください',
+      NETWORK: '通信できませんでした。電波の良いところでもう一度お試しください',
+    };
+    showToast(messages[errCode] || '注文エラーが発生しました', 6000);
+    console.error('注文エラー:', errCode, errDetail);
+    if (errCode === 'OUT_OF_STOCK' || errCode === 'PRODUCT_NOT_FOUND') syncCart();
     return;
   }
 
@@ -1339,8 +1562,10 @@ async function submitOrder() {
   document.getElementById('c-bank-number').textContent = settings.bank_number || '—';
   document.getElementById('c-bank-holder').textContent = settings.bank_holder || '—';
   document.getElementById('c-bank-amount').textContent = totalStr;
-  document.getElementById('complete-memo').textContent =
-    `ご注文内容をメールにてお送りしました。\nお振込期限：ご注文から7日以内`;
+  const days = parseInt(settings.auto_cancel_days, 10);
+  document.getElementById('complete-memo').textContent = days > 0
+    ? `ご注文内容をメールにてお送りしました。\nお振込期限：ご注文から${days}日以内\n期限を過ぎたご注文は自動でキャンセルとなります。`
+    : `ご注文内容をメールにてお送りしました。\nお振込期限：ご注文から7日以内`;
 
   cart = []; saveCart();
   btn.disabled = false;

@@ -75,7 +75,7 @@ textarea.admin-form-input { line-height: 1.8; resize: vertical; }
   position: sticky; top: 0; z-index: 60;
   height: 56px; padding: 0 12px 0 18px;
   display: flex; align-items: center; justify-content: space-between;
-  background: rgba(251,248,243,0.92); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+  background: var(--ivory);
   border-bottom: 1px solid var(--line);
 }
 .ad-brand { display: flex; align-items: baseline; gap: 10px; }
@@ -91,8 +91,8 @@ textarea.admin-form-input { line-height: 1.8; resize: vertical; }
 
 .ad-main { max-width: 960px; margin: 0 auto; padding: 16px 14px 24px; }
 .ad-view { display: none; }
-.ad-view.active { display: block; animation: adIn .25s ease both; }
-@keyframes adIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+/* 表示切り替えのアニメーションは付けない（iPhone の Safari で中身が透明のまま残ることがあるため） */
+.ad-view.active { display: block; }
 .ad-h1 { font-family: var(--serif-ja); font-size: 20px; letter-spacing: 0.1em; margin: 6px 2px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
 .ad-h2 { font-family: var(--serif-ja); font-size: 15px; letter-spacing: 0.1em; margin: 26px 2px 12px; display: flex; align-items: center; gap: 10px; }
 .ad-h2::before { content: ''; width: 14px; height: 1px; background: var(--champagne); }
@@ -101,7 +101,7 @@ textarea.admin-form-input { line-height: 1.8; resize: vertical; }
 .ad-tabbar {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
   display: grid; grid-template-columns: repeat(4, 1fr);
-  background: rgba(251,248,243,0.96); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  background: var(--ivory);
   border-top: 1px solid var(--line);
   padding-bottom: env(safe-area-inset-bottom);
 }
@@ -766,10 +766,15 @@ function loginErrorMessage(error) {
 async function enterAdmin() {
   showAdminLogin();
   // ログイン状態は Supabase Auth が保持（ログアウトするまで有効）
-  const { data: { session } } = await sb.auth.getSession();
-  if (session && (await checkIsAdmin()).ok) {
-    await loadSettings();
-    openAdminPanel();
+  try {
+    const { data: { session } } = await sb.auth.getSession();
+    if (session && (await checkIsAdmin()).ok) {
+      await loadSettings();
+      await openAdminPanel();
+    }
+  } catch (e) {
+    console.error('ログイン状態の確認エラー:', e);
+    showAdminLogin();
   }
 }
 function showAdminLogin() {
@@ -909,10 +914,15 @@ async function adminLoadData() {
 async function openAdminPanel() {
   document.getElementById('admin-login').style.display = 'none';
   document.getElementById('admin-panel').style.display = 'block';
-  document.getElementById('dash-date').textContent = fmtDT(new Date().toISOString()).slice(0, 10);
-  loadAdminSettings();
-  await Promise.all([loadCategories(true), adminLoadData()]);
-  renderAllAdmin();
+  try {
+    document.getElementById('dash-date').textContent = fmtDT(new Date().toISOString()).slice(0, 10);
+    loadAdminSettings();
+    await Promise.all([loadCategories(true), adminLoadData()]);
+    renderAllAdmin();
+  } catch (e) {
+    console.error('管理画面の表示エラー:', e);
+    showToast('画面の表示中にエラーが出ました：' + (e?.message || e), 8000);
+  }
 }
 async function adminReload() {
   await Promise.all([loadCategories(true), loadSettings(), adminLoadData()]);
@@ -1907,6 +1917,10 @@ document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;
   ['order-sheet', 'product-sheet'].forEach(id => { if (document.getElementById(id).classList.contains('open')) closeSheet(id); });
 });
+
+// 思わぬエラーは画面に出す（スマホでは開発者ツールが見られないため）
+window.addEventListener('error', e => showToast('エラー：' + (e.message || '不明なエラー'), 8000));
+window.addEventListener('unhandledrejection', e => showToast('エラー：' + (e.reason?.message || e.reason || '不明なエラー'), 8000));
 
 applyLogo();
 enterAdmin();

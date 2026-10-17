@@ -10,7 +10,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/common.css">
+<link rel="stylesheet" href="/common.css?v=20261018b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
@@ -81,6 +81,8 @@ textarea.admin-form-input { line-height: 1.8; resize: vertical; }
 .ad-brand { display: flex; align-items: baseline; gap: 10px; }
 .ad-brand .brand-text { font-size: 17px; }
 .ad-brand img.brand-logo { height: 24px; }
+.ad-ver { font-family: var(--sans-en); font-size: 9px; color: var(--ink-4); letter-spacing: 0.04em; }
+@media (max-width: 370px) { .ad-top .ad-ver { display: none; } }
 .ad-brand-sub { font-family: var(--sans-en); font-size: 10px; letter-spacing: 0.28em; color: var(--ink-3); text-transform: uppercase; }
 .ad-icon-btn {
   width: 44px; height: 44px; border: none; background: none; color: var(--ink-2);
@@ -423,6 +425,7 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
   <div class="login-box">
     <div class="login-logo"><img class="brand-logo" alt="LUNÉA"></div>
     <div class="login-sub">Admin</div>
+    <div class="ad-ver" style="text-align:center;margin:-32px 0 28px">ver.20261018b</div>
     <input type="email" class="login-input" id="admin-email" placeholder="メールアドレス" autocomplete="username"
       onkeydown="if(event.key==='Enter')document.getElementById('admin-pw').focus()">
     <input type="password" class="login-input" id="admin-pw" placeholder="パスワード" autocomplete="current-password"
@@ -446,7 +449,7 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
   </svg>
 
   <header class="ad-top">
-    <div class="ad-brand"><img class="brand-logo" alt="LUNÉA"><span class="ad-brand-sub">Admin</span></div>
+    <div class="ad-brand"><img class="brand-logo" alt="LUNÉA"><span class="ad-brand-sub">Admin</span><span class="ad-ver">ver.20261018b</span></div>
     <div style="display:flex;gap:2px">
       <button class="ad-icon-btn" onclick="adminReload()" aria-label="最新の情報に更新"><svg><use href="#ai-refresh"/></svg></button>
       <button class="ad-icon-btn" onclick="adminLogout()" aria-label="ログアウト"><svg><use href="#ai-logout"/></svg></button>
@@ -665,8 +668,8 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
 </div>
 
 
-<script src="/config.js"></script>
-<script src="/common.js"></script>
+<script src="/config.js?v=20261018b"></script>
+<script src="/common.js?v=20261018b"></script>
 <script>
 // ══════════════════════════════════════
 //  管理画面

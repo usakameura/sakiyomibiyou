@@ -1835,17 +1835,32 @@ async function submitOrder() {
 // ══════════════════════════════════════
 //  ADMIN LOGIN
 // ══════════════════════════════════════
+// 管理者かどうか。確認自体に失敗したら理由を返す
 async function checkIsAdmin() {
   const { data, error } = await sb.rpc('is_admin');
-  if (error) { console.error('管理者確認エラー:', error); return false; }
-  return data === true;
+  if (error) {
+    console.error('管理者確認エラー:', error);
+    return { ok: false, reason: 'rpc', detail: error.message || '' };
+  }
+  return data === true ? { ok: true } : { ok: false, reason: 'not_admin' };
+}
+
+// ログイン失敗の理由を日本語に
+function loginErrorMessage(error) {
+  const m = String(error?.message || '');
+  if (/Invalid login credentials/i.test(m)) return 'メールアドレスかパスワードが違います';
+  if (/Email not confirmed/i.test(m))       return 'このユーザーはメール未確認です（Supabase の Users で Confirm が必要）';
+  if (/Invalid API key|apikey|JWT/i.test(m))  return 'Supabase のキーが正しくありません（SUPABASE_KEY を確認）';
+  if (/fetch|network|Failed to/i.test(m))   return 'Supabase に接続できません（SUPABASE_URL を確認）';
+  if (/rate limit|too many/i.test(m))       return '試行回数が多すぎます。少し時間を置いてください';
+  return 'ログインできませんでした：' + m;
 }
 
 async function enterAdmin() {
   showAdminLogin();
   // ログイン状態は Supabase Auth が保持（ログアウトするまで有効）
   const { data: { session } } = await sb.auth.getSession();
-  if (session && await checkIsAdmin()) {
+  if (session && (await checkIsAdmin()).ok) {
     await loadSettings();
     openAdminPanel();
   }
@@ -1871,15 +1886,31 @@ async function adminLogin() {
   const pwInput = document.getElementById('admin-pw');
   const btn = document.getElementById('btn-admin-login');
   if (!email || !pwInput.value) { showToast('メールアドレスとパスワードを入力してください'); return; }
+  if (SUPABASE_URL.includes('YOUR-PROJECT-REF') || SUPABASE_KEY.startsWith('YOUR-')) {
+    showToast('index.html の SUPABASE_URL / SUPABASE_KEY が未入力です', 6000);
+    return;
+  }
 
   btn.disabled = true;
-  const { error } = await sb.auth.signInWithPassword({ email, password: pwInput.value });
+  let error;
+  try {
+    ({ error } = await sb.auth.signInWithPassword({ email, password: pwInput.value }));
+  } catch (e) {
+    error = e;
+  }
   btn.disabled = false;
-  if (error) { showToast('メールアドレスかパスワードが違います'); return; }
+  if (error) {
+    console.error('ログインエラー:', error);
+    showToast(loginErrorMessage(error), 6000);
+    return;
+  }
 
-  if (!(await checkIsAdmin())) {
+  const admin = await checkIsAdmin();
+  if (!admin.ok) {
     await sb.auth.signOut();
-    showToast('管理者として登録されていません');
+    showToast(admin.reason === 'rpc'
+      ? '管理者の確認に失敗しました（schema.sql の is_admin 関数を確認）：' + admin.detail
+      : 'ログインはできましたが、admin_users に登録されていません', 6000);
     return;
   }
   pwInput.value = '';
@@ -2135,10 +2166,12 @@ function closeOrderModal() {
 function esc(str) {
   return String(str ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
-function showToast(msg) {
+let toastTimer = null;
+function showToast(msg, ms = 3000) {
   const t = document.getElementById('toast');
   t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 3000);
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), ms);
 }
 
 // モーダル背景クリックで閉じる

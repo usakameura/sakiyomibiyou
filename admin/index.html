@@ -10,7 +10,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="icon" href="/favicon-192.png" type="image/png" sizes="192x192">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<link rel="stylesheet" href="/common.css?v=20261018b">
+<link rel="stylesheet" href="/common.css?v=20261018c">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400&family=Shippori+Mincho:wght@400;500&family=Zen+Kaku+Gothic+New:wght@300;400&display=swap" rel="stylesheet">
@@ -71,51 +71,51 @@ textarea.admin-form-input { line-height: 1.8; resize: vertical; }
   position: relative; z-index: 1;
   padding-bottom: calc(76px + env(safe-area-inset-bottom));
 }
-.ad-top {
+.lx-top {
   position: sticky; top: 0; z-index: 60;
   height: 56px; padding: 0 12px 0 18px;
   display: flex; align-items: center; justify-content: space-between;
   background: var(--ivory);
   border-bottom: 1px solid var(--line);
 }
-.ad-brand { display: flex; align-items: baseline; gap: 10px; }
-.ad-brand .brand-text { font-size: 17px; }
-.ad-brand img.brand-logo { height: 24px; }
-.ad-ver { font-family: var(--sans-en); font-size: 9px; color: var(--ink-4); letter-spacing: 0.04em; }
-@media (max-width: 370px) { .ad-top .ad-ver { display: none; } }
-.ad-brand-sub { font-family: var(--sans-en); font-size: 10px; letter-spacing: 0.28em; color: var(--ink-3); text-transform: uppercase; }
-.ad-icon-btn {
+.lx-brand { display: flex; align-items: baseline; gap: 10px; }
+.lx-brand .brand-text { font-size: 17px; }
+.lx-brand img.brand-logo { height: 24px; }
+.lx-ver { font-family: var(--sans-en); font-size: 9px; color: var(--ink-4); letter-spacing: 0.04em; }
+@media (max-width: 370px) { .lx-top .lx-ver { display: none; } }
+.lx-brand-sub { font-family: var(--sans-en); font-size: 10px; letter-spacing: 0.28em; color: var(--ink-3); text-transform: uppercase; }
+.lx-icon-btn {
   width: 44px; height: 44px; border: none; background: none; color: var(--ink-2);
   display: flex; align-items: center; justify-content: center; border-radius: 50%;
 }
-.ad-icon-btn svg { width: 22px; height: 22px; }
-.ad-icon-btn:active { background: var(--sand); }
+.lx-icon-btn svg { width: 22px; height: 22px; }
+.lx-icon-btn:active { background: var(--sand); }
 
-.ad-main { max-width: 960px; margin: 0 auto; padding: 16px 14px 24px; }
-.ad-view { display: none; }
+.lx-main { max-width: 960px; margin: 0 auto; padding: 16px 14px 24px; }
+.lx-view { display: none; }
 /* 表示切り替えのアニメーションは付けない（iPhone の Safari で中身が透明のまま残ることがあるため） */
-.ad-view.active { display: block; }
-.ad-h1 { font-family: var(--serif-ja); font-size: 20px; letter-spacing: 0.1em; margin: 6px 2px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.ad-h2 { font-family: var(--serif-ja); font-size: 15px; letter-spacing: 0.1em; margin: 26px 2px 12px; display: flex; align-items: center; gap: 10px; }
-.ad-h2::before { content: ''; width: 14px; height: 1px; background: var(--champagne); }
+.lx-view.active { display: block; }
+.lx-h1 { font-family: var(--serif-ja); font-size: 20px; letter-spacing: 0.1em; margin: 6px 2px 16px; display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.lx-h2 { font-family: var(--serif-ja); font-size: 15px; letter-spacing: 0.1em; margin: 26px 2px 12px; display: flex; align-items: center; gap: 10px; }
+.lx-h2::before { content: ''; width: 14px; height: 1px; background: var(--champagne); }
 
 /* 下部タブ */
-.ad-tabbar {
+.lx-tabbar {
   position: fixed; left: 0; right: 0; bottom: 0; z-index: 70;
   display: grid; grid-template-columns: repeat(4, 1fr);
   background: var(--ivory);
   border-top: 1px solid var(--line);
   padding-bottom: env(safe-area-inset-bottom);
 }
-.ad-tab {
+.lx-tab {
   position: relative; height: 62px; border: none; background: none;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px;
   color: var(--ink-3); font-size: 10px; letter-spacing: 0.08em;
 }
-.ad-tab svg { width: 22px; height: 22px; }
-.ad-tab.active { color: var(--ink); }
-.ad-tab.active::before { content: ''; position: absolute; top: 0; left: 30%; right: 30%; height: 2px; background: var(--champagne); }
-.ad-tab-badge {
+.lx-tab svg { width: 22px; height: 22px; }
+.lx-tab.active { color: var(--ink); }
+.lx-tab.active::before { content: ''; position: absolute; top: 0; left: 30%; right: 30%; height: 2px; background: var(--champagne); }
+.lx-tab-badge {
   position: absolute; top: 8px; left: calc(50% + 6px);
   min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px;
   background: var(--error); color: #fff; font-size: 10px; line-height: 18px; text-align: center;
@@ -123,274 +123,274 @@ textarea.admin-form-input { line-height: 1.8; resize: vertical; }
 }
 
 /* カード・共通パーツ */
-.ad-card { background: var(--pearl); border: 1px solid var(--line); border-radius: 12px; }
-.ad-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.ad-stat { padding: 14px 14px 12px; text-align: left; border: 1px solid var(--line); background: var(--pearl); border-radius: 12px; }
-button.ad-stat { cursor: pointer; font: inherit; color: inherit; }
-button.ad-stat:active { background: var(--sand); }
-.ad-stat-label { font-size: 11px; color: var(--ink-3); letter-spacing: 0.06em; display: flex; justify-content: space-between; }
-.ad-stat-value { font-family: var(--sans-en); font-size: 24px; color: var(--ink); margin-top: 4px; letter-spacing: 0.02em; line-height: 1.2; }
-.ad-stat-sub { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
-.ad-stat.alert .ad-stat-value { color: var(--error); }
-.ad-stat.ok .ad-stat-value { color: var(--ink-4); }
+.lx-card { background: var(--pearl); border: 1px solid var(--line); border-radius: 12px; }
+.lx-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.lx-stat { padding: 14px 14px 12px; text-align: left; border: 1px solid var(--line); background: var(--pearl); border-radius: 12px; }
+button.lx-stat { cursor: pointer; font: inherit; color: inherit; }
+button.lx-stat:active { background: var(--sand); }
+.lx-stat-label { font-size: 11px; color: var(--ink-3); letter-spacing: 0.06em; display: flex; justify-content: space-between; }
+.lx-stat-value { font-family: var(--sans-en); font-size: 24px; color: var(--ink); margin-top: 4px; letter-spacing: 0.02em; line-height: 1.2; }
+.lx-stat-sub { font-size: 11px; color: var(--ink-3); margin-top: 2px; }
+.lx-stat.alert .lx-stat-value { color: var(--error); }
+.lx-stat.ok .lx-stat-value { color: var(--ink-4); }
 
-.ad-list { display: flex; flex-direction: column; gap: 8px; }
-.ad-empty { text-align: center; color: var(--ink-3); font-size: 13px; padding: 36px 12px; }
+.lx-list { display: flex; flex-direction: column; gap: 8px; }
+.lx-empty { text-align: center; color: var(--ink-3); font-size: 13px; padding: 36px 12px; }
 
-.ad-search {
+.lx-search {
   position: relative; display: block; margin-bottom: 10px;
 }
-.ad-search input {
+.lx-search input {
   width: 100%; height: 44px; padding: 0 14px 0 40px; font-size: 16px; font-weight: 300;
   border: 1px solid var(--line-md); border-radius: 22px; background: var(--pearl); color: var(--ink); outline: none;
 }
-.ad-search input:focus { border-color: var(--champagne); }
-.ad-search svg { position: absolute; left: 14px; top: 12px; width: 20px; height: 20px; color: var(--ink-3); }
+.lx-search input:focus { border-color: var(--champagne); }
+.lx-search svg { position: absolute; left: 14px; top: 12px; width: 20px; height: 20px; color: var(--ink-3); }
 
-.ad-chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 -14px 10px; padding: 0 14px; }
-.ad-chips::-webkit-scrollbar { display: none; }
-.ad-chip {
+.lx-chips { display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; margin: 0 -14px 10px; padding: 0 14px; }
+.lx-chips::-webkit-scrollbar { display: none; }
+.lx-chip {
   flex-shrink: 0; height: 34px; padding: 0 14px; border-radius: 17px;
   border: 1px solid var(--line-md); background: var(--pearl); color: var(--ink-2);
   font-size: 12px; letter-spacing: 0.04em; white-space: nowrap;
 }
-.ad-chip b { font-family: var(--sans-en); font-weight: 400; margin-left: 4px; color: var(--ink-3); }
-.ad-chip.active { background: var(--ink); border-color: var(--ink); color: var(--ivory); }
-.ad-chip.active b { color: var(--gold-lt); }
+.lx-chip b { font-family: var(--sans-en); font-weight: 400; margin-left: 4px; color: var(--ink-3); }
+.lx-chip.active { background: var(--ink); border-color: var(--ink); color: var(--ivory); }
+.lx-chip.active b { color: var(--gold-lt); }
 
-.ad-filters { margin-bottom: 10px; }
-.ad-filters summary {
+.lx-filters { margin-bottom: 10px; }
+.lx-filters summary {
   list-style: none; cursor: pointer; font-size: 12px; color: var(--ink-2); letter-spacing: 0.06em;
   display: inline-flex; align-items: center; gap: 6px; padding: 6px 2px;
 }
-.ad-filters summary::-webkit-details-marker { display: none; }
-.ad-filters summary::after { content: '▾'; font-size: 10px; color: var(--ink-3); transition: transform .2s; }
-.ad-filters[open] summary::after { transform: rotate(180deg); }
-.ad-filters-active { color: var(--gold); }
-.ad-filter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px 0 4px; }
-.ad-field { display: flex; flex-direction: column; gap: 5px; }
-.ad-field.full { grid-column: 1 / -1; }
-.ad-field > span { font-size: 11px; color: var(--ink-3); letter-spacing: 0.04em; }
-.ad-input, .ad-select, .ad-textarea {
+.lx-filters summary::-webkit-details-marker { display: none; }
+.lx-filters summary::after { content: '▾'; font-size: 10px; color: var(--ink-3); transition: transform .2s; }
+.lx-filters[open] summary::after { transform: rotate(180deg); }
+.lx-filters-active { color: var(--gold); }
+.lx-filter-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; padding: 10px 0 4px; }
+.lx-field { display: flex; flex-direction: column; gap: 5px; }
+.lx-field.full { grid-column: 1 / -1; }
+.lx-field > span { font-size: 11px; color: var(--ink-3); letter-spacing: 0.04em; }
+.lx-input, .lx-select, .lx-textarea {
   width: 100%; height: 44px; padding: 0 12px; font-size: 16px; font-weight: 300;
   border: 1px solid var(--line-md); border-radius: 8px; background: var(--pearl); color: var(--ink); outline: none;
   -webkit-appearance: none; appearance: none;
 }
-.ad-select { background-image: linear-gradient(45deg, transparent 50%, var(--ink-3) 50%), linear-gradient(135deg, var(--ink-3) 50%, transparent 50%); background-position: calc(100% - 18px) 19px, calc(100% - 13px) 19px; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 32px; }
-.ad-textarea { height: auto; min-height: 96px; padding: 10px 12px; line-height: 1.8; resize: vertical; }
-.ad-input:focus, .ad-select:focus, .ad-textarea:focus { border-color: var(--champagne); }
-.ad-link-btn { border: none; background: none; color: var(--gold); font-size: 12px; text-decoration: underline; text-underline-offset: 3px; padding: 6px 2px; }
+.lx-select { background-image: linear-gradient(45deg, transparent 50%, var(--ink-3) 50%), linear-gradient(135deg, var(--ink-3) 50%, transparent 50%); background-position: calc(100% - 18px) 19px, calc(100% - 13px) 19px; background-size: 5px 5px; background-repeat: no-repeat; padding-right: 32px; }
+.lx-textarea { height: auto; min-height: 96px; padding: 10px 12px; line-height: 1.8; resize: vertical; }
+.lx-input:focus, .lx-select:focus, .lx-textarea:focus { border-color: var(--champagne); }
+.lx-link-btn { border: none; background: none; color: var(--gold); font-size: 12px; text-decoration: underline; text-underline-offset: 3px; padding: 6px 2px; }
 
-.ad-summary {
+.lx-summary {
   display: flex; align-items: center; justify-content: space-between; gap: 10px; flex-wrap: wrap;
   padding: 10px 2px; font-size: 12px; color: var(--ink-2);
 }
-.ad-summary strong { font-family: var(--sans-en); font-weight: 400; color: var(--ink); font-size: 14px; }
-.ad-actions-row { display: flex; gap: 8px; flex-wrap: wrap; }
+.lx-summary strong { font-family: var(--sans-en); font-weight: 400; color: var(--ink); font-size: 14px; }
+.lx-actions-row { display: flex; gap: 8px; flex-wrap: wrap; }
 
-.ad-btn {
+.lx-btn {
   height: 44px; padding: 0 18px; border-radius: 8px; border: 1px solid var(--ink);
   background: var(--ink); color: var(--ivory); font-size: 13px; letter-spacing: 0.08em;
   display: inline-flex; align-items: center; justify-content: center; gap: 6px;
 }
-.ad-btn:disabled { opacity: .5; }
-.ad-btn.sub { background: var(--pearl); color: var(--ink); border-color: var(--line-md); }
-.ad-btn.gold { background: var(--champagne); border-color: var(--champagne); color: #fff; }
-.ad-btn.danger { background: var(--pearl); color: var(--error); border-color: rgba(154,74,66,0.4); }
-.ad-btn.sm { height: 36px; padding: 0 12px; font-size: 12px; }
-.ad-btn.block { width: 100%; }
-.ad-btn svg { width: 16px; height: 16px; }
+.lx-btn:disabled { opacity: .5; }
+.lx-btn.sub { background: var(--pearl); color: var(--ink); border-color: var(--line-md); }
+.lx-btn.gold { background: var(--champagne); border-color: var(--champagne); color: #fff; }
+.lx-btn.danger { background: var(--pearl); color: var(--error); border-color: rgba(154,74,66,0.4); }
+.lx-btn.sm { height: 36px; padding: 0 12px; font-size: 12px; }
+.lx-btn.block { width: 100%; }
+.lx-btn svg { width: 16px; height: 16px; }
 
 /* 注文カード */
-.ad-order {
+.lx-order {
   display: block; width: 100%; text-align: left; font: inherit; color: inherit;
   padding: 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--pearl);
 }
-.ad-order:active { background: var(--sand); }
-.ad-order.cancelled { opacity: .55; }
-.ad-order-top { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: var(--ink-3); }
-.ad-order-num { font-family: var(--sans-en); letter-spacing: 0.06em; }
-.ad-order-mid { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin: 6px 0 10px; }
-.ad-order-name { font-size: 15px; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.ad-order-amount { font-family: var(--sans-en); font-size: 16px; color: var(--ink); flex-shrink: 0; }
-.ad-pills { display: flex; gap: 6px; flex-wrap: wrap; }
-.ad-pill { font-size: 11px; padding: 3px 10px; border-radius: 12px; border: 1px solid; letter-spacing: 0.04em; }
-.ad-pill.unpaid  { color: #8A6A1E; border-color: rgba(138,106,30,0.35); background: #FBF5E6; }
-.ad-pill.paid    { color: #3F6B4C; border-color: rgba(63,107,76,0.3);  background: #EEF5F0; }
-.ad-pill.toship  { color: #8A5A2B; border-color: rgba(138,90,43,0.35); background: #FBF0E4; }
-.ad-pill.shipped { color: #3D5A80; border-color: rgba(61,90,128,0.3);  background: #EEF2F7; }
-.ad-pill.cancel  { color: var(--error); border-color: rgba(154,74,66,0.35); background: #F7EDEB; }
+.lx-order:active { background: var(--sand); }
+.lx-order.cancelled { opacity: .55; }
+.lx-order-top { display: flex; justify-content: space-between; gap: 8px; font-size: 11px; color: var(--ink-3); }
+.lx-order-num { font-family: var(--sans-en); letter-spacing: 0.06em; }
+.lx-order-mid { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; margin: 6px 0 10px; }
+.lx-order-name { font-size: 15px; color: var(--ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lx-order-amount { font-family: var(--sans-en); font-size: 16px; color: var(--ink); flex-shrink: 0; }
+.lx-pills { display: flex; gap: 6px; flex-wrap: wrap; }
+.lx-pill { font-size: 11px; padding: 3px 10px; border-radius: 12px; border: 1px solid; letter-spacing: 0.04em; }
+.lx-pill.unpaid  { color: #8A6A1E; border-color: rgba(138,106,30,0.35); background: #FBF5E6; }
+.lx-pill.paid    { color: #3F6B4C; border-color: rgba(63,107,76,0.3);  background: #EEF5F0; }
+.lx-pill.toship  { color: #8A5A2B; border-color: rgba(138,90,43,0.35); background: #FBF0E4; }
+.lx-pill.shipped { color: #3D5A80; border-color: rgba(61,90,128,0.3);  background: #EEF2F7; }
+.lx-pill.cancel  { color: var(--error); border-color: rgba(154,74,66,0.35); background: #F7EDEB; }
 
 /* 商品カード */
-.ad-product { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--pearl); }
-.ad-product.unpublished { background: #F7F4EF; }
-.ad-product-thumb { width: 64px; height: 80px; border-radius: 6px; overflow: hidden; background: var(--sand); display: flex; align-items: center; justify-content: center; border: none; padding: 0; }
-.ad-product-thumb .mark { font-size: 26px; color: var(--gold-lt); }
-.ad-product-body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
-.ad-product-name { font-size: 14px; color: var(--ink); border: none; background: none; padding: 0; text-align: left; font-family: inherit; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.ad-product-meta { font-size: 11px; color: var(--ink-3); }
-.ad-product-meta b { font-family: var(--sans-en); font-weight: 400; color: var(--ink-2); font-size: 13px; }
-.ad-product-ctrl { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
-.ad-stepper { display: flex; align-items: center; border: 1px solid var(--line-md); border-radius: 8px; overflow: hidden; height: 36px; }
-.ad-stepper button { width: 38px; height: 100%; border: none; background: none; font-size: 18px; color: var(--ink-2); }
-.ad-stepper button:active { background: var(--sand); }
-.ad-stepper input { width: 46px; height: 100%; border: none; border-left: 1px solid var(--line); border-right: 1px solid var(--line); text-align: center; font-family: var(--sans-en); font-size: 15px; color: var(--ink); background: none; -moz-appearance: textfield; outline: none; }
-.ad-stepper input::-webkit-inner-spin-button, .ad-stepper input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-.ad-stepper.low input { color: var(--error); }
-.ad-stepper.saving { opacity: .6; }
-.ad-stock-label { font-size: 10px; color: var(--ink-3); margin-right: 6px; }
+.lx-product { display: grid; grid-template-columns: 64px 1fr; gap: 12px; padding: 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--pearl); }
+.lx-product.unpublished { background: #F7F4EF; }
+.lx-product-thumb { width: 64px; height: 80px; border-radius: 6px; overflow: hidden; background: var(--sand); display: flex; align-items: center; justify-content: center; border: none; padding: 0; }
+.lx-product-thumb .mark { font-size: 26px; color: var(--gold-lt); }
+.lx-product-body { min-width: 0; display: flex; flex-direction: column; gap: 6px; }
+.lx-product-name { font-size: 14px; color: var(--ink); border: none; background: none; padding: 0; text-align: left; font-family: inherit; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.lx-product-meta { font-size: 11px; color: var(--ink-3); }
+.lx-product-meta b { font-family: var(--sans-en); font-weight: 400; color: var(--ink-2); font-size: 13px; }
+.lx-product-ctrl { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.lx-stepper { display: flex; align-items: center; border: 1px solid var(--line-md); border-radius: 8px; overflow: hidden; height: 36px; }
+.lx-stepper button { width: 38px; height: 100%; border: none; background: none; font-size: 18px; color: var(--ink-2); }
+.lx-stepper button:active { background: var(--sand); }
+.lx-stepper input { width: 46px; height: 100%; border: none; border-left: 1px solid var(--line); border-right: 1px solid var(--line); text-align: center; font-family: var(--sans-en); font-size: 15px; color: var(--ink); background: none; -moz-appearance: textfield; outline: none; }
+.lx-stepper input::-webkit-inner-spin-button, .lx-stepper input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.lx-stepper.low input { color: var(--error); }
+.lx-stepper.saving { opacity: .6; }
+.lx-stock-label { font-size: 10px; color: var(--ink-3); margin-right: 6px; }
 
 /* スイッチ */
-.ad-switch { position: relative; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; color: var(--ink-3); cursor: pointer; user-select: none; }
-.ad-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
-.ad-switch i { position: relative; width: 42px; height: 24px; border-radius: 12px; background: var(--sand-2); transition: background .2s; flex-shrink: 0; }
-.ad-switch i::after { content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.15); transition: transform .2s; }
-.ad-switch input:checked + i { background: var(--champagne); }
-.ad-switch input:checked + i::after { transform: translateX(18px); }
-.ad-switch input:focus-visible + i { outline: 1px solid var(--champagne); outline-offset: 2px; }
+.lx-switch { position: relative; display: inline-flex; align-items: center; gap: 8px; font-size: 11px; color: var(--ink-3); cursor: pointer; user-select: none; }
+.lx-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.lx-switch i { position: relative; width: 42px; height: 24px; border-radius: 12px; background: var(--sand-2); transition: background .2s; flex-shrink: 0; }
+.lx-switch i::after { content: ''; position: absolute; top: 3px; left: 3px; width: 18px; height: 18px; border-radius: 50%; background: #fff; box-shadow: 0 1px 2px rgba(0,0,0,0.15); transition: transform .2s; }
+.lx-switch input:checked + i { background: var(--champagne); }
+.lx-switch input:checked + i::after { transform: translateX(18px); }
+.lx-switch input:focus-visible + i { outline: 1px solid var(--champagne); outline-offset: 2px; }
 
-.ad-fab {
+.lx-fab {
   position: fixed; right: 18px; bottom: calc(80px + env(safe-area-inset-bottom)); z-index: 65;
   height: 50px; padding: 0 20px; border-radius: 25px; border: none;
   background: var(--ink); color: var(--ivory); font-size: 13px; letter-spacing: 0.08em;
   box-shadow: 0 6px 18px rgba(58,50,43,0.25); display: none; align-items: center; gap: 6px;
 }
-.ad-fab.show { display: inline-flex; }
-.ad-fab svg { width: 18px; height: 18px; }
+.lx-fab.show { display: inline-flex; }
+.lx-fab svg { width: 18px; height: 18px; }
 
 /* シート（スマホは下から、PCは中央） */
-.ad-sheet-bg {
+.lx-sheet-bg {
   position: fixed; inset: 0; z-index: 2000; background: rgba(58,50,43,0.38);
   display: none; align-items: flex-end; justify-content: center;
 }
-.ad-sheet-bg.open { display: flex; }
-.ad-sheet {
+.lx-sheet-bg.open { display: flex; }
+.lx-sheet {
   width: 100%; max-width: 640px; max-height: 92vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
   background: var(--ivory); border-radius: 18px 18px 0 0;
   padding: 0 16px calc(24px + env(safe-area-inset-bottom));
   animation: sheetUp .28s cubic-bezier(.2,.8,.2,1) both;
 }
 @keyframes sheetUp { from { transform: translateY(40px); opacity: .4; } to { transform: none; opacity: 1; } }
-.ad-sheet-head {
+.lx-sheet-head {
   position: sticky; top: 0; z-index: 2; background: var(--ivory);
   display: flex; align-items: center; justify-content: space-between; gap: 10px;
   padding: 14px 0 12px; border-bottom: 1px solid var(--line); margin-bottom: 14px;
 }
-.ad-sheet-head::before { content: ''; position: absolute; top: 6px; left: 50%; width: 36px; height: 4px; margin-left: -18px; border-radius: 2px; background: var(--sand-2); }
-.ad-sheet-title { font-family: var(--serif-ja); font-size: 16px; letter-spacing: 0.08em; padding-top: 6px; }
-.ad-sheet-sub { font-family: var(--sans-en); font-size: 11px; color: var(--ink-3); letter-spacing: 0.06em; }
-.ad-sec { background: var(--pearl); border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
-.ad-sec-title { font-size: 12px; color: var(--ink-3); letter-spacing: 0.08em; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
-.ad-seg { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line-md); border-radius: 10px; overflow: hidden; }
-.ad-seg button { height: 44px; border: none; background: var(--pearl); color: var(--ink-2); font-size: 13px; }
-.ad-seg button + button { border-left: 1px solid var(--line-md); }
-.ad-seg button.on-unpaid { background: #FBF5E6; color: #8A6A1E; }
-.ad-seg button.on-paid { background: #EEF5F0; color: #3F6B4C; }
-.ad-note { font-size: 11px; color: var(--ink-3); margin-top: 8px; line-height: 1.7; }
-.ad-kv { display: grid; grid-template-columns: 72px 1fr auto; gap: 8px; align-items: start; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
-.ad-kv:last-child { border-bottom: none; }
-.ad-kv > span:first-child { color: var(--ink-3); font-size: 12px; padding-top: 1px; }
-.ad-kv > span:nth-child(2) { word-break: break-all; }
-.ad-kv a { color: var(--ink); }
-.ad-copy { border: 1px solid var(--line-md); background: var(--pearl); border-radius: 6px; font-size: 11px; color: var(--ink-2); padding: 3px 8px; }
-.ad-item-row { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
-.ad-item-total { display: flex; justify-content: space-between; padding: 12px 0 2px; font-size: 14px; }
-.ad-item-total b { font-family: var(--sans-en); font-weight: 400; font-size: 18px; }
-.ad-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.ad-check { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-2); margin: 10px 0; }
-.ad-check input { width: 18px; height: 18px; accent-color: var(--champagne); }
+.lx-sheet-head::before { content: ''; position: absolute; top: 6px; left: 50%; width: 36px; height: 4px; margin-left: -18px; border-radius: 2px; background: var(--sand-2); }
+.lx-sheet-title { font-family: var(--serif-ja); font-size: 16px; letter-spacing: 0.08em; padding-top: 6px; }
+.lx-sheet-sub { font-family: var(--sans-en); font-size: 11px; color: var(--ink-3); letter-spacing: 0.06em; }
+.lx-sec { background: var(--pearl); border: 1px solid var(--line); border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+.lx-sec-title { font-size: 12px; color: var(--ink-3); letter-spacing: 0.08em; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+.lx-seg { display: grid; grid-template-columns: 1fr 1fr; border: 1px solid var(--line-md); border-radius: 10px; overflow: hidden; }
+.lx-seg button { height: 44px; border: none; background: var(--pearl); color: var(--ink-2); font-size: 13px; }
+.lx-seg button + button { border-left: 1px solid var(--line-md); }
+.lx-seg button.on-unpaid { background: #FBF5E6; color: #8A6A1E; }
+.lx-seg button.on-paid { background: #EEF5F0; color: #3F6B4C; }
+.lx-note { font-size: 11px; color: var(--ink-3); margin-top: 8px; line-height: 1.7; }
+.lx-kv { display: grid; grid-template-columns: 72px 1fr auto; gap: 8px; align-items: start; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.lx-kv:last-child { border-bottom: none; }
+.lx-kv > span:first-child { color: var(--ink-3); font-size: 12px; padding-top: 1px; }
+.lx-kv > span:nth-child(2) { word-break: break-all; }
+.lx-kv a { color: var(--ink); }
+.lx-copy { border: 1px solid var(--line-md); background: var(--pearl); border-radius: 6px; font-size: 11px; color: var(--ink-2); padding: 3px 8px; }
+.lx-item-row { display: flex; justify-content: space-between; gap: 10px; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 13px; }
+.lx-item-total { display: flex; justify-content: space-between; padding: 12px 0 2px; font-size: 14px; }
+.lx-item-total b { font-family: var(--sans-en); font-weight: 400; font-size: 18px; }
+.lx-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.lx-check { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--ink-2); margin: 10px 0; }
+.lx-check input { width: 18px; height: 18px; accent-color: var(--champagne); }
 
 /* 画像エディタ */
-.ad-drop {
+.lx-drop {
   border: 1.5px dashed var(--bd-dark); border-radius: 12px; padding: 18px; text-align: center;
   color: var(--ink-3); font-size: 12px; background: var(--pearl); cursor: pointer; transition: all .2s;
 }
-.ad-drop.drag { border-color: var(--champagne); background: #FBF6EC; color: var(--gold); }
-.ad-drop svg { width: 26px; height: 26px; display: block; margin: 0 auto 6px; color: var(--champagne); }
-.ad-imgs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px; }
-.ad-img { position: relative; aspect-ratio: 4/5; border-radius: 8px; overflow: hidden; background: var(--sand); }
-.ad-img img { width: 100%; height: 100%; object-fit: cover; }
-.ad-img-main { position: absolute; top: 6px; left: 6px; background: var(--ink); color: var(--ivory); font-size: 10px; padding: 2px 8px; border-radius: 10px; letter-spacing: 0.06em; }
-.ad-img-tools { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; background: linear-gradient(transparent, rgba(30,26,22,0.55)); padding: 14px 4px 4px; }
-.ad-img-tools button { width: 30px; height: 30px; border: none; border-radius: 50%; background: rgba(255,255,255,0.9); color: var(--ink); font-size: 13px; display: flex; align-items: center; justify-content: center; }
-.ad-img-tools button:disabled { opacity: .3; }
-.ad-img-tools button.del { color: var(--error); }
-.ad-img-size { position: absolute; top: 6px; right: 6px; font-size: 9px; color: #fff; background: rgba(30,26,22,0.5); padding: 1px 6px; border-radius: 8px; font-family: var(--sans-en); }
+.lx-drop.drag { border-color: var(--champagne); background: #FBF6EC; color: var(--gold); }
+.lx-drop svg { width: 26px; height: 26px; display: block; margin: 0 auto 6px; color: var(--champagne); }
+.lx-imgs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 10px; }
+.lx-img { position: relative; aspect-ratio: 4/5; border-radius: 8px; overflow: hidden; background: var(--sand); }
+.lx-img img { width: 100%; height: 100%; object-fit: cover; }
+.lx-img-main { position: absolute; top: 6px; left: 6px; background: var(--ink); color: var(--ivory); font-size: 10px; padding: 2px 8px; border-radius: 10px; letter-spacing: 0.06em; }
+.lx-img-tools { position: absolute; left: 0; right: 0; bottom: 0; display: flex; justify-content: space-between; background: linear-gradient(transparent, rgba(30,26,22,0.55)); padding: 14px 4px 4px; }
+.lx-img-tools button { width: 30px; height: 30px; border: none; border-radius: 50%; background: rgba(255,255,255,0.9); color: var(--ink); font-size: 13px; display: flex; align-items: center; justify-content: center; }
+.lx-img-tools button:disabled { opacity: .3; }
+.lx-img-tools button.del { color: var(--error); }
+.lx-img-size { position: absolute; top: 6px; right: 6px; font-size: 9px; color: #fff; background: rgba(30,26,22,0.5); padding: 1px 6px; border-radius: 8px; font-family: var(--sans-en); }
 
 /* カテゴリ編集 */
-.ad-cat-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); }
-.ad-cat-row:last-child { border-bottom: none; }
-.ad-cat-tools { display: flex; gap: 4px; }
-.ad-cat-tools button { width: 36px; height: 36px; border: 1px solid var(--line-md); border-radius: 8px; background: var(--pearl); color: var(--ink-2); font-size: 14px; }
-.ad-cat-tools button.del { color: var(--error); }
-.ad-cat-tools button:disabled { opacity: .3; }
-.ad-cat-count { font-size: 10px; color: var(--ink-3); margin-left: 6px; white-space: nowrap; flex-shrink: 0; }
-.ad-cat-row .ad-input { min-width: 0; }
+.lx-cat-row { display: grid; grid-template-columns: 1fr auto; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); }
+.lx-cat-row:last-child { border-bottom: none; }
+.lx-cat-tools { display: flex; gap: 4px; }
+.lx-cat-tools button { width: 36px; height: 36px; border: 1px solid var(--line-md); border-radius: 8px; background: var(--pearl); color: var(--ink-2); font-size: 14px; }
+.lx-cat-tools button.del { color: var(--error); }
+.lx-cat-tools button:disabled { opacity: .3; }
+.lx-cat-count { font-size: 10px; color: var(--ink-3); margin-left: 6px; white-space: nowrap; flex-shrink: 0; }
+.lx-cat-row .lx-input { min-width: 0; }
 #products-list { padding-bottom: 64px; }  /* 右下の「商品を登録」ボタンと重ならないように */
 /* 管理画面ではトーストを上に出す（下部タブ・ボタンと重ならないように） */
 body.is-admin .toast { bottom: auto; top: calc(64px + env(safe-area-inset-top)); transform: translateX(-50%) translateY(-12px); }
 body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
 
 /* 一覧（ダッシュボード内の小リスト） */
-.ad-mini-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 11px 14px; border-bottom: 1px solid var(--line); font-size: 13px; background: none; border-left: 0; border-right: 0; border-top: 0; width: 100%; text-align: left; color: inherit; font-family: inherit; }
-.ad-mini-row:last-child { border-bottom: none; }
-.ad-mini-row:active { background: var(--sand); }
-.ad-mini-row b { font-family: var(--sans-en); font-weight: 400; }
+.lx-mini-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 11px 14px; border-bottom: 1px solid var(--line); font-size: 13px; background: none; border-left: 0; border-right: 0; border-top: 0; width: 100%; text-align: left; color: inherit; font-family: inherit; }
+.lx-mini-row:last-child { border-bottom: none; }
+.lx-mini-row:active { background: var(--sand); }
+.lx-mini-row b { font-family: var(--sans-en); font-weight: 400; }
 
 /* 設定（既存フォームの調整） */
 #av-settings .admin-form-input, #av-settings .admin-form-select { font-size: 16px; border-radius: 8px; }
 #av-settings .admin-section-divider { font-family: var(--serif-ja); }
 
 @media (min-width: 760px) {
-  .ad-main { padding: 24px 24px 32px; }
-  .ad-stats { grid-template-columns: repeat(4, 1fr); }
-  .ad-filter-grid { grid-template-columns: repeat(4, 1fr); }
-  .ad-imgs { grid-template-columns: repeat(4, 1fr); }
-  .ad-sheet-bg { align-items: center; }
-  .ad-sheet { border-radius: 16px; max-height: 88vh; }
-  .ad-orders-grid, .ad-products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .lx-main { padding: 24px 24px 32px; }
+  .lx-stats { grid-template-columns: repeat(4, 1fr); }
+  .lx-filter-grid { grid-template-columns: repeat(4, 1fr); }
+  .lx-imgs { grid-template-columns: repeat(4, 1fr); }
+  .lx-sheet-bg { align-items: center; }
+  .lx-sheet { border-radius: 16px; max-height: 88vh; }
+  .lx-orders-grid, .lx-products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 }
 @media (min-width: 1100px) {
-  .ad-tabbar { top: 56px; bottom: auto; left: 0; right: auto; width: 96px; height: calc(100vh - 56px); grid-template-columns: 1fr; grid-auto-rows: 76px; align-content: start; border-top: none; border-right: 1px solid var(--line); padding-top: 12px; }
-  .ad-tab.active::before { top: 18%; bottom: 18%; left: 0; right: auto; width: 2px; height: auto; }
+  .lx-tabbar { top: 56px; bottom: auto; left: 0; right: auto; width: 96px; height: calc(100vh - 56px); grid-template-columns: 1fr; grid-auto-rows: 76px; align-content: start; border-top: none; border-right: 1px solid var(--line); padding-top: 12px; }
+  .lx-tab.active::before { top: 18%; bottom: 18%; left: 0; right: auto; width: 2px; height: auto; }
   #admin-panel { padding-bottom: 0; padding-left: 96px; }
-  .ad-fab { bottom: 28px; }
+  .lx-fab { bottom: 28px; }
 }
 
-@media (min-width: 1100px) { .ad-top { margin-left: -96px; } }
+@media (min-width: 1100px) { .lx-top { margin-left: -96px; } }
 /* セール */
-.ad-sale-tag { display: inline-block; background: var(--sale); color: #fff; font-family: var(--sans-en); font-size: 9px; letter-spacing: 0.16em; padding: 1px 6px; margin-left: 6px; vertical-align: 1px; }
-.ad-product-meta s { color: var(--ink-4); margin-right: 4px; }
-.ad-product-meta b.sale { color: var(--sale); }
-.ad-sale-box { margin-top: 12px; padding: 12px; border-radius: 10px; background: var(--sale-bg); border: 1px solid rgba(164,84,74,0.18); }
-.ad-sale-box .ad-sec-title { color: var(--sale); margin-bottom: 8px; }
-.ad-sale-box .ad-form-grid { grid-template-columns: 1fr; }
-@media (min-width: 760px) { .ad-sale-box .ad-form-grid { grid-template-columns: 1fr 1fr; } }
-.ad-sale-preview { font-size: 12px; color: var(--ink-2); margin-top: 8px; min-height: 18px; }
-.ad-sale-preview s { color: var(--ink-4); margin-right: 6px; }
-.ad-sale-preview b { color: var(--sale); font-weight: 400; }
-.ad-pill.refund { color: #6B4E8A; border-color: rgba(107,78,138,0.3); background: #F3EEF8; }
-.ad-refund-sum { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
-.ad-refund-sum div { background: var(--ivory); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 11px; color: var(--ink-3); }
-.ad-refund-sum b { display: block; font-family: var(--sans-en); font-weight: 400; font-size: 16px; color: var(--ink); margin-top: 2px; }
-.ad-refund-item { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; font-size: 12px; color: var(--ink-2); }
-.ad-refund-item.failed { opacity: .6; }
-.ad-refund-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; }
-.ad-refund-head b { font-family: var(--sans-en); font-weight: 400; font-size: 15px; color: var(--ink); }
-.ad-rstat { font-size: 10px; padding: 2px 8px; border-radius: 10px; border: 1px solid; }
-.ad-rstat.completed { color: #3F6B4C; border-color: rgba(63,107,76,0.3); background: #EEF5F0; }
-.ad-rstat.pending { color: #8A6A1E; border-color: rgba(138,106,30,0.35); background: #FBF5E6; }
-.ad-rstat.failed { color: var(--error); border-color: rgba(154,74,66,0.35); background: #F7EDEB; }
-.ad-refund-form { border-top: 1px dashed var(--line-md); margin-top: 12px; padding-top: 12px; }
-.ad-refund-form[hidden] { display: none; }
-.ad-restock-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 6px 0; font-size: 12px; border-bottom: 1px solid var(--line); }
-.ad-restock-row:last-child { border-bottom: none; }
-.ad-restock-row .ad-stepper { height: 32px; }
-.ad-restock-row .ad-stepper button { width: 32px; }
-.ad-restock-row .ad-stepper input { width: 38px; font-size: 13px; }
-.ad-seg.small button { height: 38px; font-size: 12px; }
-.ad-seg button.on { background: var(--ink); color: var(--ivory); }
-.ad-pill.autocancel { color: var(--ink-3); border-color: var(--line-md); background: var(--sand); }
+.lx-sale-tag { display: inline-block; background: var(--sale); color: #fff; font-family: var(--sans-en); font-size: 9px; letter-spacing: 0.16em; padding: 1px 6px; margin-left: 6px; vertical-align: 1px; }
+.lx-product-meta s { color: var(--ink-4); margin-right: 4px; }
+.lx-product-meta b.sale { color: var(--sale); }
+.lx-sale-box { margin-top: 12px; padding: 12px; border-radius: 10px; background: var(--sale-bg); border: 1px solid rgba(164,84,74,0.18); }
+.lx-sale-box .lx-sec-title { color: var(--sale); margin-bottom: 8px; }
+.lx-sale-box .lx-form-grid { grid-template-columns: 1fr; }
+@media (min-width: 760px) { .lx-sale-box .lx-form-grid { grid-template-columns: 1fr 1fr; } }
+.lx-sale-preview { font-size: 12px; color: var(--ink-2); margin-top: 8px; min-height: 18px; }
+.lx-sale-preview s { color: var(--ink-4); margin-right: 6px; }
+.lx-sale-preview b { color: var(--sale); font-weight: 400; }
+.lx-pill.refund { color: #6B4E8A; border-color: rgba(107,78,138,0.3); background: #F3EEF8; }
+.lx-refund-sum { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.lx-refund-sum div { background: var(--ivory); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 11px; color: var(--ink-3); }
+.lx-refund-sum b { display: block; font-family: var(--sans-en); font-weight: 400; font-size: 16px; color: var(--ink); margin-top: 2px; }
+.lx-refund-item { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; font-size: 12px; color: var(--ink-2); }
+.lx-refund-item.failed { opacity: .6; }
+.lx-refund-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; }
+.lx-refund-head b { font-family: var(--sans-en); font-weight: 400; font-size: 15px; color: var(--ink); }
+.lx-rstat { font-size: 10px; padding: 2px 8px; border-radius: 10px; border: 1px solid; }
+.lx-rstat.completed { color: #3F6B4C; border-color: rgba(63,107,76,0.3); background: #EEF5F0; }
+.lx-rstat.pending { color: #8A6A1E; border-color: rgba(138,106,30,0.35); background: #FBF5E6; }
+.lx-rstat.failed { color: var(--error); border-color: rgba(154,74,66,0.35); background: #F7EDEB; }
+.lx-refund-form { border-top: 1px dashed var(--line-md); margin-top: 12px; padding-top: 12px; }
+.lx-refund-form[hidden] { display: none; }
+.lx-restock-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 6px 0; font-size: 12px; border-bottom: 1px solid var(--line); }
+.lx-restock-row:last-child { border-bottom: none; }
+.lx-restock-row .lx-stepper { height: 32px; }
+.lx-restock-row .lx-stepper button { width: 32px; }
+.lx-restock-row .lx-stepper input { width: 38px; font-size: 13px; }
+.lx-seg.small button { height: 38px; font-size: 12px; }
+.lx-seg button.on { background: var(--ink); color: var(--ivory); }
+.lx-pill.autocancel { color: var(--ink-3); border-color: var(--line-md); background: var(--sand); }
 </style>
 </head>
 <body class="is-admin">
@@ -425,7 +425,7 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
   <div class="login-box">
     <div class="login-logo"><img class="brand-logo" alt="LUNÉA"></div>
     <div class="login-sub">Admin</div>
-    <div class="ad-ver" style="text-align:center;margin:-32px 0 28px">ver.20261018b</div>
+    <div class="lx-ver" style="text-align:center;margin:-32px 0 28px">ver.20261018c</div>
     <input type="email" class="login-input" id="admin-email" placeholder="メールアドレス" autocomplete="username"
       onkeydown="if(event.key==='Enter')document.getElementById('admin-pw').focus()">
     <input type="password" class="login-input" id="admin-pw" placeholder="パスワード" autocomplete="current-password"
@@ -448,55 +448,55 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
     <symbol id="ai-refresh" viewBox="0 0 24 24"><path d="M19 12a7 7 0 1 1-2.05-4.95M19 4.5V8h-3.5" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   </svg>
 
-  <header class="ad-top">
-    <div class="ad-brand"><img class="brand-logo" alt="LUNÉA"><span class="ad-brand-sub">Admin</span><span class="ad-ver">ver.20261018b</span></div>
+  <header class="lx-top">
+    <div class="lx-brand"><img class="brand-logo" alt="LUNÉA"><span class="lx-brand-sub">Admin</span><span class="lx-ver">ver.20261018c</span></div>
     <div style="display:flex;gap:2px">
-      <button class="ad-icon-btn" onclick="adminReload()" aria-label="最新の情報に更新"><svg><use href="#ai-refresh"/></svg></button>
-      <button class="ad-icon-btn" onclick="adminLogout()" aria-label="ログアウト"><svg><use href="#ai-logout"/></svg></button>
+      <button class="lx-icon-btn" onclick="adminReload()" aria-label="最新の情報に更新"><svg><use href="#ai-refresh"/></svg></button>
+      <button class="lx-icon-btn" onclick="adminLogout()" aria-label="ログアウト"><svg><use href="#ai-logout"/></svg></button>
     </div>
   </header>
 
-  <main class="ad-main">
+  <main class="lx-main">
     <!-- ホーム（ダッシュボード） -->
-    <section class="ad-view active" id="av-home">
-      <div class="ad-h1">ホーム <span class="ad-sheet-sub" id="dash-date"></span></div>
-      <div class="ad-stats">
-        <div class="ad-stat"><div class="ad-stat-label">今日の注文</div><div class="ad-stat-value" id="st-today-count">—</div><div class="ad-stat-sub" id="st-today-amount"></div></div>
-        <div class="ad-stat"><div class="ad-stat-label">今月の受注額</div><div class="ad-stat-value" id="st-month-amount">—</div><div class="ad-stat-sub" id="st-month-count"></div></div>
-        <button class="ad-stat" id="st-unpaid-card" onclick="goOrders('unpaid')"><div class="ad-stat-label">未入金 <span>›</span></div><div class="ad-stat-value" id="st-unpaid">—</div><div class="ad-stat-sub" id="st-unpaid-amount"></div></button>
-        <button class="ad-stat" id="st-toship-card" onclick="goOrders('toship')"><div class="ad-stat-label">発送待ち <span>›</span></div><div class="ad-stat-value" id="st-toship">—</div><div class="ad-stat-sub">入金済み・未発送</div></button>
+    <section class="lx-view active" id="av-home">
+      <div class="lx-h1">ホーム <span class="lx-sheet-sub" id="dash-date"></span></div>
+      <div class="lx-stats">
+        <div class="lx-stat"><div class="lx-stat-label">今日の注文</div><div class="lx-stat-value" id="st-today-count">—</div><div class="lx-stat-sub" id="st-today-amount"></div></div>
+        <div class="lx-stat"><div class="lx-stat-label">今月の受注額</div><div class="lx-stat-value" id="st-month-amount">—</div><div class="lx-stat-sub" id="st-month-count"></div></div>
+        <button class="lx-stat" id="st-unpaid-card" onclick="goOrders('unpaid')"><div class="lx-stat-label">未入金 <span>›</span></div><div class="lx-stat-value" id="st-unpaid">—</div><div class="lx-stat-sub" id="st-unpaid-amount"></div></button>
+        <button class="lx-stat" id="st-toship-card" onclick="goOrders('toship')"><div class="lx-stat-label">発送待ち <span>›</span></div><div class="lx-stat-value" id="st-toship">—</div><div class="lx-stat-sub">入金済み・未発送</div></button>
       </div>
-      <div class="ad-stats" style="margin-top:10px;grid-template-columns:1fr 1fr">
-        <div class="ad-stat"><div class="ad-stat-label">今月の入金額</div><div class="ad-stat-value" id="st-month-paid">—</div><div class="ad-stat-sub">入金日が今月の注文（キャンセル除く）</div></div>
-        <button class="ad-stat" onclick="goOrders('refunded')"><div class="ad-stat-label">今月の返金額 <span>›</span></div><div class="ad-stat-value" id="st-month-refund">—</div><div class="ad-stat-sub" id="st-month-refund-sub"></div></button>
+      <div class="lx-stats" style="margin-top:10px;grid-template-columns:1fr 1fr">
+        <div class="lx-stat"><div class="lx-stat-label">今月の入金額</div><div class="lx-stat-value" id="st-month-paid">—</div><div class="lx-stat-sub">入金日が今月の注文（キャンセル除く）</div></div>
+        <button class="lx-stat" onclick="goOrders('refunded')"><div class="lx-stat-label">今月の返金額 <span>›</span></div><div class="lx-stat-value" id="st-month-refund">—</div><div class="lx-stat-sub" id="st-month-refund-sub"></div></button>
       </div>
 
-      <div class="ad-h2">在庫わずか（3点以下）</div>
-      <div class="ad-card" id="dash-lowstock"></div>
+      <div class="lx-h2">在庫わずか（3点以下）</div>
+      <div class="lx-card" id="dash-lowstock"></div>
 
-      <div class="ad-h2">最近の注文</div>
-      <div class="ad-card" id="dash-recent"></div>
+      <div class="lx-h2">最近の注文</div>
+      <div class="lx-card" id="dash-recent"></div>
     </section>
 
     <!-- 注文 -->
-    <section class="ad-view" id="av-orders">
-      <div class="ad-h1">注文</div>
-      <label class="ad-search"><svg><use href="#ai-search"/></svg>
+    <section class="lx-view" id="av-orders">
+      <div class="lx-h1">注文</div>
+      <label class="lx-search"><svg><use href="#ai-search"/></svg>
         <input type="search" id="of-q" placeholder="注文番号・お名前・メール・電話" oninput="renderOrders()" enterkeyhint="search">
       </label>
-      <div class="ad-chips" id="of-status"></div>
-      <details class="ad-filters" id="of-details">
-        <summary>期間・並び替え <span class="ad-filters-active" id="of-active"></span></summary>
-        <div class="ad-filter-grid">
-          <label class="ad-field"><span>期間の基準</span>
-            <select class="ad-select" id="of-datekey" onchange="renderOrders()">
+      <div class="lx-chips" id="of-status"></div>
+      <details class="lx-filters" id="of-details">
+        <summary>期間・並び替え <span class="lx-filters-active" id="of-active"></span></summary>
+        <div class="lx-filter-grid">
+          <label class="lx-field"><span>期間の基準</span>
+            <select class="lx-select" id="of-datekey" onchange="renderOrders()">
               <option value="created_at">注文日</option>
               <option value="paid_at">入金日</option>
               <option value="shipped_at">発送日</option>
             </select>
           </label>
-          <label class="ad-field"><span>並び替え</span>
-            <select class="ad-select" id="of-sort" onchange="renderOrders()">
+          <label class="lx-field"><span>並び替え</span>
+            <select class="lx-select" id="of-sort" onchange="renderOrders()">
               <option value="created_desc">注文日：新しい順</option>
               <option value="created_asc">注文日：古い順</option>
               <option value="paid_desc">入金日：新しい順</option>
@@ -505,36 +505,36 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
               <option value="amount_asc">金額：低い順</option>
             </select>
           </label>
-          <label class="ad-field"><span>開始日</span><input type="date" class="ad-input" id="of-from" onchange="renderOrders()"></label>
-          <label class="ad-field"><span>終了日</span><input type="date" class="ad-input" id="of-to" onchange="renderOrders()"></label>
-          <div class="ad-field full" style="flex-direction:row;gap:8px;flex-wrap:wrap">
-            <button class="ad-btn sub sm" onclick="setOrderPeriod('thisMonth')">今月</button>
-            <button class="ad-btn sub sm" onclick="setOrderPeriod('lastMonth')">先月</button>
-            <button class="ad-btn sub sm" onclick="setOrderPeriod('thisYear')">今年</button>
-            <button class="ad-btn sub sm" onclick="setOrderPeriod('clear')">期間をクリア</button>
+          <label class="lx-field"><span>開始日</span><input type="date" class="lx-input" id="of-from" onchange="renderOrders()"></label>
+          <label class="lx-field"><span>終了日</span><input type="date" class="lx-input" id="of-to" onchange="renderOrders()"></label>
+          <div class="lx-field full" style="flex-direction:row;gap:8px;flex-wrap:wrap">
+            <button class="lx-btn sub sm" onclick="setOrderPeriod('thisMonth')">今月</button>
+            <button class="lx-btn sub sm" onclick="setOrderPeriod('lastMonth')">先月</button>
+            <button class="lx-btn sub sm" onclick="setOrderPeriod('thisYear')">今年</button>
+            <button class="lx-btn sub sm" onclick="setOrderPeriod('clear')">期間をクリア</button>
           </div>
         </div>
       </details>
-      <div class="ad-summary">
+      <div class="lx-summary">
         <span><strong id="of-count">0</strong> 件 ／ 合計 <strong id="of-total">¥0</strong></span>
-        <div class="ad-actions-row">
-          <button class="ad-btn sub sm" onclick="exportOrdersCsv('accounting')"><svg><use href="#ai-download"/></svg>経理用CSV</button>
-          <button class="ad-btn sub sm" onclick="exportOrdersCsv('shipping')"><svg><use href="#ai-download"/></svg>発送用CSV</button>
+        <div class="lx-actions-row">
+          <button class="lx-btn sub sm" onclick="exportOrdersCsv('accounting')"><svg><use href="#ai-download"/></svg>経理用CSV</button>
+          <button class="lx-btn sub sm" onclick="exportOrdersCsv('shipping')"><svg><use href="#ai-download"/></svg>発送用CSV</button>
         </div>
       </div>
-      <div class="ad-list ad-orders-grid" id="orders-list"></div>
+      <div class="lx-list lx-orders-grid" id="orders-list"></div>
     </section>
 
     <!-- 商品 -->
-    <section class="ad-view" id="av-products">
-      <div class="ad-h1">商品</div>
-      <label class="ad-search"><svg><use href="#ai-search"/></svg>
+    <section class="lx-view" id="av-products">
+      <div class="lx-h1">商品</div>
+      <label class="lx-search"><svg><use href="#ai-search"/></svg>
         <input type="search" id="pf-q" placeholder="商品名で検索" oninput="renderProducts()" enterkeyhint="search">
       </label>
-      <div class="ad-chips" id="pf-cats"></div>
-      <div class="ad-summary">
+      <div class="lx-chips" id="pf-cats"></div>
+      <div class="lx-summary">
         <span><strong id="pf-count">0</strong> 件</span>
-        <select class="ad-select" id="pf-sort" onchange="renderProducts()" style="width:auto;height:36px;font-size:13px">
+        <select class="lx-select" id="pf-sort" onchange="renderProducts()" style="width:auto;height:36px;font-size:13px">
           <option value="new">登録が新しい順</option>
           <option value="old">登録が古い順</option>
           <option value="stock_asc">在庫が少ない順</option>
@@ -544,24 +544,24 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
           <option value="name">名前順</option>
         </select>
       </div>
-      <div class="ad-list ad-products-grid" id="products-list"></div>
+      <div class="lx-list lx-products-grid" id="products-list"></div>
     </section>
 
     <!-- 設定 -->
-    <section class="ad-view" id="av-settings">
-      <div class="ad-h1">設定</div>
+    <section class="lx-view" id="av-settings">
+      <div class="lx-h1">設定</div>
 
-      <div class="ad-h2">カテゴリ</div>
-      <div class="ad-sec">
+      <div class="lx-h2">カテゴリ</div>
+      <div class="lx-sec">
         <div id="cat-list"></div>
         <div style="display:flex;gap:8px;margin-top:12px">
-          <input type="text" class="ad-input" id="cat-new" placeholder="新しいカテゴリ名" maxlength="40" onkeydown="if(event.key==='Enter')addCategory()">
-          <button class="ad-btn" onclick="addCategory()" style="flex-shrink:0">追加</button>
+          <input type="text" class="lx-input" id="cat-new" placeholder="新しいカテゴリ名" maxlength="40" onkeydown="if(event.key==='Enter')addCategory()">
+          <button class="lx-btn" onclick="addCategory()" style="flex-shrink:0">追加</button>
         </div>
-        <div class="ad-note">名前を変えると、そのカテゴリの商品もまとめて変更されます。商品が登録されているカテゴリは削除できません。</div>
+        <div class="lx-note">名前を変えると、そのカテゴリの商品もまとめて変更されます。商品が登録されているカテゴリは削除できません。</div>
       </div>
 
-      <div class="ad-sec">
+      <div class="lx-sec">
         <div class="admin-section-divider">振込先口座</div>
         <div class="admin-form-group"><label class="admin-form-label">銀行名</label><input type="text" class="admin-form-input" id="s-bank-name"></div>
         <div class="admin-form-group"><label class="admin-form-label">支店名</label><input type="text" class="admin-form-input" id="s-bank-branch"></div>
@@ -578,7 +578,7 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
           <div style="display:flex;align-items:center;gap:10px"><input type="number" class="admin-form-input" id="s-auto-cancel-days" min="0" max="90" inputmode="numeric" style="max-width:120px"><span style="font-size:13px;color:var(--ink-2)">日</span></div>
         </div>
         <div class="admin-form-note">1時間ごとに自動で確認し、期限を過ぎた未入金の注文をキャンセルして在庫を戻します。<br>注文完了画面のお振込期限にもこの日数が表示されます。</div>
-        <button type="button" class="ad-btn sub sm" onclick="runAutoCancelNow()" style="margin-bottom:20px">今すぐ確認して実行</button>
+        <button type="button" class="lx-btn sub sm" onclick="runAutoCancelNow()" style="margin-bottom:20px">今すぐ確認して実行</button>
 
         <div class="admin-section-divider">管理者設定</div>
         <div class="admin-form-group"><label class="admin-form-label">通知先メール</label><input type="email" class="admin-form-input" id="s-admin-email"></div>
@@ -591,90 +591,90 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
         <div class="admin-form-group"><label class="admin-form-label">件名</label><input type="text" class="admin-form-input" id="s-email-subject"></div>
         <div class="admin-form-group"><label class="admin-form-label">挨拶文（注文内容の前）</label><textarea class="admin-form-input" id="s-email-greeting" rows="4"></textarea></div>
         <div class="admin-form-group"><label class="admin-form-label">締め文（振込先の後）</label><textarea class="admin-form-input" id="s-email-closing" rows="4"></textarea></div>
-        <button class="ad-btn block" onclick="saveSettings()" id="btn-save-settings">設定を保存</button>
+        <button class="lx-btn block" onclick="saveSettings()" id="btn-save-settings">設定を保存</button>
       </div>
 
-      <div class="ad-sec">
+      <div class="lx-sec">
         <div class="admin-section-divider">パスワード変更</div>
         <div class="admin-form-group"><label class="admin-form-label">現在のパスワード</label><input type="password" class="admin-form-input" id="s-current-pw" autocomplete="current-password"></div>
         <div class="admin-form-group"><label class="admin-form-label">新しいパスワード（6文字以上）</label><input type="password" class="admin-form-input" id="s-new-pw" autocomplete="new-password"></div>
         <div class="admin-form-group"><label class="admin-form-label">新しいパスワード（確認）</label><input type="password" class="admin-form-input" id="s-confirm-pw" autocomplete="new-password"></div>
-        <button class="ad-btn sub block" onclick="savePassword()">パスワードを変更する</button>
+        <button class="lx-btn sub block" onclick="savePassword()">パスワードを変更する</button>
       </div>
 
-      <div class="ad-sec">
+      <div class="lx-sec">
         <div class="admin-section-divider">ログアウト</div>
-        <button class="ad-btn danger block" onclick="if(confirm('ログアウトしますか？'))adminLogout()">ログアウトする</button>
+        <button class="lx-btn danger block" onclick="if(confirm('ログアウトしますか？'))adminLogout()">ログアウトする</button>
       </div>
     </section>
   </main>
 
-  <button class="ad-fab" id="ad-fab" onclick="openProductSheet()"><svg><use href="#ai-plus"/></svg>商品を登録</button>
+  <button class="lx-fab" id="lx-fab" onclick="openProductSheet()"><svg><use href="#ai-plus"/></svg>商品を登録</button>
 
-  <nav class="ad-tabbar" aria-label="管理メニュー">
-    <button class="ad-tab active" data-view="home" onclick="switchAdmin('home')"><svg><use href="#ai-home"/></svg>ホーム</button>
-    <button class="ad-tab" data-view="orders" onclick="switchAdmin('orders')"><svg><use href="#ai-orders"/></svg>注文<span class="ad-tab-badge" id="tab-badge-orders"></span></button>
-    <button class="ad-tab" data-view="products" onclick="switchAdmin('products')"><svg><use href="#ai-products"/></svg>商品</button>
-    <button class="ad-tab" data-view="settings" onclick="switchAdmin('settings')"><svg><use href="#ai-settings"/></svg>設定</button>
+  <nav class="lx-tabbar" aria-label="管理メニュー">
+    <button class="lx-tab active" data-view="home" onclick="switchAdmin('home')"><svg><use href="#ai-home"/></svg>ホーム</button>
+    <button class="lx-tab" data-view="orders" onclick="switchAdmin('orders')"><svg><use href="#ai-orders"/></svg>注文<span class="lx-tab-badge" id="tab-badge-orders"></span></button>
+    <button class="lx-tab" data-view="products" onclick="switchAdmin('products')"><svg><use href="#ai-products"/></svg>商品</button>
+    <button class="lx-tab" data-view="settings" onclick="switchAdmin('settings')"><svg><use href="#ai-settings"/></svg>設定</button>
   </nav>
 </div>
 
 <!-- 注文詳細シート -->
-<div class="ad-sheet-bg" id="order-sheet" onclick="if(event.target===this)closeSheet('order-sheet')">
-  <div class="ad-sheet" role="dialog" aria-modal="true" aria-labelledby="os-title">
-    <div class="ad-sheet-head">
-      <div><div class="ad-sheet-title" id="os-title">注文詳細</div><div class="ad-sheet-sub" id="os-sub"></div></div>
-      <button class="ad-icon-btn" onclick="closeSheet('order-sheet')" aria-label="閉じる" style="font-size:24px">×</button>
+<div class="lx-sheet-bg" id="order-sheet" onclick="if(event.target===this)closeSheet('order-sheet')">
+  <div class="lx-sheet" role="dialog" aria-modal="true" aria-labelledby="os-title">
+    <div class="lx-sheet-head">
+      <div><div class="lx-sheet-title" id="os-title">注文詳細</div><div class="lx-sheet-sub" id="os-sub"></div></div>
+      <button class="lx-icon-btn" onclick="closeSheet('order-sheet')" aria-label="閉じる" style="font-size:24px">×</button>
     </div>
     <div id="os-body"></div>
   </div>
 </div>
 
 <!-- 商品編集シート -->
-<div class="ad-sheet-bg" id="product-sheet" onclick="if(event.target===this)closeSheet('product-sheet')">
-  <div class="ad-sheet" role="dialog" aria-modal="true" aria-labelledby="ps-title">
-    <div class="ad-sheet-head">
-      <div class="ad-sheet-title" id="ps-title">商品を登録</div>
-      <button class="ad-icon-btn" onclick="closeSheet('product-sheet')" aria-label="閉じる" style="font-size:24px">×</button>
+<div class="lx-sheet-bg" id="product-sheet" onclick="if(event.target===this)closeSheet('product-sheet')">
+  <div class="lx-sheet" role="dialog" aria-modal="true" aria-labelledby="ps-title">
+    <div class="lx-sheet-head">
+      <div class="lx-sheet-title" id="ps-title">商品を登録</div>
+      <button class="lx-icon-btn" onclick="closeSheet('product-sheet')" aria-label="閉じる" style="font-size:24px">×</button>
     </div>
-    <div class="ad-sec">
-      <div class="ad-sec-title">商品画像 <span>1枚目がメイン画像</span></div>
-      <div class="ad-imgs" id="ps-imgs"></div>
-      <div class="ad-drop" id="ps-drop" onclick="document.getElementById('ps-file').click()">
+    <div class="lx-sec">
+      <div class="lx-sec-title">商品画像 <span>1枚目がメイン画像</span></div>
+      <div class="lx-imgs" id="ps-imgs"></div>
+      <div class="lx-drop" id="ps-drop" onclick="document.getElementById('ps-file').click()">
         <svg><use href="#ai-upload"/></svg>
         タップして画像を選択<br><span style="font-size:11px">PCはここにドラッグ＆ドロップもOK（自動で軽量化します）</span>
       </div>
       <input type="file" id="ps-file" accept="image/*" multiple hidden onchange="addProductFiles(this.files);this.value=''">
     </div>
-    <div class="ad-sec">
-      <label class="ad-field" style="margin-bottom:12px"><span>商品名 *</span><input type="text" class="ad-input" id="ps-name" maxlength="120"></label>
-      <div class="ad-form-grid">
-        <label class="ad-field"><span>カテゴリ *</span><select class="ad-select" id="ps-category"></select></label>
-        <label class="ad-field"><span>価格（税込・円）*</span><input type="number" class="ad-input" id="ps-price" min="0" inputmode="numeric" oninput="previewSale()"></label>
-        <label class="ad-field"><span>在庫数 *</span><input type="number" class="ad-input" id="ps-stock" min="0" inputmode="numeric"></label>
-        <div class="ad-field"><span>公開設定</span>
-          <label class="ad-switch" style="height:44px"><input type="checkbox" id="ps-published" checked><i></i><span id="ps-published-label">公開</span></label>
+    <div class="lx-sec">
+      <label class="lx-field" style="margin-bottom:12px"><span>商品名 *</span><input type="text" class="lx-input" id="ps-name" maxlength="120"></label>
+      <div class="lx-form-grid">
+        <label class="lx-field"><span>カテゴリ *</span><select class="lx-select" id="ps-category"></select></label>
+        <label class="lx-field"><span>価格（税込・円）*</span><input type="number" class="lx-input" id="ps-price" min="0" inputmode="numeric" oninput="previewSale()"></label>
+        <label class="lx-field"><span>在庫数 *</span><input type="number" class="lx-input" id="ps-stock" min="0" inputmode="numeric"></label>
+        <div class="lx-field"><span>公開設定</span>
+          <label class="lx-switch" style="height:44px"><input type="checkbox" id="ps-published" checked><i></i><span id="ps-published-label">公開</span></label>
         </div>
       </div>
-      <div class="ad-sale-box">
-        <div class="ad-sec-title">セール <span style="color:var(--ink-3)">空欄ならセールなし</span></div>
-        <div class="ad-form-grid">
-          <label class="ad-field"><span>セール価格（税込・円）</span><input type="number" class="ad-input" id="ps-sale-price" min="0" inputmode="numeric" placeholder="例：4980" oninput="previewSale()"></label>
-          <label class="ad-field"><span>セール終了（任意）</span><input type="datetime-local" class="ad-input" id="ps-sale-ends" oninput="previewSale()"></label>
+      <div class="lx-sale-box">
+        <div class="lx-sec-title">セール <span style="color:var(--ink-3)">空欄ならセールなし</span></div>
+        <div class="lx-form-grid">
+          <label class="lx-field"><span>セール価格（税込・円）</span><input type="number" class="lx-input" id="ps-sale-price" min="0" inputmode="numeric" placeholder="例：4980" oninput="previewSale()"></label>
+          <label class="lx-field"><span>セール終了（任意）</span><input type="datetime-local" class="lx-input" id="ps-sale-ends" oninput="previewSale()"></label>
         </div>
-        <div class="ad-sale-preview" id="ps-sale-preview"></div>
-        <button type="button" class="ad-link-btn" onclick="clearSale()">セールを解除する</button>
+        <div class="lx-sale-preview" id="ps-sale-preview"></div>
+        <button type="button" class="lx-link-btn" onclick="clearSale()">セールを解除する</button>
       </div>
-      <label class="ad-field" style="margin-top:12px"><span>商品説明</span><textarea class="ad-textarea" id="ps-desc" rows="5"></textarea></label>
+      <label class="lx-field" style="margin-top:12px"><span>商品説明</span><textarea class="lx-textarea" id="ps-desc" rows="5"></textarea></label>
     </div>
-    <button class="ad-btn block" id="ps-save" onclick="saveProductSheet()">保存する</button>
-    <button class="ad-btn danger block" id="ps-delete" style="margin-top:10px" onclick="deleteProductFromSheet()">この商品を削除</button>
+    <button class="lx-btn block" id="ps-save" onclick="saveProductSheet()">保存する</button>
+    <button class="lx-btn danger block" id="ps-delete" style="margin-top:10px" onclick="deleteProductFromSheet()">この商品を削除</button>
   </div>
 </div>
 
 
-<script src="/config.js?v=20261018b"></script>
-<script src="/common.js?v=20261018b"></script>
+<script src="/config.js?v=20261018c"></script>
+<script src="/common.js?v=20261018c"></script>
 <script>
 // ══════════════════════════════════════
 //  管理画面
@@ -868,17 +868,17 @@ function orderBucket(o) {
   return 'shipped';
 }
 function refundPill(o) {
-  if (o.refund_status === 'full') return '<span class="ad-pill refund">返金済み</span>';
-  if (o.refund_status === 'partial') return '<span class="ad-pill refund">一部返金</span>';
+  if (o.refund_status === 'full') return '<span class="lx-pill refund">返金済み</span>';
+  if (o.refund_status === 'partial') return '<span class="lx-pill refund">一部返金</span>';
   return '';
 }
 function orderPills(o) {
   if (o.is_cancelled) return (o.cancel_reason === 'auto'
-    ? '<span class="ad-pill cancel">キャンセル</span><span class="ad-pill autocancel">未入金のため自動</span>'
-    : '<span class="ad-pill cancel">キャンセル</span>') + refundPill(o);
-  return (isPaid(o) ? '<span class="ad-pill paid">入金済み</span>' : '<span class="ad-pill unpaid">未入金</span>')
-    + (isShipped(o) ? '<span class="ad-pill shipped">発送済み</span>'
-       : (isPaid(o) ? '<span class="ad-pill toship">発送待ち</span>' : ''))
+    ? '<span class="lx-pill cancel">キャンセル</span><span class="lx-pill autocancel">未入金のため自動</span>'
+    : '<span class="lx-pill cancel">キャンセル</span>') + refundPill(o);
+  return (isPaid(o) ? '<span class="lx-pill paid">入金済み</span>' : '<span class="lx-pill unpaid">未入金</span>')
+    + (isShipped(o) ? '<span class="lx-pill shipped">発送済み</span>'
+       : (isPaid(o) ? '<span class="lx-pill toship">発送待ち</span>' : ''))
     + refundPill(o);
 }
 
@@ -945,9 +945,9 @@ function renderAllAdmin() {
 }
 function switchAdmin(view) {
   AD.view = view;
-  document.querySelectorAll('.ad-view').forEach(v => v.classList.toggle('active', v.id === 'av-' + view));
-  document.querySelectorAll('.ad-tab').forEach(t => t.classList.toggle('active', t.dataset.view === view));
-  document.getElementById('ad-fab').classList.toggle('show', view === 'products');
+  document.querySelectorAll('.lx-view').forEach(v => v.classList.toggle('active', v.id === 'av-' + view));
+  document.querySelectorAll('.lx-tab').forEach(t => t.classList.toggle('active', t.dataset.view === view));
+  document.getElementById('lx-fab').classList.toggle('show', view === 'products');
   window.scrollTo(0, 0);
   if (view === 'home') renderDashboard();
   if (view === 'orders') { renderOrderChips(); renderOrders(); }
@@ -984,8 +984,8 @@ function renderDashboard() {
   document.getElementById('st-month-refund').textContent = yen(refundMonth.reduce((s, r) => s + Number(r.amount || 0), 0));
   document.getElementById('st-month-refund-sub').textContent = refundMonth.length
     ? `${refundMonth.length}件${refundMonth.some(r => r.status === 'pending') ? '（手続き中あり）' : ''}` : '今月の返金はありません';
-  document.getElementById('st-unpaid-card').className = 'ad-stat ' + (unpaid.length ? 'alert' : 'ok');
-  document.getElementById('st-toship-card').className = 'ad-stat ' + (toship.length ? 'alert' : 'ok');
+  document.getElementById('st-unpaid-card').className = 'lx-stat ' + (unpaid.length ? 'alert' : 'ok');
+  document.getElementById('st-toship-card').className = 'lx-stat ' + (toship.length ? 'alert' : 'ok');
 
   const badge = document.getElementById('tab-badge-orders');
   const pending = unpaid.length + toship.length;
@@ -994,18 +994,18 @@ function renderDashboard() {
 
   const low = AD.products.filter(p => p.stock <= 3).sort((a, b) => a.stock - b.stock).slice(0, 8);
   document.getElementById('dash-lowstock').innerHTML = low.length
-    ? low.map(p => `<button class="ad-mini-row" onclick="openProductSheet('${p.id}')">
+    ? low.map(p => `<button class="lx-mini-row" onclick="openProductSheet('${p.id}')">
         <span>${esc(p.name)}${p.is_published ? '' : ' <span style="color:var(--ink-4);font-size:11px">（非公開）</span>'}</span>
         <b style="color:${p.stock <= 0 ? 'var(--error)' : 'var(--gold)'}">${p.stock <= 0 ? '在庫なし' : '残り' + p.stock}</b></button>`).join('')
-    : '<div class="ad-empty">在庫が少ない商品はありません</div>';
+    : '<div class="lx-empty">在庫が少ない商品はありません</div>';
 
   const recent = AD.orders.slice(0, 5);
   document.getElementById('dash-recent').innerHTML = recent.length
-    ? recent.map(o => `<button class="ad-mini-row" onclick="openOrderSheet('${o.id}')">
+    ? recent.map(o => `<button class="lx-mini-row" onclick="openOrderSheet('${o.id}')">
         <span style="min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${esc(o.customer_name)}
           <span style="color:var(--ink-3);font-size:11px;margin-left:6px">${fmtShort(o.created_at)}</span></span>
         <span style="display:flex;gap:8px;align-items:center;flex-shrink:0"><b>${yen(o.total_amount)}</b>${orderPills(o).split('</span>')[0]}</span></span></button>`).join('')
-    : '<div class="ad-empty">まだ注文はありません</div>';
+    : '<div class="lx-empty">まだ注文はありません</div>';
 }
 
 // ══════════════════════════════════════
@@ -1022,7 +1022,7 @@ function renderOrderChips() {
   const counts = { all: AD.orders.length, unpaid: 0, toship: 0, shipped: 0, cancelled: 0, refunded: 0 };
   AD.orders.forEach(o => { counts[orderBucket(o)]++; if (o.refund_status) counts.refunded++; });
   document.getElementById('of-status').innerHTML = ORDER_TABS.map(([k, label]) =>
-    `<button class="ad-chip ${AD.orderStatus === k ? 'active' : ''}" onclick="AD.orderStatus='${k}';renderOrderChips();renderOrders()">${label}<b>${counts[k]}</b></button>`
+    `<button class="lx-chip ${AD.orderStatus === k ? 'active' : ''}" onclick="AD.orderStatus='${k}';renderOrderChips();renderOrders()">${label}<b>${counts[k]}</b></button>`
   ).join('');
 }
 function setOrderPeriod(kind) {
@@ -1088,12 +1088,12 @@ function renderOrders() {
     ? `（${keyLabel} ${fromV ? fromV.replace(/-/g, '/') : ''}〜${toV ? toV.replace(/-/g, '/') : ''}）` : '';
 
   document.getElementById('orders-list').innerHTML = list.length
-    ? list.map(o => `<button class="ad-order ${o.is_cancelled ? 'cancelled' : ''}" onclick="openOrderSheet('${o.id}')">
-        <div class="ad-order-top"><span class="ad-order-num">${esc(o.order_number)}</span><span>${fmtShort(o.created_at)}</span></div>
-        <div class="ad-order-mid"><span class="ad-order-name">${esc(o.customer_name)} 様</span><span class="ad-order-amount">${yen(o.total_amount)}</span></div>
-        <div class="ad-pills">${orderPills(o)}</div>
+    ? list.map(o => `<button class="lx-order ${o.is_cancelled ? 'cancelled' : ''}" onclick="openOrderSheet('${o.id}')">
+        <div class="lx-order-top"><span class="lx-order-num">${esc(o.order_number)}</span><span>${fmtShort(o.created_at)}</span></div>
+        <div class="lx-order-mid"><span class="lx-order-name">${esc(o.customer_name)} 様</span><span class="lx-order-amount">${yen(o.total_amount)}</span></div>
+        <div class="lx-pills">${orderPills(o)}</div>
       </button>`).join('')
-    : '<div class="ad-empty" style="grid-column:1/-1">該当する注文はありません</div>';
+    : '<div class="lx-empty" style="grid-column:1/-1">該当する注文はありません</div>';
 }
 
 function patchOrder(row) {
@@ -1108,7 +1108,7 @@ function refreshOrderViews(id) {
 async function openOrderSheet(id, keepScroll = false) {
   const o = AD.orders.find(x => x.id === id);
   if (!o) { showToast('注文が見つかりません'); return; }
-  const sheet = document.querySelector('#order-sheet .ad-sheet');
+  const sheet = document.querySelector('#order-sheet .lx-sheet');
   const scroll = sheet.scrollTop;
   document.getElementById('os-title').textContent = o.customer_name + ' 様';
   document.getElementById('os-sub').textContent = `${o.order_number}　${fmtDT(o.created_at)}`;
@@ -1124,56 +1124,56 @@ async function openOrderSheet(id, keepScroll = false) {
 
   let shipHtml;
   if (o.is_cancelled) {
-    shipHtml = `<div class="ad-note" style="margin:0">${o.cancel_reason === 'auto'
+    shipHtml = `<div class="lx-note" style="margin:0">${o.cancel_reason === 'auto'
       ? '未入金のまま期限を過ぎたため、自動でキャンセルされました' : 'キャンセル済みの注文です'}${o.cancelled_at ? '（' + fmtDT(o.cancelled_at) + '）' : ''}。</div>`;
   } else if (shipped) {
     shipHtml = `
-      <div class="ad-kv"><span>発送日</span><span>${fmtDT(o.shipped_at) || '—'}</span><span></span></div>
-      <div class="ad-kv"><span>配送業者</span><span>${esc(CARRIERS[o.carrier]?.name || '—')}</span><span></span></div>
-      <div class="ad-kv"><span>追跡番号</span><span>${o.tracking_number ? (trackUrl ? `<a href="${trackUrl}" target="_blank" rel="noopener">${esc(o.tracking_number)}</a>` : esc(o.tracking_number)) : '—'}</span><span></span></div>
-      <div class="ad-kv"><span>発送メール</span><span>${o.shipping_email_sent_at ? '送信済み（' + fmtShort(o.shipping_email_sent_at) + '）' : '未送信'}</span><span></span></div>
-      <div class="ad-actions-row" style="margin-top:12px">
-        <button class="ad-btn sub sm" onclick="sendShipMail('${o.id}')">発送メールを${o.shipping_email_sent_at ? '再送' : '送信'}</button>
-        <button class="ad-btn sub sm" onclick="unshipOrder('${o.id}')">未発送に戻す</button>
+      <div class="lx-kv"><span>発送日</span><span>${fmtDT(o.shipped_at) || '—'}</span><span></span></div>
+      <div class="lx-kv"><span>配送業者</span><span>${esc(CARRIERS[o.carrier]?.name || '—')}</span><span></span></div>
+      <div class="lx-kv"><span>追跡番号</span><span>${o.tracking_number ? (trackUrl ? `<a href="${trackUrl}" target="_blank" rel="noopener">${esc(o.tracking_number)}</a>` : esc(o.tracking_number)) : '—'}</span><span></span></div>
+      <div class="lx-kv"><span>発送メール</span><span>${o.shipping_email_sent_at ? '送信済み（' + fmtShort(o.shipping_email_sent_at) + '）' : '未送信'}</span><span></span></div>
+      <div class="lx-actions-row" style="margin-top:12px">
+        <button class="lx-btn sub sm" onclick="sendShipMail('${o.id}')">発送メールを${o.shipping_email_sent_at ? '再送' : '送信'}</button>
+        <button class="lx-btn sub sm" onclick="unshipOrder('${o.id}')">未発送に戻す</button>
       </div>`;
   } else {
     shipHtml = `
-      <div class="ad-form-grid">
-        <label class="ad-field"><span>配送業者</span><select class="ad-select" id="os-carrier">${carrierOpts}</select></label>
-        <label class="ad-field"><span>追跡番号</span><input class="ad-input" id="os-tracking" inputmode="numeric" autocomplete="off" value="${esc(o.tracking_number || '')}" placeholder="例：1234-5678-9012"></label>
+      <div class="lx-form-grid">
+        <label class="lx-field"><span>配送業者</span><select class="lx-select" id="os-carrier">${carrierOpts}</select></label>
+        <label class="lx-field"><span>追跡番号</span><input class="lx-input" id="os-tracking" inputmode="numeric" autocomplete="off" value="${esc(o.tracking_number || '')}" placeholder="例：1234-5678-9012"></label>
       </div>
-      <label class="ad-check"><input type="checkbox" id="os-sendmail" checked>お客様に発送メールを送る</label>
-      <button class="ad-btn block" onclick="shipOrder('${o.id}')">発送完了にする</button>
-      ${paid ? '' : '<div class="ad-note">※ まだ未入金の注文です。</div>'}`;
+      <label class="lx-check"><input type="checkbox" id="os-sendmail" checked>お客様に発送メールを送る</label>
+      <button class="lx-btn block" onclick="shipOrder('${o.id}')">発送完了にする</button>
+      ${paid ? '' : '<div class="lx-note">※ まだ未入金の注文です。</div>'}`;
   }
 
   document.getElementById('os-body').innerHTML = `
-    <div class="ad-sec">
-      <div class="ad-sec-title">入金 <span>${o.paid_at ? '入金日 ' + fmtDT(o.paid_at) : ''}</span></div>
-      <div class="ad-seg">
+    <div class="lx-sec">
+      <div class="lx-sec-title">入金 <span>${o.paid_at ? '入金日 ' + fmtDT(o.paid_at) : ''}</span></div>
+      <div class="lx-seg">
         <button class="${!paid ? 'on-unpaid' : ''}" ${o.is_cancelled ? 'disabled' : ''} onclick="setPaid('${o.id}', false)">未入金</button>
         <button class="${paid ? 'on-paid' : ''}" ${o.is_cancelled ? 'disabled' : ''} onclick="setPaid('${o.id}', true)">入金済み</button>
       </div>
     </div>
-    <div class="ad-sec">
-      <div class="ad-sec-title">発送</div>
+    <div class="lx-sec">
+      <div class="lx-sec-title">発送</div>
       ${shipHtml}
     </div>
-    <div class="ad-sec">
-      <div class="ad-sec-title">お客様</div>
-      <div class="ad-kv"><span>お名前</span><span>${esc(o.customer_name)} 様</span><button class="ad-copy" onclick="copyText(${esc(JSON.stringify(o.customer_name))})">コピー</button></div>
-      <div class="ad-kv"><span>住所</span><span>${esc(addressText)}</span><button class="ad-copy" onclick="copyText(${esc(JSON.stringify(addressText))})">コピー</button></div>
-      <div class="ad-kv"><span>電話</span><span>${o.customer_phone ? `<a href="tel:${esc(o.customer_phone)}">${esc(o.customer_phone)}</a>` : '—'}</span><span></span></div>
-      <div class="ad-kv"><span>メール</span><span><a href="mailto:${esc(o.customer_email)}">${esc(o.customer_email)}</a></span><button class="ad-copy" onclick="copyText(${esc(JSON.stringify(o.customer_email))})">コピー</button></div>
-      ${o.note ? `<div class="ad-kv"><span>備考</span><span style="white-space:pre-wrap">${esc(o.note)}</span><span></span></div>` : ''}
+    <div class="lx-sec">
+      <div class="lx-sec-title">お客様</div>
+      <div class="lx-kv"><span>お名前</span><span>${esc(o.customer_name)} 様</span><button class="lx-copy" onclick="copyText(${esc(JSON.stringify(o.customer_name))})">コピー</button></div>
+      <div class="lx-kv"><span>住所</span><span>${esc(addressText)}</span><button class="lx-copy" onclick="copyText(${esc(JSON.stringify(addressText))})">コピー</button></div>
+      <div class="lx-kv"><span>電話</span><span>${o.customer_phone ? `<a href="tel:${esc(o.customer_phone)}">${esc(o.customer_phone)}</a>` : '—'}</span><span></span></div>
+      <div class="lx-kv"><span>メール</span><span><a href="mailto:${esc(o.customer_email)}">${esc(o.customer_email)}</a></span><button class="lx-copy" onclick="copyText(${esc(JSON.stringify(o.customer_email))})">コピー</button></div>
+      ${o.note ? `<div class="lx-kv"><span>備考</span><span style="white-space:pre-wrap">${esc(o.note)}</span><span></span></div>` : ''}
     </div>
-    <div class="ad-sec">
-      <div class="ad-sec-title">注文内容</div>
-      ${(items || []).map(i => `<div class="ad-item-row"><span>${esc(i.product_name)} × ${i.quantity}</span><span>${yen(i.price * i.quantity)}</span></div>`).join('')}
-      <div class="ad-item-total"><span>合計（税込）</span><b>${yen(o.total_amount)}</b></div>
+    <div class="lx-sec">
+      <div class="lx-sec-title">注文内容</div>
+      ${(items || []).map(i => `<div class="lx-item-row"><span>${esc(i.product_name)} × ${i.quantity}</span><span>${yen(i.price * i.quantity)}</span></div>`).join('')}
+      <div class="lx-item-total"><span>合計（税込）</span><b>${yen(o.total_amount)}</b></div>
     </div>
     ${(paid || AD.refunds.some(r => r.order_id === o.id)) ? refundSectionHtml(o, items || []) : ''}
-    <button class="ad-btn ${o.is_cancelled ? 'sub' : 'danger'} block" onclick="toggleCancel('${o.id}', ${o.is_cancelled})">
+    <button class="lx-btn ${o.is_cancelled ? 'sub' : 'danger'} block" onclick="toggleCancel('${o.id}', ${o.is_cancelled})">
       ${o.is_cancelled ? 'キャンセルを解除する' : 'この注文をキャンセルする'}</button>`;
   if (keepScroll) sheet.scrollTop = scroll;
 }
@@ -1195,56 +1195,56 @@ function refundSectionHtml(o, items) {
   }
   const d = refundDraft;
   const history = list.length ? list.map(r => `
-    <div class="ad-refund-item ${r.status}">
-      <div class="ad-refund-head"><b>${yen(r.amount)}</b><span class="ad-rstat ${r.status}">${REFUND_STATUS[r.status] || r.status}</span></div>
+    <div class="lx-refund-item ${r.status}">
+      <div class="lx-refund-head"><b>${yen(r.amount)}</b><span class="lx-rstat ${r.status}">${REFUND_STATUS[r.status] || r.status}</span></div>
       <div>${fmtDT(r.created_at)}　${esc(REFUND_METHODS[r.method] || r.method)}${r.reason ? '　' + esc(r.reason) : ''}</div>
       ${(r.restock || []).length ? `<div>在庫に戻した：${r.restock.map(x => `${esc(x.product_name)} ×${x.qty}`).join('、')}</div>` : ''}
       ${r.note ? `<div style="white-space:pre-wrap;color:var(--ink-3)">メモ：${esc(r.note)}</div>` : ''}
-      <div class="ad-actions-row" style="margin-top:8px">
-        ${r.status === 'pending' ? `<button class="ad-btn sub sm" onclick="setRefundStatus('${r.id}','completed')">完了にする</button>
-          <button class="ad-btn sub sm" onclick="setRefundStatus('${r.id}','failed')">失敗にする</button>` : ''}
-        ${r.status !== 'failed' ? `<button class="ad-btn sub sm" onclick="sendRefundMail('${o.id}','${r.id}')">${r.mail_sent_at ? 'お知らせを再送' : 'お知らせメールを送る'}</button>` : ''}
+      <div class="lx-actions-row" style="margin-top:8px">
+        ${r.status === 'pending' ? `<button class="lx-btn sub sm" onclick="setRefundStatus('${r.id}','completed')">完了にする</button>
+          <button class="lx-btn sub sm" onclick="setRefundStatus('${r.id}','failed')">失敗にする</button>` : ''}
+        ${r.status !== 'failed' ? `<button class="lx-btn sub sm" onclick="sendRefundMail('${o.id}','${r.id}')">${r.mail_sent_at ? 'お知らせを再送' : 'お知らせメールを送る'}</button>` : ''}
       </div>
       ${r.mail_sent_at ? `<div style="font-size:11px;color:var(--ink-3);margin-top:4px">お知らせ送信済み（${fmtShort(r.mail_sent_at)}）</div>` : ''}
-    </div>`).join('') : '<div class="ad-note" style="margin:0 0 8px">まだ返金はありません。</div>';
+    </div>`).join('') : '<div class="lx-note" style="margin:0 0 8px">まだ返金はありません。</div>';
 
   const restockable = items.filter(i => i.quantity - (i.restocked_qty || 0) > 0);
   const restockHtml = o.is_cancelled
-    ? '<div class="ad-note" style="margin:0">キャンセル済みの注文は、キャンセル時に在庫が戻っています。</div>'
+    ? '<div class="lx-note" style="margin:0">キャンセル済みの注文は、キャンセル時に在庫が戻っています。</div>'
     : restockable.length ? restockable.map(i => {
         const max = i.quantity - (i.restocked_qty || 0), v = d.restock[i.id] || 0;
-        return `<div class="ad-restock-row"><span>${esc(i.product_name)}<span style="color:var(--ink-3)">（最大${max}）</span></span>
-          <div class="ad-stepper"><button type="button" onclick="refundRestock('${o.id}','${i.id}',-1,${max})">−</button>
+        return `<div class="lx-restock-row"><span>${esc(i.product_name)}<span style="color:var(--ink-3)">（最大${max}）</span></span>
+          <div class="lx-stepper"><button type="button" onclick="refundRestock('${o.id}','${i.id}',-1,${max})">−</button>
           <input type="number" value="${v}" readonly aria-label="在庫に戻す数"><button type="button" onclick="refundRestock('${o.id}','${i.id}',1,${max})">＋</button></div></div>`;
-      }).join('') : '<div class="ad-note" style="margin:0">在庫に戻せる商品はありません。</div>';
+      }).join('') : '<div class="lx-note" style="margin:0">在庫に戻せる商品はありません。</div>';
 
-  return `<div class="ad-sec" id="refund-sec">
-    <div class="ad-sec-title">返金</div>
-    <div class="ad-refund-sum">
+  return `<div class="lx-sec" id="refund-sec">
+    <div class="lx-sec-title">返金</div>
+    <div class="lx-refund-sum">
       <div>返金済み（手続き中を含む）<b>${yen(o.refunded_amount || 0)}</b></div>
       <div>返金できる残り<b>${yen(remaining)}</b></div>
     </div>
     ${history}
     ${remaining > 0 && paid_(o) ? `
-      <button class="ad-btn sub block" onclick="toggleRefundForm('${o.id}')">${d.open ? '閉じる' : '返金を記録する'}</button>
-      <div class="ad-refund-form" ${d.open ? '' : 'hidden'}>
-        <label class="ad-field" style="margin-bottom:10px"><span>返金額（円）</span>
-          <div style="display:flex;gap:8px"><input type="number" class="ad-input" id="rf-amount" min="1" max="${remaining}" inputmode="numeric" value="${d.amount}" oninput="refundDraft.amount=parseInt(this.value,10)||0">
-          <button type="button" class="ad-btn sub sm" style="height:44px;flex-shrink:0" onclick="refundDraft.amount=${remaining};document.getElementById('rf-amount').value=${remaining}">残り全額</button></div></label>
-        <div class="ad-form-grid" style="margin-bottom:10px">
-          <label class="ad-field"><span>返金の方法</span><select class="ad-select" id="rf-method" onchange="refundDraft.method=this.value">
+      <button class="lx-btn sub block" onclick="toggleRefundForm('${o.id}')">${d.open ? '閉じる' : '返金を記録する'}</button>
+      <div class="lx-refund-form" ${d.open ? '' : 'hidden'}>
+        <label class="lx-field" style="margin-bottom:10px"><span>返金額（円）</span>
+          <div style="display:flex;gap:8px"><input type="number" class="lx-input" id="rf-amount" min="1" max="${remaining}" inputmode="numeric" value="${d.amount}" oninput="refundDraft.amount=parseInt(this.value,10)||0">
+          <button type="button" class="lx-btn sub sm" style="height:44px;flex-shrink:0" onclick="refundDraft.amount=${remaining};document.getElementById('rf-amount').value=${remaining}">残り全額</button></div></label>
+        <div class="lx-form-grid" style="margin-bottom:10px">
+          <label class="lx-field"><span>返金の方法</span><select class="lx-select" id="rf-method" onchange="refundDraft.method=this.value">
             ${['bank_transfer', 'other'].map(k => `<option value="${k}" ${d.method === k ? 'selected' : ''}>${REFUND_METHODS[k]}</option>`).join('')}</select></label>
-          <label class="ad-field"><span>理由</span><select class="ad-select" id="rf-reason" onchange="refundDraft.reason=this.value">
+          <label class="lx-field"><span>理由</span><select class="lx-select" id="rf-reason" onchange="refundDraft.reason=this.value">
             ${REFUND_REASONS.map(x => `<option ${d.reason === x ? 'selected' : ''}>${x}</option>`).join('')}</select></label>
         </div>
-        <div class="ad-field" style="margin-bottom:10px"><span>状態</span>
-          <div class="ad-seg small"><button type="button" class="${d.status === 'completed' ? 'on' : ''}" onclick="refundDraft.status='completed';openOrderSheet('${o.id}',true)">返金済み</button>
+        <div class="lx-field" style="margin-bottom:10px"><span>状態</span>
+          <div class="lx-seg small"><button type="button" class="${d.status === 'completed' ? 'on' : ''}" onclick="refundDraft.status='completed';openOrderSheet('${o.id}',true)">返金済み</button>
           <button type="button" class="${d.status === 'pending' ? 'on' : ''}" onclick="refundDraft.status='pending';openOrderSheet('${o.id}',true)">手続き中</button></div></div>
-        <div class="ad-field" style="margin-bottom:10px"><span>在庫に戻す（返品・未発送のとき）</span>${restockHtml}</div>
-        <label class="ad-field" style="margin-bottom:6px"><span>メモ（任意：返金先の口座など）</span><textarea class="ad-textarea" id="rf-note" rows="2" style="min-height:60px" oninput="refundDraft.note=this.value">${esc(d.note)}</textarea></label>
-        <label class="ad-check"><input type="checkbox" id="rf-mail" ${d.mail ? 'checked' : ''} onchange="refundDraft.mail=this.checked">お客様に返金のお知らせメールを送る</label>
-        <button class="ad-btn block" onclick="submitRefund('${o.id}')">この内容で返金を記録</button>
-        <div class="ad-note">※ ここでは記録のみ行います。お金の振り込みはご自身で行ってください。（KOMOJU導入後は、カード・PayPayはここから返金まで完了する予定です）</div>
+        <div class="lx-field" style="margin-bottom:10px"><span>在庫に戻す（返品・未発送のとき）</span>${restockHtml}</div>
+        <label class="lx-field" style="margin-bottom:6px"><span>メモ（任意：返金先の口座など）</span><textarea class="lx-textarea" id="rf-note" rows="2" style="min-height:60px" oninput="refundDraft.note=this.value">${esc(d.note)}</textarea></label>
+        <label class="lx-check"><input type="checkbox" id="rf-mail" ${d.mail ? 'checked' : ''} onchange="refundDraft.mail=this.checked">お客様に返金のお知らせメールを送る</label>
+        <button class="lx-btn block" onclick="submitRefund('${o.id}')">この内容で返金を記録</button>
+        <div class="lx-note">※ ここでは記録のみ行います。お金の振り込みはご自身で行ってください。（KOMOJU導入後は、カード・PayPayはここから返金まで完了する予定です）</div>
       </div>` : ''}
   </div>`;
 }
@@ -1519,12 +1519,12 @@ function renderProductChips() {
     : AD.products.filter(p => p.category === k).length;
   if (!keys.includes(AD.productCat)) AD.productCat = 'all';
   document.getElementById('pf-cats').innerHTML = keys.map(k =>
-    `<button class="ad-chip ${AD.productCat === k ? 'active' : ''}" data-key="${esc(k)}" onclick="AD.productCat=this.dataset.key;renderProductChips();renderProducts()">${k === 'all' ? 'すべて' : k === '__hidden' ? '非公開' : k === '__sale' ? 'セール中' : esc(k)}<b>${count(k)}</b></button>`
+    `<button class="lx-chip ${AD.productCat === k ? 'active' : ''}" data-key="${esc(k)}" onclick="AD.productCat=this.dataset.key;renderProductChips();renderProducts()">${k === 'all' ? 'すべて' : k === '__hidden' ? '非公開' : k === '__sale' ? 'セール中' : esc(k)}<b>${count(k)}</b></button>`
   ).join('');
 }
 function adminPriceHtml(p) {
   const si = saleInfo(p);
-  if (si) return `<s>${yen(p.price)}</s><b class="sale">${yen(si.price)}</b><span class="ad-sale-tag">SALE</span>`;
+  if (si) return `<s>${yen(p.price)}</s><b class="sale">${yen(si.price)}</b><span class="lx-sale-tag">SALE</span>`;
   if (p.sale_price !== null && p.sale_price !== undefined && p.sale_ends_at && new Date(p.sale_ends_at) <= new Date())
     return `<b>${yen(p.price)}</b> <span style="font-size:10px;color:var(--ink-4)">（セール終了）</span>`;
   return `<b>${yen(p.price)}</b>`;
@@ -1547,25 +1547,25 @@ function renderProducts() {
   document.getElementById('pf-count').textContent = list.length;
   document.getElementById('products-list').innerHTML = list.length
     ? list.map(p => `
-      <div class="ad-product ${p.is_published ? '' : 'unpublished'}">
-        <button class="ad-product-thumb" onclick="openProductSheet('${p.id}')" aria-label="${esc(p.name)}を編集">
+      <div class="lx-product ${p.is_published ? '' : 'unpublished'}">
+        <button class="lx-product-thumb" onclick="openProductSheet('${p.id}')" aria-label="${esc(p.name)}を編集">
           ${p.images?.[0] ? `<img src="${esc(p.images[0])}" alt="" loading="lazy">` : MARK}</button>
-        <div class="ad-product-body">
-          <button class="ad-product-name" onclick="openProductSheet('${p.id}')">${esc(p.name)}</button>
-          <div class="ad-product-meta">${adminPriceHtml(p)}　${esc(p.category)}</div>
-          <div class="ad-product-ctrl">
-            <div style="display:flex;align-items:center"><span class="ad-stock-label">在庫</span>
-              <div class="ad-stepper ${p.stock <= 3 ? 'low' : ''}" id="stp-${p.id}">
+        <div class="lx-product-body">
+          <button class="lx-product-name" onclick="openProductSheet('${p.id}')">${esc(p.name)}</button>
+          <div class="lx-product-meta">${adminPriceHtml(p)}　${esc(p.category)}</div>
+          <div class="lx-product-ctrl">
+            <div style="display:flex;align-items:center"><span class="lx-stock-label">在庫</span>
+              <div class="lx-stepper ${p.stock <= 3 ? 'low' : ''}" id="stp-${p.id}">
                 <button onclick="queueStock('${p.id}', -1)" aria-label="在庫を1減らす">−</button>
                 <input type="number" inputmode="numeric" min="0" value="${p.stock}" onchange="setStockTo('${p.id}', this.value)" aria-label="在庫数">
                 <button onclick="queueStock('${p.id}', 1)" aria-label="在庫を1増やす">＋</button>
               </div>
             </div>
-            <label class="ad-switch"><input type="checkbox" ${p.is_published ? 'checked' : ''} onchange="togglePublished('${p.id}', this.checked)"><i></i>${p.is_published ? '公開' : '非公開'}</label>
+            <label class="lx-switch"><input type="checkbox" ${p.is_published ? 'checked' : ''} onchange="togglePublished('${p.id}', this.checked)"><i></i>${p.is_published ? '公開' : '非公開'}</label>
           </div>
         </div>
       </div>`).join('')
-    : `<div class="ad-empty" style="grid-column:1/-1">${AD.products.length ? '該当する商品はありません' : 'まだ商品がありません。右下の「商品を登録」から追加できます'}</div>`;
+    : `<div class="lx-empty" style="grid-column:1/-1">${AD.products.length ? '該当する商品はありません' : 'まだ商品がありません。右下の「商品を登録」から追加できます'}</div>`;
 }
 function paintStock(id) {
   const p = AD.products.find(x => x.id === id);
@@ -1649,7 +1649,7 @@ function openProductSheet(id = null) {
   document.getElementById('ps-delete').style.display = p ? 'flex' : 'none';
   document.getElementById('ps-save').disabled = false;
   renderEditImages();
-  document.querySelector('#product-sheet .ad-sheet').scrollTop = 0;
+  document.querySelector('#product-sheet .lx-sheet').scrollTop = 0;
   openSheet('product-sheet');
 }
 // ISO日時 → <input type="datetime-local"> の値
@@ -1689,11 +1689,11 @@ async function runAutoCancelNow() {
 function renderEditImages() {
   const imgs = AD.editImages;
   document.getElementById('ps-imgs').innerHTML = imgs.map((im, i) => `
-    <div class="ad-img">
+    <div class="lx-img">
       <img src="${esc(im.preview || im.url)}" alt="">
-      ${i === 0 ? '<span class="ad-img-main">メイン</span>' : ''}
-      ${im.size ? `<span class="ad-img-size">${Math.max(1, Math.round(im.size / 1024))}KB</span>` : ''}
-      <div class="ad-img-tools">
+      ${i === 0 ? '<span class="lx-img-main">メイン</span>' : ''}
+      ${im.size ? `<span class="lx-img-size">${Math.max(1, Math.round(im.size / 1024))}KB</span>` : ''}
+      <div class="lx-img-tools">
         <button onclick="moveEditImage(${i}, -1)" ${i === 0 ? 'disabled' : ''} aria-label="前へ">‹</button>
         ${i === 0 ? '' : `<button onclick="moveEditImage(${i}, -${i})" aria-label="メインにする">★</button>`}
         <button class="del" onclick="removeEditImage(${i})" aria-label="削除">×</button>
@@ -1843,23 +1843,23 @@ function renderCatList() {
   const el = document.getElementById('cat-list');
   if (!el) return;
   if (categoriesError) {
-    el.innerHTML = '<div class="ad-note" style="margin:0;color:var(--error)">カテゴリを読み込めません。Supabase で migration_admin.sql を実行してください。</div>';
+    el.innerHTML = '<div class="lx-note" style="margin:0;color:var(--error)">カテゴリを読み込めません。Supabase で migration_admin.sql を実行してください。</div>';
     return;
   }
   el.innerHTML = categories.length ? categories.map((c, i) => {
     const n = AD.products.filter(p => p.category === c.name).length;
-    return `<div class="ad-cat-row">
+    return `<div class="lx-cat-row">
       <div style="display:flex;align-items:center;min-width:0">
-        <input class="ad-input" value="${esc(c.name)}" maxlength="40" data-id="${c.id}" onchange="renameCategory(this)" aria-label="カテゴリ名">
-        <span class="ad-cat-count">${n}件</span>
+        <input class="lx-input" value="${esc(c.name)}" maxlength="40" data-id="${c.id}" onchange="renameCategory(this)" aria-label="カテゴリ名">
+        <span class="lx-cat-count">${n}件</span>
       </div>
-      <div class="ad-cat-tools">
+      <div class="lx-cat-tools">
         <button onclick="moveCategory(${i}, -1)" ${i === 0 ? 'disabled' : ''} aria-label="上へ">↑</button>
         <button onclick="moveCategory(${i}, 1)" ${i === categories.length - 1 ? 'disabled' : ''} aria-label="下へ">↓</button>
         <button class="del" onclick="deleteCategory('${c.id}')" ${n ? 'disabled' : ''} aria-label="削除">×</button>
       </div>
     </div>`;
-  }).join('') : '<div class="ad-note" style="margin:0">カテゴリがありません</div>';
+  }).join('') : '<div class="lx-note" style="margin:0">カテゴリがありません</div>';
 }
 async function afterCategoryChange() {
   await loadCategories(true);

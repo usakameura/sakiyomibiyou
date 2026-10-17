@@ -367,6 +367,27 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
 .ad-sale-preview { font-size: 12px; color: var(--ink-2); margin-top: 8px; min-height: 18px; }
 .ad-sale-preview s { color: var(--ink-4); margin-right: 6px; }
 .ad-sale-preview b { color: var(--sale); font-weight: 400; }
+.ad-pill.refund { color: #6B4E8A; border-color: rgba(107,78,138,0.3); background: #F3EEF8; }
+.ad-refund-sum { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 12px; }
+.ad-refund-sum div { background: var(--ivory); border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px; font-size: 11px; color: var(--ink-3); }
+.ad-refund-sum b { display: block; font-family: var(--sans-en); font-weight: 400; font-size: 16px; color: var(--ink); margin-top: 2px; }
+.ad-refund-item { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; margin-bottom: 8px; font-size: 12px; color: var(--ink-2); }
+.ad-refund-item.failed { opacity: .6; }
+.ad-refund-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-bottom: 4px; }
+.ad-refund-head b { font-family: var(--sans-en); font-weight: 400; font-size: 15px; color: var(--ink); }
+.ad-rstat { font-size: 10px; padding: 2px 8px; border-radius: 10px; border: 1px solid; }
+.ad-rstat.completed { color: #3F6B4C; border-color: rgba(63,107,76,0.3); background: #EEF5F0; }
+.ad-rstat.pending { color: #8A6A1E; border-color: rgba(138,106,30,0.35); background: #FBF5E6; }
+.ad-rstat.failed { color: var(--error); border-color: rgba(154,74,66,0.35); background: #F7EDEB; }
+.ad-refund-form { border-top: 1px dashed var(--line-md); margin-top: 12px; padding-top: 12px; }
+.ad-refund-form[hidden] { display: none; }
+.ad-restock-row { display: flex; justify-content: space-between; align-items: center; gap: 10px; padding: 6px 0; font-size: 12px; border-bottom: 1px solid var(--line); }
+.ad-restock-row:last-child { border-bottom: none; }
+.ad-restock-row .ad-stepper { height: 32px; }
+.ad-restock-row .ad-stepper button { width: 32px; }
+.ad-restock-row .ad-stepper input { width: 38px; font-size: 13px; }
+.ad-seg.small button { height: 38px; font-size: 12px; }
+.ad-seg button.on { background: var(--ink); color: var(--ivory); }
 .ad-pill.autocancel { color: var(--ink-3); border-color: var(--line-md); background: var(--sand); }
 </style>
 </head>
@@ -442,8 +463,9 @@ body.is-admin .toast.show { transform: translateX(-50%) translateY(0); }
         <button class="ad-stat" id="st-unpaid-card" onclick="goOrders('unpaid')"><div class="ad-stat-label">未入金 <span>›</span></div><div class="ad-stat-value" id="st-unpaid">—</div><div class="ad-stat-sub" id="st-unpaid-amount"></div></button>
         <button class="ad-stat" id="st-toship-card" onclick="goOrders('toship')"><div class="ad-stat-label">発送待ち <span>›</span></div><div class="ad-stat-value" id="st-toship">—</div><div class="ad-stat-sub">入金済み・未発送</div></button>
       </div>
-      <div class="ad-stats" style="margin-top:10px;grid-template-columns:1fr">
+      <div class="ad-stats" style="margin-top:10px;grid-template-columns:1fr 1fr">
         <div class="ad-stat"><div class="ad-stat-label">今月の入金額</div><div class="ad-stat-value" id="st-month-paid">—</div><div class="ad-stat-sub">入金日が今月の注文（キャンセル除く）</div></div>
+        <button class="ad-stat" onclick="goOrders('refunded')"><div class="ad-stat-label">今月の返金額 <span>›</span></div><div class="ad-stat-value" id="st-month-refund">—</div><div class="ad-stat-sub" id="st-month-refund-sub"></div></button>
       </div>
 
       <div class="ad-h2">在庫わずか（3点以下）</div>
@@ -800,7 +822,7 @@ async function adminLogout() {
 const AD = {
   orders: [], products: [], shownOrders: [],
   view: 'home', orderStatus: 'all', productCat: 'all',
-  editId: null, editImages: [], editOriginal: [],
+  editId: null, editImages: [], editOriginal: [], refunds: [],
   stockPending: {}, stockTimers: {},
 };
 const CARRIERS = {
@@ -832,13 +854,19 @@ function orderBucket(o) {
   if (!isShipped(o)) return 'toship';
   return 'shipped';
 }
+function refundPill(o) {
+  if (o.refund_status === 'full') return '<span class="ad-pill refund">返金済み</span>';
+  if (o.refund_status === 'partial') return '<span class="ad-pill refund">一部返金</span>';
+  return '';
+}
 function orderPills(o) {
-  if (o.is_cancelled) return o.cancel_reason === 'auto'
+  if (o.is_cancelled) return (o.cancel_reason === 'auto'
     ? '<span class="ad-pill cancel">キャンセル</span><span class="ad-pill autocancel">未入金のため自動</span>'
-    : '<span class="ad-pill cancel">キャンセル</span>';
+    : '<span class="ad-pill cancel">キャンセル</span>') + refundPill(o);
   return (isPaid(o) ? '<span class="ad-pill paid">入金済み</span>' : '<span class="ad-pill unpaid">未入金</span>')
     + (isShipped(o) ? '<span class="ad-pill shipped">発送済み</span>'
-       : (isPaid(o) ? '<span class="ad-pill toship">発送待ち</span>' : ''));
+       : (isPaid(o) ? '<span class="ad-pill toship">発送待ち</span>' : ''))
+    + refundPill(o);
 }
 
 // 1000件ずつ全件取得（Supabase の1回あたりの上限対策）
@@ -867,6 +895,14 @@ async function adminLoadData() {
   } catch (e) {
     console.error('管理データ取得エラー:', e);
     showToast('データを読み込めませんでした', 5000);
+    return;
+  }
+  // 返金の記録（migration_v4_refund.sql を実行していなければ空のまま）
+  try {
+    AD.refunds = await fetchAll('refunds', q => q.order('created_at', { ascending: false }));
+  } catch (e) {
+    console.warn('返金の記録を読み込めませんでした（migration_v4_refund.sql 未実行？）:', e);
+    AD.refunds = [];
   }
 }
 
@@ -926,6 +962,10 @@ function renderDashboard() {
   document.getElementById('st-unpaid-amount').textContent = yen(sum(unpaid));
   document.getElementById('st-toship').textContent = toship.length + '件';
   document.getElementById('st-month-paid').textContent = yen(sum(paidMonth));
+  const refundMonth = AD.refunds.filter(r => r.status !== 'failed' && new Date(r.created_at) >= monthStart);
+  document.getElementById('st-month-refund').textContent = yen(refundMonth.reduce((s, r) => s + Number(r.amount || 0), 0));
+  document.getElementById('st-month-refund-sub').textContent = refundMonth.length
+    ? `${refundMonth.length}件${refundMonth.some(r => r.status === 'pending') ? '（手続き中あり）' : ''}` : '今月の返金はありません';
   document.getElementById('st-unpaid-card').className = 'ad-stat ' + (unpaid.length ? 'alert' : 'ok');
   document.getElementById('st-toship-card').className = 'ad-stat ' + (toship.length ? 'alert' : 'ok');
 
@@ -954,15 +994,15 @@ function renderDashboard() {
 //  ADMIN — 注文
 // ══════════════════════════════════════
 const ORDER_TABS = [
-  ['all', 'すべて'], ['unpaid', '未入金'], ['toship', '発送待ち'], ['shipped', '発送済み'], ['cancelled', 'キャンセル'],
+  ['all', 'すべて'], ['unpaid', '未入金'], ['toship', '発送待ち'], ['shipped', '発送済み'], ['cancelled', 'キャンセル'], ['refunded', '返金'],
 ];
 function goOrders(status) {
   AD.orderStatus = status;
   switchAdmin('orders');
 }
 function renderOrderChips() {
-  const counts = { all: AD.orders.length, unpaid: 0, toship: 0, shipped: 0, cancelled: 0 };
-  AD.orders.forEach(o => counts[orderBucket(o)]++);
+  const counts = { all: AD.orders.length, unpaid: 0, toship: 0, shipped: 0, cancelled: 0, refunded: 0 };
+  AD.orders.forEach(o => { counts[orderBucket(o)]++; if (o.refund_status) counts.refunded++; });
   document.getElementById('of-status').innerHTML = ORDER_TABS.map(([k, label]) =>
     `<button class="ad-chip ${AD.orderStatus === k ? 'active' : ''}" onclick="AD.orderStatus='${k}';renderOrderChips();renderOrders()">${label}<b>${counts[k]}</b></button>`
   ).join('');
@@ -987,7 +1027,8 @@ function filteredOrders() {
   const to   = toV   ? new Date(toV + 'T23:59:59.999') : null;
   const sort = document.getElementById('of-sort').value;
 
-  let list = AD.orders.filter(o => AD.orderStatus === 'all' || orderBucket(o) === AD.orderStatus);
+  let list = AD.orders.filter(o => AD.orderStatus === 'all'
+    || (AD.orderStatus === 'refunded' ? !!o.refund_status : orderBucket(o) === AD.orderStatus));
   if (q) {
     list = list.filter(o => {
       const text = [o.order_number, o.customer_name, o.customer_email].join(' ').toLowerCase();
@@ -1018,8 +1059,10 @@ function renderOrders() {
   AD.shownOrders = list;
   const live = list.filter(o => !o.is_cancelled);
   document.getElementById('of-count').textContent = list.length;
+  const refundedSum = live.reduce((s, o) => s + Number(o.refunded_amount || 0), 0);
   document.getElementById('of-total').textContent = yen(live.reduce((s, o) => s + Number(o.total_amount || 0), 0))
-    + (live.length !== list.length ? '（キャンセル除く）' : '');
+    + (live.length !== list.length ? '（キャンセル除く）' : '')
+    + (refundedSum ? `／返金 ${yen(refundedSum)}` : '');
 
   const fromV = document.getElementById('of-from').value, toV = document.getElementById('of-to').value;
   const keyLabel = { created_at: '注文日', paid_at: '入金日', shipped_at: '発送日' }[document.getElementById('of-datekey').value];
@@ -1111,9 +1154,161 @@ async function openOrderSheet(id, keepScroll = false) {
       ${(items || []).map(i => `<div class="ad-item-row"><span>${esc(i.product_name)} × ${i.quantity}</span><span>${yen(i.price * i.quantity)}</span></div>`).join('')}
       <div class="ad-item-total"><span>合計（税込）</span><b>${yen(o.total_amount)}</b></div>
     </div>
+    ${(paid || AD.refunds.some(r => r.order_id === o.id)) ? refundSectionHtml(o, items || []) : ''}
     <button class="ad-btn ${o.is_cancelled ? 'sub' : 'danger'} block" onclick="toggleCancel('${o.id}', ${o.is_cancelled})">
       ${o.is_cancelled ? 'キャンセルを解除する' : 'この注文をキャンセルする'}</button>`;
   if (keepScroll) sheet.scrollTop = scroll;
+}
+
+// ══════════════════════════════════════
+//  ADMIN — 返金
+// ══════════════════════════════════════
+const REFUND_METHODS = { bank_transfer: '銀行振込で返金', komoju: '決済の取り消し（KOMOJU）', other: 'その他' };
+const REFUND_STATUS = { completed: '完了', pending: '手続き中', failed: '失敗' };
+const REFUND_REASONS = ['お客様のご都合', '商品の不良・破損', '誤配送', '欠品', 'その他'];
+let refundDraft = null;   // 入力中の返金（注文ごと）
+
+function refundSectionHtml(o, items) {
+  const list = AD.refunds.filter(r => r.order_id === o.id);
+  const remaining = Math.max(0, Number(o.total_amount) - Number(o.refunded_amount || 0));
+  if (!refundDraft || refundDraft.orderId !== o.id) {
+    refundDraft = { orderId: o.id, open: false, amount: remaining, method: 'bank_transfer', status: 'completed',
+      reason: REFUND_REASONS[0], note: '', mail: true, restock: {} };
+  }
+  const d = refundDraft;
+  const history = list.length ? list.map(r => `
+    <div class="ad-refund-item ${r.status}">
+      <div class="ad-refund-head"><b>${yen(r.amount)}</b><span class="ad-rstat ${r.status}">${REFUND_STATUS[r.status] || r.status}</span></div>
+      <div>${fmtDT(r.created_at)}　${esc(REFUND_METHODS[r.method] || r.method)}${r.reason ? '　' + esc(r.reason) : ''}</div>
+      ${(r.restock || []).length ? `<div>在庫に戻した：${r.restock.map(x => `${esc(x.product_name)} ×${x.qty}`).join('、')}</div>` : ''}
+      ${r.note ? `<div style="white-space:pre-wrap;color:var(--ink-3)">メモ：${esc(r.note)}</div>` : ''}
+      <div class="ad-actions-row" style="margin-top:8px">
+        ${r.status === 'pending' ? `<button class="ad-btn sub sm" onclick="setRefundStatus('${r.id}','completed')">完了にする</button>
+          <button class="ad-btn sub sm" onclick="setRefundStatus('${r.id}','failed')">失敗にする</button>` : ''}
+        ${r.status !== 'failed' ? `<button class="ad-btn sub sm" onclick="sendRefundMail('${o.id}','${r.id}')">${r.mail_sent_at ? 'お知らせを再送' : 'お知らせメールを送る'}</button>` : ''}
+      </div>
+      ${r.mail_sent_at ? `<div style="font-size:11px;color:var(--ink-3);margin-top:4px">お知らせ送信済み（${fmtShort(r.mail_sent_at)}）</div>` : ''}
+    </div>`).join('') : '<div class="ad-note" style="margin:0 0 8px">まだ返金はありません。</div>';
+
+  const restockable = items.filter(i => i.quantity - (i.restocked_qty || 0) > 0);
+  const restockHtml = o.is_cancelled
+    ? '<div class="ad-note" style="margin:0">キャンセル済みの注文は、キャンセル時に在庫が戻っています。</div>'
+    : restockable.length ? restockable.map(i => {
+        const max = i.quantity - (i.restocked_qty || 0), v = d.restock[i.id] || 0;
+        return `<div class="ad-restock-row"><span>${esc(i.product_name)}<span style="color:var(--ink-3)">（最大${max}）</span></span>
+          <div class="ad-stepper"><button type="button" onclick="refundRestock('${o.id}','${i.id}',-1,${max})">−</button>
+          <input type="number" value="${v}" readonly aria-label="在庫に戻す数"><button type="button" onclick="refundRestock('${o.id}','${i.id}',1,${max})">＋</button></div></div>`;
+      }).join('') : '<div class="ad-note" style="margin:0">在庫に戻せる商品はありません。</div>';
+
+  return `<div class="ad-sec" id="refund-sec">
+    <div class="ad-sec-title">返金</div>
+    <div class="ad-refund-sum">
+      <div>返金済み（手続き中を含む）<b>${yen(o.refunded_amount || 0)}</b></div>
+      <div>返金できる残り<b>${yen(remaining)}</b></div>
+    </div>
+    ${history}
+    ${remaining > 0 && paid_(o) ? `
+      <button class="ad-btn sub block" onclick="toggleRefundForm('${o.id}')">${d.open ? '閉じる' : '返金を記録する'}</button>
+      <div class="ad-refund-form" ${d.open ? '' : 'hidden'}>
+        <label class="ad-field" style="margin-bottom:10px"><span>返金額（円）</span>
+          <div style="display:flex;gap:8px"><input type="number" class="ad-input" id="rf-amount" min="1" max="${remaining}" inputmode="numeric" value="${d.amount}" oninput="refundDraft.amount=parseInt(this.value,10)||0">
+          <button type="button" class="ad-btn sub sm" style="height:44px;flex-shrink:0" onclick="refundDraft.amount=${remaining};document.getElementById('rf-amount').value=${remaining}">残り全額</button></div></label>
+        <div class="ad-form-grid" style="margin-bottom:10px">
+          <label class="ad-field"><span>返金の方法</span><select class="ad-select" id="rf-method" onchange="refundDraft.method=this.value">
+            ${['bank_transfer', 'other'].map(k => `<option value="${k}" ${d.method === k ? 'selected' : ''}>${REFUND_METHODS[k]}</option>`).join('')}</select></label>
+          <label class="ad-field"><span>理由</span><select class="ad-select" id="rf-reason" onchange="refundDraft.reason=this.value">
+            ${REFUND_REASONS.map(x => `<option ${d.reason === x ? 'selected' : ''}>${x}</option>`).join('')}</select></label>
+        </div>
+        <div class="ad-field" style="margin-bottom:10px"><span>状態</span>
+          <div class="ad-seg small"><button type="button" class="${d.status === 'completed' ? 'on' : ''}" onclick="refundDraft.status='completed';openOrderSheet('${o.id}',true)">返金済み</button>
+          <button type="button" class="${d.status === 'pending' ? 'on' : ''}" onclick="refundDraft.status='pending';openOrderSheet('${o.id}',true)">手続き中</button></div></div>
+        <div class="ad-field" style="margin-bottom:10px"><span>在庫に戻す（返品・未発送のとき）</span>${restockHtml}</div>
+        <label class="ad-field" style="margin-bottom:6px"><span>メモ（任意：返金先の口座など）</span><textarea class="ad-textarea" id="rf-note" rows="2" style="min-height:60px" oninput="refundDraft.note=this.value">${esc(d.note)}</textarea></label>
+        <label class="ad-check"><input type="checkbox" id="rf-mail" ${d.mail ? 'checked' : ''} onchange="refundDraft.mail=this.checked">お客様に返金のお知らせメールを送る</label>
+        <button class="ad-btn block" onclick="submitRefund('${o.id}')">この内容で返金を記録</button>
+        <div class="ad-note">※ ここでは記録のみ行います。お金の振り込みはご自身で行ってください。（KOMOJU導入後は、カード・PayPayはここから返金まで完了する予定です）</div>
+      </div>` : ''}
+  </div>`;
+}
+const paid_ = o => isPaid(o);
+function toggleRefundForm(orderId) {
+  if (refundDraft?.orderId === orderId) refundDraft.open = !refundDraft.open;
+  openOrderSheet(orderId, true);
+}
+function refundRestock(orderId, itemId, delta, max) {
+  const v = Math.min(max, Math.max(0, (refundDraft.restock[itemId] || 0) + delta));
+  refundDraft.restock[itemId] = v;
+  openOrderSheet(orderId, true);
+}
+const REFUND_ERRORS = {
+  NOT_PAID: '未入金の注文は返金できません',
+  INVALID_AMOUNT: '返金額を正しく入力してください',
+  CANCELLED_ALREADY_RESTOCKED: 'キャンセル済みの注文は、在庫をすでに戻しています',
+  FORBIDDEN: '管理者としてログインし直してください',
+};
+async function reloadOrderAndRefunds(orderId) {
+  const [{ data: row }, { data: refunds }] = await Promise.all([
+    sb.from('orders').select('*').eq('id', orderId).single(),
+    sb.from('refunds').select('*').eq('order_id', orderId),
+  ]);
+  if (row) patchOrder(row);
+  if (refunds) AD.refunds = [...AD.refunds.filter(r => r.order_id !== orderId), ...refunds]
+    .sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+}
+async function submitRefund(orderId) {
+  const o = AD.orders.find(x => x.id === orderId);
+  const d = refundDraft;
+  const remaining = Number(o.total_amount) - Number(o.refunded_amount || 0);
+  const amount = parseInt(document.getElementById('rf-amount').value, 10);
+  if (!amount || amount < 1) { showToast('返金額を入力してください'); return; }
+  if (amount > remaining) { showToast(`返金できるのは残り${yen(remaining)}までです`); return; }
+  const restock = Object.entries(d.restock).filter(([, q]) => q > 0).map(([item_id, qty]) => ({ item_id, qty }));
+  const summary = [`返金額：${yen(amount)}`, `方法：${REFUND_METHODS[d.method]}`, `状態：${REFUND_STATUS[d.status]}`, `理由：${d.reason}`,
+    restock.length ? `在庫に戻す：${restock.reduce((s, r) => s + r.qty, 0)}点` : '在庫は戻さない',
+    d.mail ? 'お客様にお知らせメールを送る' : 'メールは送らない'].join('\n');
+  if (!confirm(`この内容で返金を記録しますか？\n\n${summary}`)) return;
+
+  const { data, error } = await sb.rpc('admin_create_refund', {
+    p_order_id: orderId, p_amount: amount, p_method: d.method, p_reason: d.reason,
+    p_note: d.note, p_status: d.status, p_restock: restock,
+  });
+  if (error) {
+    const m = error.message || '';
+    console.error('返金エラー:', error);
+    if (m.startsWith('EXCEEDS_REFUNDABLE:')) showToast(`返金できるのは残り${yen(m.split(':')[1])}までです`, 5000);
+    else if (m.startsWith('RESTOCK_EXCEEDS:')) showToast(`「${m.slice(16)}」は、それ以上在庫に戻せません`, 5000);
+    else showToast(REFUND_ERRORS[m] || '返金を記録できませんでした（migration_v4_refund.sql を確認）', 5000);
+    return;
+  }
+  refundDraft = null;
+  await reloadOrderAndRefunds(orderId);
+  if (restock.length) { try { AD.products = await fetchAll('products', q => q.order('created_at', { ascending: false })); } catch (e) { /* 次回更新で反映 */ } renderProducts(); }
+  if (d.mail) await sendRefundMail(orderId, data.id, true);
+  else showToast('返金を記録しました');
+  refreshOrderViews(orderId);
+}
+async function setRefundStatus(refundId, status) {
+  const r = AD.refunds.find(x => x.id === refundId);
+  if (!r) return;
+  if (!confirm(status === 'completed' ? 'この返金を「完了」にしますか？' : 'この返金を「失敗」にしますか？\n返金額の合計から差し引かれます（戻した在庫はそのままです）')) return;
+  const { error } = await sb.rpc('admin_set_refund_status', { p_refund_id: refundId, p_status: status });
+  if (error) { console.error(error); showToast('更新できませんでした'); return; }
+  await reloadOrderAndRefunds(r.order_id);
+  showToast(status === 'completed' ? '返金を完了にしました' : '返金を失敗にしました');
+  refreshOrderViews(r.order_id);
+}
+async function sendRefundMail(orderId, refundId, afterCreate = false) {
+  try {
+    const { data, error } = await sb.functions.invoke(EMAIL_FUNCTION, { body: { order_id: orderId, refund_id: refundId, type: 'refunded' } });
+    if (error || !data?.sent) throw error || new Error('not sent');
+    const r = AD.refunds.find(x => x.id === refundId);
+    if (r) r.mail_sent_at = new Date().toISOString();
+    showToast(afterCreate ? '返金を記録し、お知らせメールを送りました' : 'お知らせメールを送りました');
+  } catch (e) {
+    console.error('返金メール送信エラー:', e);
+    showToast((afterCreate ? '返金を記録しました。' : '') + 'お知らせメールは送れませんでした', 5000);
+  }
+  if (!afterCreate) refreshOrderViews(orderId);
 }
 
 async function updateOrder(id, patch) {
@@ -1249,7 +1444,7 @@ async function exportOrdersCsv(kind) {
     const rows = [[
       '注文番号', '注文日時', '入金状態', '入金日時', '発送状態', '発送日時', 'キャンセル',
       'お名前', 'メール', '電話', '郵便番号', '住所', '商品明細', '点数', '合計金額（税込）',
-      '配送業者', '追跡番号', '備考',
+      '配送業者', '追跡番号', '備考', '返金額', '返金状態', '最終返金日', '差引金額',
     ]];
     list.forEach(o => {
       const its = items[o.id] || [];
@@ -1260,6 +1455,10 @@ async function exportOrdersCsv(kind) {
         its.map(i => `${i.product_name}×${i.quantity}（${yen(i.price * i.quantity)}）`).join(' / '),
         its.reduce((s, i) => s + i.quantity, 0), Number(o.total_amount || 0),
         CARRIERS[o.carrier]?.name || '', o.tracking_number || '', o.note || '',
+        Number(o.refunded_amount || 0),
+        o.refund_status === 'full' ? '全額返金' : o.refund_status === 'partial' ? '一部返金' : '',
+        fmtDT(AD.refunds.filter(r => r.order_id === o.id && r.status !== 'failed').map(r => r.created_at).sort().pop()),
+        o.is_cancelled ? 0 : Number(o.total_amount || 0) - Number(o.refunded_amount || 0),
       ]);
     });
     // UTF-8（BOM付き）：Excel・Googleスプレッドシート・会計ソフトでそのまま開ける
